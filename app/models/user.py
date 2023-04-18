@@ -13,6 +13,16 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    first_name = db.Column(db.String, nullable=False)
+    last_name = db.Column(db.String, nullable=False)
+    profile_picture = db.Column(db.String)
+    daily_driver = db.Column(db.String, default="Classified")
+    keycaps = db.Column(db.String, default="Classified")
+    switches = db.Column(db.String, default="Classified")
+
+
+
+
 
     @property
     def password(self):
