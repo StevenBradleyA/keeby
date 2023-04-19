@@ -18,4 +18,4 @@ class Comment(db.Model):
     in_listing = db.relationship("Listing", back_populates="listing_comments")
 
 # Many to Many
-    like = db.relationship("Comment", secondary=likes, back_populates= 'user_likes')
+    like = db.relationship("User", secondary=likes, back_populates= 'user_likes')
