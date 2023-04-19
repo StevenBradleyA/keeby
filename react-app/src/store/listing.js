@@ -98,3 +98,25 @@ export const getAllListingsThunk = () => async (dispatch) => {
       dispatch(deleteListing(listingId));
     }
   };
+
+
+const initialState = {};
+
+const listingsReducer = (state = initialState, action) => {
+  let newState = { ...state };
+  switch (action.type) {
+    case LOAD_LISTINGS:
+      return { ...state, ...action.payload };
+    case CREATE_LISTING:
+      return { ...state, ...action.payload };
+    case UPDATE_LISTING:
+      return { ...state, ...action.payload };
+    case DELETE_LISTING:
+      delete newState[action.payload];
+      return newState;
+    default:
+      return state;
+  }
+};
+
+export default listingsReducer;
