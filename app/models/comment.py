@@ -20,3 +20,13 @@ class Comment(db.Model):
 
     # Many to Many
     liked = db.relationship("User", secondary=likes, back_populates= 'user_likes')
+
+
+
+    def to_dict_simple(self):
+        return {
+            "id": self.id,
+            "owner_id": self.owner_id,
+            "listing_id": self.listing_id,
+            "content": self.content
+        }
