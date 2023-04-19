@@ -2,4 +2,4 @@
 
 ![keebygif](./react-app/src/media/keebyReadMe.gif)
 
-### Keeby the leading mechanical keyboard auction house specializing in all things thock.
+### The leading mechanical keyboard auction house specializing in all things thock.

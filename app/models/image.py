@@ -17,6 +17,6 @@ class Image(db.Model):
     # * Relationships 💚
     # One to Many
     image_owner = db.relationship("User", back_populates="owned_images")
-    listing_id = db.relationship("Listing", back_populates="listing_images")
+    listing = db.relationship("Listing", back_populates="listing_images")
 
  
