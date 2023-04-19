@@ -7,20 +7,36 @@ import { useModal } from "../../context/Modal";
 
 function Navigation() {
   const { setModalContent } = useModal();
-
   const sessionUser = useSelector((state) => state.session.user);
 
   const handleLogInClick = () => {
-	setModalContent(<LoginFormModal/>)
+    setModalContent(<LoginFormModal />);
   };
   const handleSignUpClick = () => {
-	setModalContent(<SignupFormModal/>)
+    setModalContent(<SignupFormModal />);
   };
 
-  
+  const handleUserIconClick = ()=> {
+	
+  }
   return (
     <div className="nav-bar-container">
-      {sessionUser && <></>}
+      {sessionUser && (
+        <img
+          alt="profile"
+          className={
+            sessionUser.profile_picture === null
+              ? "profile-icon-letter"
+              : "profile-icon"
+          }
+          src={
+            sessionUser.profile_picture === null
+              ? sessionUser.name[0]
+              : sessionUser.profile_picture
+          }
+		  onClick={handleUserIconClick}
+        />
+      )}
 
       {!sessionUser && (
         <>
