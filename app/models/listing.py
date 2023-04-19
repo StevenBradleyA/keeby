@@ -20,3 +20,24 @@ class Listing(db.Model):
     listing_owner = db.relationship("User", back_populates="owned_listings")
     listing_comments = db.relationship("Comment", back_populates="in_listing")
     listing_images = db.relationship("Image", back_populates="listing_id")
+
+
+    def to_dict_simple(self):
+        return {
+            "id": self.id,
+            "owner_id": self.owner_id,
+            "name": self.name,
+            "price": self.price, 
+            "description": self.description
+        }
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "owner_id": self.owner_id,
+            "name": self.name,
+            "price": self.price, 
+            "description": self.description,
+            # "listing_owner": []
+            # "listing_comments":,
+            # "listing_images":,
+        }
