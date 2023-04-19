@@ -27,8 +27,6 @@ def seed_users():
 
 
     db.session.add(demo)
-    db.session.add(alec)
-    db.session.add(brad)
     db.session.add(spongebob)
     db.session.add(patrick)
     db.session.add(mr_krabs)
