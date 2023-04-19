@@ -4,6 +4,7 @@ import "./Navigation.css";
 import LoginFormModal from "./LoginModal";
 import SignupFormModal from "./SignUpModal";
 import { useModal } from "../../context/Modal";
+import UserIconModal from "./ProfileModal";
 
 function Navigation() {
   const { setModalContent } = useModal();
@@ -17,7 +18,7 @@ function Navigation() {
   };
 
   const handleUserIconClick = ()=> {
-	
+	setModalContent(<UserIconModal />)
   }
   return (
     <div className="nav-bar-container">

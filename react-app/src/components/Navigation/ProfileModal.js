@@ -24,7 +24,7 @@ function UserIconModal() {
   };
 
   return (
-    <>
+    <div className="user-icon-modal-container">
       <div className="user-image-container-modal">
         <div className="image-container-2">
           <img
@@ -58,7 +58,7 @@ function UserIconModal() {
         className="user-icon-modal-button"
         onClick={handleLogOut}
       >{`Log out`}</button>
-    </>
+    </div>
   );
 }
 
