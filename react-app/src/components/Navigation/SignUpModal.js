@@ -15,7 +15,6 @@ function SignupFormModal() {
   const [dailyDriver, setDailyDriver] = useState("");
   const [keycaps, setKeycaps] = useState("");
   const [switches, setSwitches] = useState("");
-
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
 
@@ -59,7 +58,7 @@ function SignupFormModal() {
         <label>
           Email
           <input
-            type="text"
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -97,6 +96,7 @@ function SignupFormModal() {
           <input
             type="text"
             value={firstName}
+            placeholder="First Name"
             onChange={(e) => setFirstName(e.target.value)}
             required
           />
@@ -106,6 +106,7 @@ function SignupFormModal() {
           <input
             type="text"
             value={lastName}
+            placeholder="Last Name"
             onChange={(e) => setLastName(e.target.value)}
             required
           />
@@ -114,8 +115,9 @@ function SignupFormModal() {
         <label>
           Profile Picture
           <input
-            type="text"
+            type="url"
             value={profilePicture}
+            placeholder="Profile Picture .png/.jpg"
             onChange={(e) => setProfilePicture(e.target.value)}
             required
           />
@@ -150,7 +152,6 @@ function SignupFormModal() {
             required
           />
         </label>
-
         <button type="submit">Sign Up</button>
       </form>
     </>
