@@ -14,8 +14,9 @@ class Comment(db.Model):
 
 
     # * Relationships 💚
+    # One to Many
     comment_owner = db.relationship("User", back_populates="owned_comments")
     in_listing = db.relationship("Listing", back_populates="listing_comments")
 
-# Many to Many
+    # Many to Many
     like = db.relationship("User", secondary=likes, back_populates= 'user_likes')

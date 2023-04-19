@@ -14,7 +14,7 @@ class Listing(db.Model):
     price = db.Column(db.Integer, nullable=False)
     description = db.Column(db.Text, nullable=False)
 
-# * Relationships 💚
+    # * Relationships 💚
     # One to Many
 
     listing_owner = db.relationship("User", back_populates="owned_listings")
