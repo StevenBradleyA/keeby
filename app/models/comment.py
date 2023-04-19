@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .like import likes
 
 class Comment(db.Model):
     __tablename__ = 'comments'
@@ -13,3 +14,8 @@ class Comment(db.Model):
 
 
     # * Relationships 💚
+    comment_owner = db.relationship("User", back_populates="owned_comments")
+    in_listing = db.relationship("Listing", back_populates="listing_comments")
+
+# Many to Many
+    like = db.relationship("Comment", secondary=likes, back_populates= 'user_likes')

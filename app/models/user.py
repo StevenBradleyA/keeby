@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-
+from .like import likes
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -20,7 +20,15 @@ class User(db.Model, UserMixin):
     keycaps = db.Column(db.String, default="Classified")
     switches = db.Column(db.String, default="Classified")
 
+    # * Relationships 💚
+    # One to Many
+    owned_comments = db.relationship("Comment", back_populates="comment_owner")
+    owned_listings = db.relationship("Listing", back_populates="listing_owner")
+    owned_images = db.relationship("Image", back_populates="image_owner")
 
+    # Many to Many
+    user_likes = db.relationship("Comment", secondary=likes, back_populates= 'like')
+    
 
 
 

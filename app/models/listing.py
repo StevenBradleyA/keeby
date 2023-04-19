@@ -16,4 +16,7 @@ class Listing(db.Model):
 
 # * Relationships 💚
     # One to Many
-    # Many to Many
+
+    listing_owner = db.relationship("User", back_populates="owned_listings")
+    listing_comments = db.relationship("Listing", back_populates="in_listing")
+    listing_images = db.relationship("Image", back_populates="listing_id")
