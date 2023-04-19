@@ -8,13 +8,13 @@ def seed_comments():
         owner_id = 1,
         listing_id = 1,
         content = "This is my all time favorite board. Let me know if I can answer any questions",
-        like=[spongebob],
+        liked=[spongebob],
     )
     comment_2 = Comment(
         owner_id = 3,
         listing_id = 1,
         content = "👀 this board is straight 🔥🔥🔥, could I use this underwater? 🌊🌊🌊🌊🌊 ", 
-        like=[spongebob, patrick, mr_krabs, sandy],
+        liked=[spongebob, patrick, mr_krabs, sandy],
     )
 
     db.session.add(comment_1)
@@ -24,7 +24,7 @@ def seed_comments():
 
 
 
-def under_comments():
+def undo_comments():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.likes RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.comments RESTART IDENTITY CASCADE;")

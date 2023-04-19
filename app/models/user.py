@@ -27,7 +27,7 @@ class User(db.Model, UserMixin):
     owned_images = db.relationship("Image", back_populates="image_owner")
 
     # Many to Many
-    user_likes = db.relationship("Comment", secondary=likes, back_populates= 'like')
+    user_likes = db.relationship("Comment", secondary=likes, back_populates= 'liked')
     
 
 
