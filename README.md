@@ -1,3 +1,5 @@
-# Welcome to Keeby!
-### Keeby is recognized the world over as a leading mechanical keyboard auction house specializing in all things thock.
-![schema](./react-app/src/media/database.png)
+# ARE YOU SURE YOU WANT TO ENTER KEEBY?   </br>                      < [YES]                [NO] 
+
+![keebygif](./react-app/src/media/keebyReadMe.gif)
+
+### Keeby the leading mechanical keyboard auction house specializing in all things thock.
