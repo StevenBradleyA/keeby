@@ -32,3 +32,25 @@ def get_listing_by_id(id):
         }, 404
     return listing.to_dict()
 
+# * -----------  GET  --------------
+# Search all listings by their name
+@listing_routes.route("/<string:name>")
+def search_all_listings(name):
+    listings = Listing.query.filter(Listing.name.like(f"{name}%")).all()
+    return [listing.to_dict_simple() for listing in listings]
+
+
+
+# * -----------  POST  --------------
+# Create a new listing
+
+# * -----------  POST  --------------
+# Create a new comment for a specific listing
+
+
+
+# * -----------  PUT  --------------
+# Edit a listing
+
+# * -----------  DELETE  --------------
+# Delete a listing
