@@ -40,9 +40,10 @@ def search_all_listings(name):
     return [listing.to_dict_simple() for listing in listings]
 
 
-
 # * -----------  POST  --------------
 # Create a new listing
+
+
 
 # * -----------  POST  --------------
 # Create a new comment for a specific listing
@@ -51,6 +52,8 @@ def search_all_listings(name):
 
 # * -----------  PUT  --------------
 # Edit a listing
+
+
 
 # * -----------  DELETE  --------------
 # Delete a listing
