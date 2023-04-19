@@ -5,29 +5,25 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', password='password', email='demo@aa.io', first_name="Demo", last_name="Lition", profile_picture="https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg", daily_driver="Demo User", keycaps="", switches="" )
-    alec = User(
-        username='Alec', password='password', email='mod4god@aa.io', first_name="Alec", last_name="Instructor", profile_picture="https://i0.wp.com/d37ck3jytu9wl0.cloudfront.net/wp-content/uploads/2022/05/31141519/Neckbeard-BLOG.jpg?fit=1200%2C777&ssl=1", daily_driver="Mod 4 Gate Keeper", keycaps="", switches="")
-    brad = User(
-        username='Brad',  password='password', email='Brad@aa.io', first_name="Brad", last_name="Instructor", profile_picture="https://cdn.vox-cdn.com/thumbor/qqJR3THHUSgAt2ADTGk6_56hjyQ=/0x0:4059x4051/1400x1400/filters:focal(1964x2333:1965x2334)/cdn.vox-cdn.com/uploads/chorus_asset/file/24018802/ND_Zelda_Lead.jpeg", daily_driver="Food variable master", keycaps="The father of Patches and Blue")
+        username='Demo', password='password', email='demo@aa.io', first_name="Demo", last_name="Lition", profile_picture="https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg", daily_driver="Keychron Q8", keycaps="Enjoy-PBT Japan", switches="Neopolitan Ice Creams" )
     spongebob = User(
-        username='spongebob',  password='password', email='spongebob@aa.io', first_name="Spongebob", last_name="Squarepants", profile_picture="https://www.freepnglogos.com/uploads/spongebob-png/ish-twitter-quot-redrew-favorite-scene-spongebob-9.png", daily_driver="Fry Cook", keycaps="", switches="") 
+        username='spongebob',  password='password', email='spongebob@aa.io', first_name="Spongebob", last_name="Squarepants", profile_picture="https://www.freepnglogos.com/uploads/spongebob-png/ish-twitter-quot-redrew-favorite-scene-spongebob-9.png", daily_driver="", keycaps="", switches="") 
     patrick = User(
-        username='patrick',  password='password', email='patrick@aa.io', first_name="Patrick", last_name="Star", profile_picture="https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/1200px-Patrick_Star.svg.png", daily_driver="Dr Professor Patrick to you", keycaps="", switches="") 
+        username='patrick',  password='password', email='patrick@aa.io', first_name="Patrick", last_name="Star", profile_picture="https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/1200px-Patrick_Star.svg.png", daily_driver="", keycaps="", switches="") 
     mr_krabs = User(
-        username='MrKrabs',  password='password', email='MrKrabs@aa.io', first_name="Mr", last_name="Krabs", profile_picture="https://www.pngkey.com/png/full/435-4350208_mr-krabs-png-spongebob-mr-krabs-png.png", daily_driver="CEO of the Krusty Krab", keycaps="Hi, I like money.") 
+        username='MrKrabs',  password='password', email='MrKrabs@aa.io', first_name="Mr", last_name="Krabs", profile_picture="https://www.pngkey.com/png/full/435-4350208_mr-krabs-png-spongebob-mr-krabs-png.png", daily_driver="", keycaps="", switches="") 
     squidward = User(
-        username='squidward',  password='password', email='squidward@aa.io', first_name="Squidward", last_name="Tentacles", profile_picture="https://is4-ssl.mzstatic.com/image/thumb/Video118/v4/4c/36/79/4c3679e8-4b33-ccea-ce28-c205652f845a/Jobbda093ff-fcef-4128-87fc-2b501bac952c-97368840-PreviewImage_Chocolate-Time1498404492754.png/1200x675.jpg", daily_driver="Divine talent", keycaps="", switches="") 
+        username='squidward',  password='password', email='squidward@aa.io', first_name="Squidward", last_name="Tentacles", profile_picture="https://is4-ssl.mzstatic.com/image/thumb/Video118/v4/4c/36/79/4c3679e8-4b33-ccea-ce28-c205652f845a/Jobbda093ff-fcef-4128-87fc-2b501bac952c-97368840-PreviewImage_Chocolate-Time1498404492754.png/1200x675.jpg", daily_driver="", keycaps="", switches="") 
     sandy = User(
-        username='sandy',  password='password', email='sandy@aa.io', first_name="Sandy", last_name="Cheeks", profile_picture="https://comicvine.gamespot.com/a/uploads/scale_small/11132/111325030/5880115-spongebob%20squarepants%20sandy%20cheeks.jpg", daily_driver="Scientist and Karate Master", keycaps="", switches="") 
+        username='sandy',  password='password', email='sandy@aa.io', first_name="Sandy", last_name="Cheeks", profile_picture="https://comicvine.gamespot.com/a/uploads/scale_small/11132/111325030/5880115-spongebob%20squarepants%20sandy%20cheeks.jpg", daily_driver="", keycaps="", switches="") 
     larry = User(
-        username='larry',  password='password', email='larry@aa.io', first_name="Larry", last_name="Lobster", profile_picture="https://i.pinimg.com/550x/e4/73/4e/e4734efaed57f5d9a800586dd85e43a5.jpg", daily_driver="Living like Larry", keycaps="", switches="") 
+        username='larry',  password='password', email='larry@aa.io', first_name="Larry", last_name="Lobster", profile_picture="https://i.pinimg.com/550x/e4/73/4e/e4734efaed57f5d9a800586dd85e43a5.jpg", daily_driver="", keycaps="", switches="") 
     bubble_bass = User(
-        username='bubblebass',  password='password', email='bubblebass@aa.io', first_name="Bubble", last_name="Bass", profile_picture="https://i.kym-cdn.com/entries/icons/mobile/000/026/636/Screen_Shot_2018-08-20_at_7.12.25_PM.jpg", daily_driver="Burger Connoisseur", keycaps="", switches="") 
+        username='bubblebass',  password='password', email='bubblebass@aa.io', first_name="Bubble", last_name="Bass", profile_picture="https://i.kym-cdn.com/entries/icons/mobile/000/026/636/Screen_Shot_2018-08-20_at_7.12.25_PM.jpg", daily_driver="", keycaps="", switches="") 
     man_ray = User(
-        username='manray',  password='password', email='manray@aa.io', first_name="Man", last_name="Ray", profile_picture="https://www.vhv.rs/dpng/d/482-4827175_man-ray-is-the-second-major-archenemy-of.png", daily_driver="Arch Villain", keycaps="", switches="") 
+        username='manray',  password='password', email='manray@aa.io', first_name="Man", last_name="Ray", profile_picture="https://www.vhv.rs/dpng/d/482-4827175_man-ray-is-the-second-major-archenemy-of.png", daily_driver="", keycaps="", switches="") 
     reggie = User(
-        username='reggie',  password='password', email='reggie@aa.io', first_name="Reggie", last_name="Fish", profile_picture="https://i.ytimg.com/vi/vySI1ld25bs/hqdefault.jpg", daily_driver="Bouncer", keycaps="", switches="") 
+        username='reggie',  password='password', email='reggie@aa.io', first_name="Reggie", last_name="Fish", profile_picture="https://i.ytimg.com/vi/vySI1ld25bs/hqdefault.jpg", daily_driver="", keycaps="", switches="") 
 
 
     db.session.add(demo)
