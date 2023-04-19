@@ -19,7 +19,7 @@ class Listing(db.Model):
 
     listing_owner = db.relationship("User", back_populates="owned_listings")
     listing_comments = db.relationship("Comment", back_populates="in_listing")
-    listing_images = db.relationship("Image", back_populates="listing_id")
+    listing_images = db.relationship("Image", back_populates="listing")
 
 
     def to_dict_simple(self):
