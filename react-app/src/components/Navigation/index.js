@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import "./Navigation.css";
 import LoginFormModal from "./LoginModal";
@@ -10,6 +10,7 @@ import DemoLogin from "./DemoLogin";
 function Navigation() {
   const { setModalContent } = useModal();
   const sessionUser = useSelector((state) => state.session.user);
+  // const [listingName, setListingName] = useState('')
 
   const handleLogInClick = () => {
     setModalContent(<LoginFormModal />);
@@ -23,15 +24,17 @@ function Navigation() {
   }
 
 
-
-
   return (
     <div className="nav-bar-container">
+      <input
+        className="search-input-login"
+        type="search"
+        placeholder="Add a user by username"
+        // value={listingName}
+        // onChange={(e) => setListingName(e.target.value)}
+      />
       {sessionUser && (
 		<>
-		
-
-
         <img
           alt="profile"
           className={

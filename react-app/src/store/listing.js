@@ -30,6 +30,7 @@ const deleteListing = (listingId) => ({
 export const getAllListingsThunk = () => async (dispatch) => {
     const response = await fetch(`/api/listings`);
   
+    console.log('hey', response)
     if (response.ok) {
       const allListingData = await response.json();
       const normalizedListingData = {};
