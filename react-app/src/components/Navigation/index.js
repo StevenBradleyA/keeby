@@ -40,7 +40,7 @@ function Navigation() {
       <input
         className="search-input-login"
         type="search"
-        placeholder="Add a user by username"
+        placeholder="Search for a Keyboard name ..."
         // value={listingName}
         // onChange={(e) => setListingName(e.target.value)}
       />
@@ -67,10 +67,10 @@ function Navigation() {
 
       {!sessionUser && (
         <>
-          <FontAwesomeIcon icon={faKeyboard} onClick={handleHomeClick}/>
+          <FontAwesomeIcon icon={faKeyboard} onClick={handleHomeClick} className="home-button"/>
           <DemoLogin/>
-          <button onClick={handleLogInClick}>Log In</button>
-          <button onClick={handleSignUpClick}>Sign Up</button>
+          <button onClick={handleLogInClick} className="log-in-button">Log In</button>
+          <button onClick={handleSignUpClick} className="sign-up-button">Sign Up</button>
         </>
       )}
     </div>

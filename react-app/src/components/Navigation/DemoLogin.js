@@ -9,7 +9,7 @@ const DemoLogin = () => {
     history.push("/");
   };
 
-  return <button onClick={onClick}>Demo Log In</button>;
+  return <button onClick={onClick} className="demo-log-in-button">Demo</button>;
 };
 
 export default DemoLogin;
