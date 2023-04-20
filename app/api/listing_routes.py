@@ -4,7 +4,7 @@ from app.models.like import likes
 from flask_login import current_user, login_required
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from ..forms.listing_form import ListingForm
-from ..forms.image_form import ImageForm
+from ..utils import pog 
 
 
 listing_routes = Blueprint('listings', __name__)
@@ -50,24 +50,27 @@ def search_all_listings(name):
 def create_listing():
     form = ListingForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    pog(dir(form))
+    pog(dir(request))
+    pog(request.data)
+        
     if form.validate_on_submit():
         new_listing = Listing(
-            owner_id = form.data['owner_id'],
-            name=form.data['name'],
-            price = form.data['price'],
-            description = form.data['description'],
-            # users_in_channels = [current_user]
-        )
-        new_image = Image(
-            listing_id = new_listing.id,
             owner_id=form.data['owner_id'],
-            image = form.data['image'],
-            is_display_image = form.data['is_display_image'],
+            name=form.data['name'],
+            price=form.data['price'],
+            description=form.data['description']
         )
-
         db.session.add(new_listing)
-        db.session.add(new_image)
+        db.session.commit()
 
+        new_image = Image(
+            listing_id=new_listing.id,
+            owner_id=form.data['owner_id'],
+            image=form.data['image'],
+            is_display_image=form.data['is_display_image'],
+        )
+        db.session.add(new_image)
         db.session.commit()
 
         return new_listing.to_dict()
