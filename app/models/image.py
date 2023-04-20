@@ -19,4 +19,21 @@ class Image(db.Model):
     image_owner = db.relationship("User", back_populates="owned_images")
     listing = db.relationship("Listing", back_populates="listing_images")
 
- 
+    def to_dict_simple(self):
+        return {
+            "id": self.id, 
+            "listing_id": self.listing_id,
+            "owner_id": self.owner_id,
+            "image": self.image,
+            "is_display_image": self.is_display_image
+        }
+    
+    def to_dict(self):
+        return {
+            "id": self.id, 
+            "listing_id": self.listing_id,
+            "owner_id": self.owner_id,
+            "image": self.image,
+            "is_display_image": self.is_display_image,
+            "listing": self.listing.to_dict()
+        }

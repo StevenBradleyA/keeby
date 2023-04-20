@@ -43,9 +43,15 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
-    def to_dict(self):
+    def to_dict_simple(self):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "profile_picture": self.profile_picture,
+            "daily_driver": self.daily_driver,
+            "keycaps": self.keycaps,
+            "switches": self.switches
         }
