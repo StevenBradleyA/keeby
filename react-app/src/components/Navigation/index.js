@@ -33,10 +33,11 @@ function Navigation() {
   const handleHomeClick = () => {
     history.push(`/`)
   }
-
-
+  
+  
   return (
     <div className="nav-bar-container">
+      <FontAwesomeIcon icon={faKeyboard} onClick={handleHomeClick} className="home-button"/>
       <input
         className="search-input-login"
         type="search"
@@ -67,7 +68,6 @@ function Navigation() {
 
       {!sessionUser && (
         <>
-          <FontAwesomeIcon icon={faKeyboard} onClick={handleHomeClick} className="home-button"/>
           <DemoLogin/>
           <button onClick={handleLogInClick} className="log-in-button">Log In</button>
           <button onClick={handleSignUpClick} className="sign-up-button">Sign Up</button>
