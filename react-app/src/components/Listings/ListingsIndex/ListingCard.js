@@ -1,9 +1,12 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import "./ListingIndex.css";
+import { useDispatch } from "react-redux";
+import { getListingByIdThunk } from "../../../store/listing";
 
 const ListingCard = ({ listing }) => {
     const history = useHistory()
+    const dispatch = useDispatch()
   const allListingImages = Object.values(listing.listing_images);
   // console.log(allListingImages[0])
   //    const displayImage = allListingImages.filter((e)=> {
@@ -13,6 +16,7 @@ const ListingCard = ({ listing }) => {
 
     const handleCardClick = (e) => {
         e.preventDefault()
+        dispatch(getListingByIdThunk(listing.id))
         history.push(`/listing/${listing.id}`)
     }
 
