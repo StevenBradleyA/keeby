@@ -56,10 +56,18 @@ def create_listing():
             name=form.data['name'],
             price = form.data['price'],
             description = form.data['description'],
-            image = form.data['image']
             # users_in_channels = [current_user]
         )
+        new_image = Image(
+            listing_id = new_listing.id,
+            owner_id=form.data['owner_id'],
+            image = form.data['image'],
+            is_display_image = form.data['is_display_image'],
+        )
+
         db.session.add(new_listing)
+        db.session.add(new_image)
+
         db.session.commit()
 
         return new_listing.to_dict()

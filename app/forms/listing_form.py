@@ -21,3 +21,4 @@ class ListingForm(FlaskForm):
     price = IntegerField('Price', validators=[DataRequired()])
     description = TextAreaField('Price', validators=[DataRequired()])
     image = MultipleFileField("Image File", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
+    is_display_image = BooleanField("Display Image")
