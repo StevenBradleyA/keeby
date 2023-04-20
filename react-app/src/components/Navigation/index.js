@@ -33,8 +33,13 @@ function Navigation() {
   const handleHomeClick = () => {
     history.push(`/`)
   }
+
+  const handleListYourKeeb = () => {
+    // yo
+
+  }
   
-  
+  // I want to make list your keeb redirect to log in if not session User
   return (
     <div className="nav-bar-container">
       <FontAwesomeIcon icon={faKeyboard} onClick={handleHomeClick} className="home-button"/>
@@ -45,8 +50,10 @@ function Navigation() {
         // value={listingName}
         // onChange={(e) => setListingName(e.target.value)}
       />
+
       {sessionUser && (
 		<>
+      <div className="list-a-keeb-button" onClick={handleListYourKeeb}>List your Keeb</div>
         <img
           alt="profile"
           className={

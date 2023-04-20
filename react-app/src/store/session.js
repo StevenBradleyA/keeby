@@ -1,4 +1,5 @@
 // constants
+
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
 const UPDATE_USER = "session/UPDATE_USER";
@@ -152,6 +153,7 @@ export const deleteUserThunk = (userId) => async (dispatch) => {
 const initialState = { user: null };
 
 export default function reducer(state = initialState, action) {
+  let newState = { ...state };
   switch (action.type) {
     case SET_USER:
       return { user: action.payload };

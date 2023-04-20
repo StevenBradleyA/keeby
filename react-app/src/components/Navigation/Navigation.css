@@ -59,6 +59,18 @@
   font-size: 12px;
 }
 
+
+.list-a-keeb-button{
+  position: absolute;
+  left: 80%;
+  font-size: 12px;
+  top: 0.70rem;
+
+
+
+}
+
+
 .profile-icon {
   position: absolute;
   left: 94%;

@@ -5,14 +5,6 @@ from wtforms.validators import DataRequired
 from app.api.aws_helpers import ALLOWED_EXTENSIONS
 
 
-    
-
-
-
-
-
-
-
 
 class ListingForm(FlaskForm):
 
