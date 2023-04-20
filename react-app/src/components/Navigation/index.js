@@ -5,6 +5,7 @@ import LoginFormModal from "./LoginModal";
 import SignupFormModal from "./SignUpModal";
 import { useModal } from "../../context/Modal";
 import UserIconModal from "./ProfileModal";
+import DemoLogin from "./DemoLogin";
 
 function Navigation() {
   const { setModalContent } = useModal();
@@ -20,9 +21,17 @@ function Navigation() {
   const handleUserIconClick = ()=> {
 	setModalContent(<UserIconModal />)
   }
+
+
+
+
   return (
     <div className="nav-bar-container">
       {sessionUser && (
+		<>
+		
+
+
         <img
           alt="profile"
           className={
@@ -37,10 +46,14 @@ function Navigation() {
           }
 		  onClick={handleUserIconClick}
         />
+		
+		
+		</>
       )}
 
       {!sessionUser && (
         <>
+          <DemoLogin/>
           <button onClick={handleLogInClick}>Log In</button>
           <button onClick={handleSignUpClick}>Sign Up</button>
         </>
