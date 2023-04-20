@@ -1,10 +1,10 @@
 import React from "react";
-import {useHistory}
+import { useHistory } from "react-router-dom";
 import "./ListingIndex.css";
 
 const ListingCard = ({ listing }) => {
     const history = useHistory()
-  const allListingImages = listing.listing_images;
+  const allListingImages = Object.values(listing.listing_images);
   // console.log(allListingImages[0])
   //    const displayImage = allListingImages.filter((e)=> {
   //     e.is_display_image === true
@@ -13,7 +13,7 @@ const ListingCard = ({ listing }) => {
 
     const handleCardClick = (e) => {
         e.preventDefault()
-        history.push(`/listings/${listing.id}``)
+        history.push(`/listing/${listing.id}`)
     }
 
 
