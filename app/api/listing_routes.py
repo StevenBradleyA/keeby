@@ -3,6 +3,8 @@ from app.models import Listing, User, Image, Comment, db
 from app.models.like import likes
 from flask_login import current_user, login_required
 from flask_wtf.csrf import CSRFProtect, generate_csrf
+from ..forms.listing_form import ListingForm
+from ..forms.image_form import ImageForm
 
 
 listing_routes = Blueprint('listings', __name__)
@@ -43,6 +45,25 @@ def search_all_listings(name):
 # * -----------  POST  --------------
 # Create a new listing
 
+@listing_routes.route("", methods=["POST"])
+@login_required
+def create_listing():
+    form = ListingForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        new_listing = Listing(
+            owner_id = form.data['owner_id'],
+            name=form.data['name'],
+            price = form.data['price'],
+            description = form.data['description'],
+            image = form.data['image']
+            # users_in_channels = [current_user]
+        )
+        db.session.add(new_listing)
+        db.session.commit()
+
+        return new_listing.to_dict()
+    return 'BAD DATA'
 
 
 # * -----------  POST  --------------
