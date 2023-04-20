@@ -26,12 +26,20 @@ def seed_images():
         image="https://preview.redd.it/keychron-q8-with-badseed-tactiles-and-pbtfans-twist-keycaps-v0-ztp1xr86qsz91.jpg?width=1080&crop=smart&auto=webp&v=enabled&s=5a3e8540517f627a9b8c9e487041f9c152c7cad3",
         is_display_image=False, 
     )
+    img_5 = Image(
+        listing_id = 2,
+        owner_id = 1,
+        image="https://i.redd.it/25q1dmigyiaa1.jpg",
+        is_display_image=True, 
+    )
 
 
     db.session.add(img_1)
     db.session.add(img_2)
     db.session.add(img_3)
     db.session.add(img_4)
+    db.session.add(img_5)
+
     db.session.commit()
 
 

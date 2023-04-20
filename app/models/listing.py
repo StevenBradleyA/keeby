@@ -38,6 +38,6 @@ class Listing(db.Model):
             "price": self.price, 
             "description": self.description,
             "listing_owner": self.listing_owner.to_dict_simple(),
-            "listing_comments":[comment.to_dict_simple() for comment in self.listing_comments ],
+            # "listing_comments":[comment.to_dict_simple() for comment in self.listing_comments ],
             "listing_images":[image.to_dict_simple() for image in self.listing_images],
         }

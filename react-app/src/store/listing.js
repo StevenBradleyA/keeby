@@ -28,78 +28,74 @@ const deleteListing = (listingId) => ({
 // --------      Thunks         --------
 
 export const getAllListingsThunk = () => async (dispatch) => {
-    const response = await fetch(`/api/listings`);
-  
-    console.log('hey', response)
-    if (response.ok) {
-      const allListingData = await response.json();
-      const normalizedListingData = {};
-      allListingData.forEach((e) => {
-        normalizedListingData[e.id] = e;
-      });
-      dispatch(loadListings(normalizedListingData));
-    }
-  };
-  
-  export const getListingByIdThunk = (listingId) => async (dispatch) => {
-    const response = await fetch(`/api/listings/${listingId}`);
-  
-    if (response.ok) {
-      const singleListingData = await response.json();
-      const normalizedListingData = {};
-      normalizedListingData[singleListingData.id] = singleListingData;
-      dispatch(loadListings(normalizedListingData));
-    }
-  };
+  const response = await fetch(`/api/listings`);
 
+  if (response.ok) {
+    const allListingData = await response.json();
+    const normalizedListingData = {};
+    allListingData.forEach((e) => {
+      normalizedListingData[e.id] = e;
+    });
+    dispatch(loadListings(normalizedListingData));
+  }
+};
 
+export const getListingByIdThunk = (listingId) => async (dispatch) => {
+  const response = await fetch(`/api/listings/${listingId}`);
 
-  export const createListingThunk = (newListingData) => async (dispatch) => {
+  if (response.ok) {
+    const singleListingData = await response.json();
+    const normalizedListingData = {};
+    normalizedListingData[singleListingData.id] = singleListingData;
+    dispatch(loadListings(normalizedListingData));
+  }
+};
+
+export const createListingThunk = (newListingData) => async (dispatch) => {
+  try {
+    const response = await fetch(`/api/listings`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newListingData),
+    });
+
+    const data = await response.json();
+    const normalizedListingData = {};
+    normalizedListingData[data.id] = data;
+    dispatch(createListing(normalizedListingData));
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const updateChannelThunk =
+  (newListingData, listingId) => async (dispatch) => {
     try {
-      const response = await fetch(`/api/listings`, {
-        method: "POST",
+      const response = await fetch(`/api/listings/${listingId}`, {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newListingData),
       });
-  
       const data = await response.json();
       const normalizedListingData = {};
       normalizedListingData[data.id] = data;
-      dispatch(createListing(normalizedListingData));
+      dispatch(updateListing(normalizedListingData));
       return data;
     } catch (error) {
       console.log(error);
     }
   };
-  
-  export const updateChannelThunk =
-    (newListingData, listingId) => async (dispatch) => {
-      try {
-        const response = await fetch(`/api/listings/${listingId}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(newListingData),
-        });
-        const data = await response.json();
-        const normalizedListingData = {};
-        normalizedListingData[data.id] = data;
-        dispatch(updateListing(normalizedListingData));
-        return data;
-      } catch (error) {
-        console.log(error);
-      }
-    };
-  
-  export const deleteChannelThunk = (listingId) => async (dispatch) => {
-    const response = await fetch(`/api/listings/${listingId}`, {
-      method: "DELETE",
-    });
-  
-    if (response.ok) {
-      dispatch(deleteListing(listingId));
-    }
-  };
 
+export const deleteChannelThunk = (listingId) => async (dispatch) => {
+  const response = await fetch(`/api/listings/${listingId}`, {
+    method: "DELETE",
+  });
+
+  if (response.ok) {
+    dispatch(deleteListing(listingId));
+  }
+};
 
 const initialState = {};
 

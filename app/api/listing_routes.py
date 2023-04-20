@@ -16,7 +16,7 @@ listing_routes = Blueprint('listings', __name__)
 @listing_routes.route("")
 def get_listings():
     listings = Listing.query.all()
-    return listings.to_dict_simple()
+    return [listing.to_dict() for listing in listings]
 
 
 # * -----------  GET  --------------
