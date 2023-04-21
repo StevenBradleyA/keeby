@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { createListingThunk } from "../../../store/listing";
 
-function CreateListingForm({ workspaceId }) {
+function CreateListingForm() {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
@@ -10,6 +12,7 @@ function CreateListingForm({ workspaceId }) {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [images, setImages] = useState([]);
+  const [imageLoading, setImageLoading] = useState(false);
 
   const [errors, setErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -19,7 +22,7 @@ function CreateListingForm({ workspaceId }) {
     if (name.length === 0) {
       errorsObj.name = "Name is required";
     }
-    if (str(price).length === 0) {
+    if (price.toString().length === 0) {
       errorsObj.price = "Price is required";
     }
     if (description.length < 400) {
@@ -35,37 +38,18 @@ function CreateListingForm({ workspaceId }) {
     setErrors(errorsObj);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("image", image);
-
-    // aws uploads can be a bit slow—displaying
-    // some sort of loading message is a good idea
-    setImageLoading(true);
-
-    const res = await fetch("/api/images", {
-      method: "POST",
-      body: formData,
-    });
-    if (res.ok) {
-      await res.json();
-      setImageLoading(false);
-      history.push("/images");
-    } else {
-      setImageLoading(false);
-      // a real app would probably use more advanced
-      // error handling
-      console.log("error");
-    }
-  };
-
   useEffect(() => {
     handleInputErrors();
-  }, [name, price, description, image]);
+  }, [name, price, description, images]);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    Array.from(images).forEach(e => {
+        formData.append('image', e)
+    })
+    // formData.append("image", image);
+    setImageLoading(true);
 
     if (!Object.values(errors).length) {
       const listingInformation = {
@@ -73,14 +57,17 @@ function CreateListingForm({ workspaceId }) {
         name,
         price,
         description,
-        image,
+        image: formData,
       };
       let newListing = await dispatch(createListingThunk(listingInformation));
       //   push to new Listing id
-      history.push(`/`);
+      history.push(`/listings/${newListing.id}`);
+      setImageLoading(false);
     }
     setHasSubmitted(true);
   };
+
+
 
   return (
     <div className="channel-form-container">
@@ -88,7 +75,7 @@ function CreateListingForm({ workspaceId }) {
         <>
           <div>
             <h1>Create a Listing for your Keyboard</h1>
-            <form onSubmit={handleFormSubmit}>
+            <form onSubmit={handleFormSubmit} encType="multipart/form-data">
               <label>
                 Name of Listing:
                 <input
@@ -140,10 +127,20 @@ function CreateListingForm({ workspaceId }) {
                   type="file"
                   multiple
                   value={images}
-                  accept="image/png, image/jpeg"
-                  onChange={(e) => setDescription(e.target.value)}
+                  accept="image/*"
+                  onChange={(e) => setImages(e.target.value)}
                 />
               </label>
+              {(imageLoading)&& <p>Loading...</p>}
+              {/* {Array.from(images).map(e => {
+                const binaryArr = []
+                binaryArr.push(e)
+                return (
+                    <>
+                    <img className="view-uploaded-image" alt="listing" src={e ? window.URL.createObjectURL(new Blob(binaryArr, {type: "application/zip"})): null} />
+                    </>
+                )
+              })} */}
               <p></p>
               {/* {hasSubmitted && errors.image && (
                 <p className="errors">{errors.image}</p>

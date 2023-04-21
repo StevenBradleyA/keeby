@@ -35,7 +35,7 @@ function Navigation() {
   }
 
   const handleListYourKeeb = () => {
-    // yo
+    history.push(`/listings/create`)
 
   }
   

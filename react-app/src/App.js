@@ -5,6 +5,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import ListingPage from "./components/Listings/SingleListing";
+import CreateListingForm from "./components/Listings/CreateListing";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,6 +19,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path="/listings/create">
+            <CreateListingForm />
+          </Route>
           <Route path="/listing/:listingId">
             <ListingPage />
           </Route>
