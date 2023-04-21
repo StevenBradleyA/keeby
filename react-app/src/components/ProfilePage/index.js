@@ -6,14 +6,13 @@ import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPen } from "@fortawesome/free-solid-svg-icons";
 import { useModal } from "../../../context/Modal";
-import EditProfilePictureModal from "./ProfilePictureModal";
+import EditProfilePictureModal from "./ProfilePageModals/EditProfilePictureModal"
+import EditUsernameModal from "./ProfilePageModals/EditUsernameModal;
+import EditEmailModal from "./ProfilePageModals/EditEmailModal";
+import EditPasswordModal from "./ProfilePageModals/EditPasswordModal"
+import EditNameModal from "./ProfilePageModals/EditNameModal"
+import EditDailyDriverModal from "./ProfilePageModals/EditDailyDriverModal";
 
-import EditUsernameModal from "./UsernameModal";
-import EditNameModal from "./NameModal";
-import EditPasswordModal from "./PasswordModal";
-import EditEmailModal from "./EmailModal";
-import EditTitleModal from "./TitleModal";
-import EditAboutMeModal from "./AboutMeModal";
 import "./Profile.css";
 
 const ProfilePage = () => {
@@ -40,9 +39,9 @@ const ProfilePage = () => {
     const handleEmailEdit = () => {
       setModalContent(<EditEmailModal sessionUser={sessionUser} />);
     };
-  //   const handleDailyDriverEdit = () => {
-  //     setModalContent(<EditDailyDriverModal sessionUser={sessionUser} />);
-  //   };
+    const handleDailyDriverEdit = () => {
+      setModalContent(<EditDailyDriverModal sessionUser={sessionUser} />);
+    };
 
 
   //   const isDemoUser = sessionUser && sessionUser.id === 1;
