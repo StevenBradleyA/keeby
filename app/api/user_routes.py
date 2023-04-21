@@ -53,7 +53,6 @@ def update_user(id):
     return user.to_dict_simple()
 
 
-
 # * -----------  DELETE  --------------
 # Removes a user by Id
 
