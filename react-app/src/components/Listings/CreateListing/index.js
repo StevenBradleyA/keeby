@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createListingThunk } from "../../../store/listing";
@@ -45,9 +45,9 @@ function CreateListingForm() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    Array.from(images).forEach(e => {
-        formData.append('image', e)
-    })
+    Array.from(images).forEach((e) => {
+      formData.append("image", e);
+    });
     // formData.append("image", image);
     setImageLoading(true);
 
@@ -66,8 +66,6 @@ function CreateListingForm() {
     }
     setHasSubmitted(true);
   };
-
-
 
   return (
     <div className="channel-form-container">
@@ -131,7 +129,7 @@ function CreateListingForm() {
                   onChange={(e) => setImages(e.target.value)}
                 />
               </label>
-              {(imageLoading)&& <p>Loading...</p>}
+              {imageLoading && <p>Loading...</p>}
               {/* {Array.from(images).map(e => {
                 const binaryArr = []
                 binaryArr.push(e)

@@ -25,27 +25,25 @@ const ProfilePage = () => {
     history.push(`/home`);
   }
 
-  //   const handleProfilePictureEdit = () => {
-  //     setModalContent(<EditProfilePictureModal sessionUser={sessionUser} />);
+  const handleProfilePictureEdit = () => {
+    setModalContent(<EditProfilePictureModal sessionUser={sessionUser} />);
+  };
+  const handleUserNameEdit = () => {
+    setModalContent(<EditUsernameModal sessionUser={sessionUser} />);
+  };
+    const handleFirstNameEdit = () => {
+      setModalContent(<EditNameModal sessionUser={sessionUser} />);
+    };
+    const handlePasswordEdit = () => {
+      setModalContent(<EditPasswordModal sessionUser={sessionUser} />);
+    };
+    const handleEmailEdit = () => {
+      setModalContent(<EditEmailModal sessionUser={sessionUser} />);
+    };
+  //   const handleDailyDriverEdit = () => {
+  //     setModalContent(<EditDailyDriverModal sessionUser={sessionUser} />);
   //   };
-  //   const handleUserNameEdit = () => {
-  //     setModalContent(<EditUsernameModal sessionUser={sessionUser} />);
-  //   };
-  //   const handleFirstNameEdit = () => {
-  //     setModalContent(<EditNameModal sessionUser={sessionUser} />);
-  //   };
-  //   const handlePasswordEdit = () => {
-  //     setModalContent(<EditPasswordModal sessionUser={sessionUser} />);
-  //   };
-  //   const handleEmailEdit = () => {
-  //     setModalContent(<EditEmailModal sessionUser={sessionUser} />);
-  //   };
-  //   const handleTitleEdit = () => {
-  //     setModalContent(<EditTitleModal sessionUser={sessionUser} />);
-  //   };
-  //   const handleAboutMeEdit = () => {
-  //     setModalContent(<EditAboutMeModal sessionUser={sessionUser} />);
-  //   };
+
 
   //   const isDemoUser = sessionUser && sessionUser.id === 1;
   //   const deleteButton = isDemoUser ? (
@@ -81,7 +79,7 @@ const ProfilePage = () => {
         />
         <FontAwesomeIcon
           icon={faUserPen}
-          //   onClick={handleProfilePictureEdit}
+          onClick={handleProfilePictureEdit}
           className="edit-profile-picture"
         />
       </div>
@@ -92,7 +90,7 @@ const ProfilePage = () => {
         >{`Username:  ${sessionUser.username}`}</div>
         <FontAwesomeIcon
           icon={faUserPen}
-          //   onClick={handleUserNameEdit}
+          onClick={handleUserNameEdit}
           className="edit-profile-buttons"
         />
       </div>
