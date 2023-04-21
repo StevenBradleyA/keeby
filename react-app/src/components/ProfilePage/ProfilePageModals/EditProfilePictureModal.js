@@ -48,7 +48,7 @@ function EditProfilePictureModal({ sessionUser }) {
             Profile Picture:{" "}
             <input
               className="text-input-login"
-              type="text"
+              type="url"
               value={profilePicture}
               placeholder="image url here"
               onChange={(e) => setProfilePicture(e.target.value)}

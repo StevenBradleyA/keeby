@@ -4,9 +4,8 @@ import { useModal } from "../../context/Modal";
 import { useHistory } from "react-router-dom";
 import { deleteUserThunk, logout } from "../../store/session";
 
-function DeleteUserModal() {
+function DeleteUserModal({ sessionUser }) {
   const history = useHistory();
-  const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const { closeModal } = useModal();
 
@@ -29,15 +28,15 @@ function DeleteUserModal() {
       <h2 className="title-text">Are you sure you want to delete yourself? </h2>
       {sessionUser && sessionUser.id === 1 && (
         <button
-        className="yes-delete-yeet"
-        onClick={handleKeepUser}
-      >{`Can't delete Demo user :/`}</button>
+          className="yes-delete-yeet"
+          onClick={handleKeepUser}
+        >{`Can't delete Demo user :/`}</button>
       )}
-       {sessionUser && sessionUser.id !== 1 && (
+      {sessionUser && sessionUser.id !== 1 && (
         <button
-        className="yes-delete-yeet"
-        onClick={handleDeleteUser}
-      >{`Yes 👌`}</button>
+          className="yes-delete-yeet"
+          onClick={handleDeleteUser}
+        >{`Yes 👌`}</button>
       )}
 
       <button className="no-delete" onClick={handleKeepUser}>{`No ❌`}</button>

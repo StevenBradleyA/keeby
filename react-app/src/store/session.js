@@ -131,8 +131,6 @@ export const updateUserThunk = (newUserData, userId) => async (dispatch) => {
       body: JSON.stringify(newUserData),
     });
     const data = await response.json();
-    // const normalizedUserData = {};
-    // normalizedUserData[data.id] = data;
     dispatch(updateUser(data));
     return data;
   } catch (error) {
@@ -144,7 +142,7 @@ export const deleteUserThunk = (userId) => async (dispatch) => {
   const response = await fetch(`/api/users/${userId}`, {
     method: "DELETE",
   });
-
+  console.log('yo', response)
   if (response.ok) {
     dispatch(deleteUser(userId));
   }
