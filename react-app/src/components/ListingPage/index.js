@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { getListingByIdThunk } from "../../../store/listing";
+import { getListingByIdThunk } from "../../store/listing";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -21,6 +21,9 @@ const ListingPage = () => {
       <div>{currentListing.name}</div>
       <div>{currentListing.price}</div>
       <div>{currentListing.description}</div>
+      
+
+
     </div>
   );
 };

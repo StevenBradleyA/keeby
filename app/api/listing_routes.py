@@ -63,7 +63,7 @@ def create_listing():
         )
         db.session.add(new_listing)
         db.session.commit()
-
+        # going to need to loop through image data
         new_image = Image(
             listing_id=new_listing.id,
             owner_id=form.data['owner_id'],

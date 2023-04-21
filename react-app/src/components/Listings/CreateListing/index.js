@@ -11,7 +11,8 @@ function CreateListingForm() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
-  const [images, setImages] = useState([]);
+  const [imageFiles, setImageFiles] = useState([]);
+
   const [imageLoading, setImageLoading] = useState(false);
 
   const [errors, setErrors] = useState({});
@@ -40,26 +41,38 @@ function CreateListingForm() {
 
   useEffect(() => {
     handleInputErrors();
-  }, [name, price, description, images]);
+  }, [name, price, description, imageFiles]);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    Array.from(images).forEach((e) => {
+    imageFiles.forEach((e) => {
       formData.append("image", e);
     });
-    // formData.append("image", image);
     setImageLoading(true);
 
+
+
+
     if (!Object.values(errors).length) {
+
+      // const res = await fetch(`/api/images`)
+
+
+
       const listingInformation = {
         owner_id: sessionUser.id,
         name,
         price,
         description,
-        image: formData,
+        image,
       };
+      console.log(listingInformation)
+
+
+      // need to send aws url to create listing thunk 
       let newListing = await dispatch(createListingThunk(listingInformation));
+
       //   push to new Listing id
       history.push(`/listings/${newListing.id}`);
       setImageLoading(false);
@@ -124,21 +137,24 @@ function CreateListingForm() {
                 <input
                   type="file"
                   multiple
-                  value={images}
                   accept="image/*"
-                  onChange={(e) => setImages(e.target.value)}
+                  onChange={(e) => {
+                    setImageFiles([...imageFiles, ...e.target.files]);
+                  }}
                 />
               </label>
               {imageLoading && <p>Loading...</p>}
-              {/* {Array.from(images).map(e => {
-                const binaryArr = []
-                binaryArr.push(e)
+              {imageFiles.map((e) => {
                 return (
-                    <>
-                    <img className="view-uploaded-image" alt="listing" src={e ? window.URL.createObjectURL(new Blob(binaryArr, {type: "application/zip"})): null} />
-                    </>
-                )
-              })} */}
+                  <>
+                    <img
+                      className="view-uploaded-image"
+                      alt="listing"
+                      src={URL.createObjectURL(e)}
+                    />
+                  </>
+                );
+              })}
               <p></p>
               {/* {hasSubmitted && errors.image && (
                 <p className="errors">{errors.image}</p>

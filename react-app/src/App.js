@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
-import ListingPage from "./components/Listings/SingleListing";
+import ListingPage from "./components/ListingPage";
 import CreateListingForm from "./components/Listings/CreateListing";
 import ProfilePage from "./components/ProfilePage";
 
