@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import ListingPage from "./components/Listings/SingleListing";
 import CreateListingForm from "./components/Listings/CreateListing";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +20,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path="/profile/:userId">
+            <ProfilePage />
+          </Route>
           <Route path="/listings/create">
             <CreateListingForm />
           </Route>

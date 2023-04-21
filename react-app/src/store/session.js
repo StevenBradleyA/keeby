@@ -131,9 +131,9 @@ export const updateUserThunk = (newUserData, userId) => async (dispatch) => {
       body: JSON.stringify(newUserData),
     });
     const data = await response.json();
-    const normalizedUserData = {};
-    normalizedUserData[data.id] = data;
-    dispatch(updateUser(normalizedUserData));
+    // const normalizedUserData = {};
+    // normalizedUserData[data.id] = data;
+    dispatch(updateUser(data));
     return data;
   } catch (error) {
     console.log(error);
@@ -165,6 +165,8 @@ export const refreshUser = (userId) => async (dispatch) => {
     return ["An error occurred. Please try again."];
   }
 };
+// right now im not updating session user which i want
+// I'm creating a new store ... prob don't need to be doing this lmao. can use set user.... chedck air bnb
 
 const initialState = { user: null };
 
@@ -176,7 +178,7 @@ export default function reducer(state = initialState, action) {
     case REMOVE_USER:
       return { user: null };
     case UPDATE_USER:
-      return { ...state, ...action.payload };
+      return { ...state, user: action.payload };
     case DELETE_USER:
       delete newState[action.payload];
       return newState;

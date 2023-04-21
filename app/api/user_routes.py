@@ -48,7 +48,7 @@ def update_user(id):
     user.keycaps = request.json.get('keycaps', user.keycaps)
     user.switches = request.json.get('switches', user.switches)
     db.session.commit()
-    return user.to_dict()
+    return user.to_dict_simple()
 
 
 

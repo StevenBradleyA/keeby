@@ -64,7 +64,7 @@ function EditDailyDriverModal({ sessionUser }) {
 
   return (
     <div className="profile-edit-container">
-      <h1 className="title-text">Update Your First and Last Name </h1>
+      <h1 className="title-text">Update Your Daily Driver </h1>
       <form className="profile-edit-container" onSubmit={handleFormSubmit}>
         <label className="title-text">
           Daily Driver:
@@ -79,7 +79,7 @@ function EditDailyDriverModal({ sessionUser }) {
         {hasSubmitted && errors.dailyDriver && (
           <p className="errors">{errors.dailyDriver}</p>
         )}
-         <label className="title-text">
+        <label className="title-text">
           Keycaps:
           <input
             className="text-input-login"
@@ -92,7 +92,7 @@ function EditDailyDriverModal({ sessionUser }) {
         {hasSubmitted && errors.keycaps && (
           <p className="errors">{errors.keycaps}</p>
         )}
-         <label className="title-text">
+        <label className="title-text">
           Switches:
           <input
             className="text-input-login"

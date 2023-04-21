@@ -11,9 +11,9 @@ function UserIconModal() {
   const sessionUser = useSelector((state) => state.session.user);
 
   const handleProfileClick = (e) => {
-    // e.preventDefault();
-    // history.push(`/profile/${sessionUser.id}`);
-    // closeModal();
+    e.preventDefault();
+    history.push(`/profile/${sessionUser.id}`);
+    closeModal();
   };
 
   const handleLogOut = (e) => {

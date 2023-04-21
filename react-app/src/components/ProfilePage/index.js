@@ -1,17 +1,16 @@
 import React from "react";
-import DeleteUserModal from "../DeleteUser";
-import OpenModalButton from "../../OpenModalButton";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPen } from "@fortawesome/free-solid-svg-icons";
-import { useModal } from "../../../context/Modal";
-import EditProfilePictureModal from "./ProfilePageModals/EditProfilePictureModal"
-import EditUsernameModal from "./ProfilePageModals/EditUsernameModal;
+import { useModal } from "../../context/Modal";
+import EditProfilePictureModal from "./ProfilePageModals/EditProfilePictureModal";
+import EditUsernameModal from "./ProfilePageModals/EditUsernameModal";
 import EditEmailModal from "./ProfilePageModals/EditEmailModal";
-import EditPasswordModal from "./ProfilePageModals/EditPasswordModal"
-import EditNameModal from "./ProfilePageModals/EditNameModal"
+import EditPasswordModal from "./ProfilePageModals/EditPasswordModal";
+import EditNameModal from "./ProfilePageModals/EditNameModal";
 import EditDailyDriverModal from "./ProfilePageModals/EditDailyDriverModal";
+import DeleteUserModal from "./DeleteUser";
 
 import "./Profile.css";
 
@@ -30,34 +29,23 @@ const ProfilePage = () => {
   const handleUserNameEdit = () => {
     setModalContent(<EditUsernameModal sessionUser={sessionUser} />);
   };
-    const handleFirstNameEdit = () => {
-      setModalContent(<EditNameModal sessionUser={sessionUser} />);
-    };
-    const handlePasswordEdit = () => {
-      setModalContent(<EditPasswordModal sessionUser={sessionUser} />);
-    };
-    const handleEmailEdit = () => {
-      setModalContent(<EditEmailModal sessionUser={sessionUser} />);
-    };
-    const handleDailyDriverEdit = () => {
-      setModalContent(<EditDailyDriverModal sessionUser={sessionUser} />);
-    };
+  const handleNameEdit = () => {
+    setModalContent(<EditNameModal sessionUser={sessionUser} />);
+  };
+  const handlePasswordEdit = () => {
+    setModalContent(<EditPasswordModal sessionUser={sessionUser} />);
+  };
+  const handleEmailEdit = () => {
+    setModalContent(<EditEmailModal sessionUser={sessionUser} />);
+  };
+  const handleDailyDriverEdit = () => {
+    setModalContent(<EditDailyDriverModal sessionUser={sessionUser} />);
+  };
 
+  const handleDeleteUser = () => {
+    setModalContent(<DeleteUserModal sessionUser={sessionUser}/>)
+  }
 
-  //   const isDemoUser = sessionUser && sessionUser.id === 1;
-  //   const deleteButton = isDemoUser ? (
-  //     <div>
-  //       <p>You can't delete your account as a demo user</p>
-  //     </div>
-  //   ) : (
-  //     <div className="delete-user-container">
-  //       <OpenModalButton
-  //         buttonText="Delete My Account"
-  //         modalComponent={<DeleteUserModal />}
-  //         className="delete-user-account-button"
-  //       />
-  //     </div>
-  //   );
 
   return (
     <div className="profile-page-container">
@@ -101,7 +89,7 @@ const ProfilePage = () => {
         >{`Email:  ${sessionUser.email}`}</div>
         <FontAwesomeIcon
           icon={faUserPen}
-          //   onClick={handleEmailEdit}
+            onClick={handleEmailEdit}
           className="edit-profile-buttons"
         />
       </div>
@@ -114,7 +102,7 @@ const ProfilePage = () => {
         </div>
         <FontAwesomeIcon
           icon={faUserPen}
-          //   onClick={handleFirstNameEdit}
+            onClick={handleNameEdit}
           className="edit-profile-buttons"
         />
       </div>
@@ -124,7 +112,7 @@ const ProfilePage = () => {
         </div>
         <FontAwesomeIcon
           icon={faUserPen}
-          //   onClick={handlePasswordEdit}
+            onClick={handlePasswordEdit}
           className="edit-profile-buttons"
         />
       </div>
@@ -135,13 +123,14 @@ const ProfilePage = () => {
         </div>
         <FontAwesomeIcon
           icon={faUserPen}
-          //   onClick={handleTitleEdit}
+            onClick={handleDailyDriverEdit}
           className="edit-profile-buttons"
         />
       </div>
       <div className="delete-user-container">
-        <div className="no-delete-button">{deleteButton}</div>
+        <button className="no-delete-button" onClick={handleDeleteUser}>delete my profile</button>
       </div>
+     
     </div>
   );
 };

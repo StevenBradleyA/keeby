@@ -52,8 +52,8 @@ function EditNameModal({ sessionUser }) {
         updateUserThunk(userInformation, sessionUser.id)
       );
       dispatch(refreshUser(sessionUser.id));
-      closeModal();
       history.push(`/profile/${updatedUser.id}`);
+      closeModal();
     }
     setHasSubmitted(true);
   };
