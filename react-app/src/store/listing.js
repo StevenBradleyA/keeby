@@ -55,8 +55,7 @@ export const createListingThunk = (newListingData) => async (dispatch) => {
   try {
     const response = await fetch(`/api/listings`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newListingData),
+      body: newListingData,
     });
 
     const data = await response.json();

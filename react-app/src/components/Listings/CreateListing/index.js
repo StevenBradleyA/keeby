@@ -51,29 +51,33 @@ function CreateListingForm() {
     });
     setImageLoading(true);
 
+    const listingInformation = {
+      owner_id: sessionUser.id,
+      name,
+      price,
+      description,
+    };
+    formData.append("listing", JSON.stringify(listingInformation));
+
     if (!Object.values(errors).length) {
-      const res = await fetch("/api/images", {
-        method: "POST",
-        body: formData,
-      });
-
-      console.log(res)
-
-
+      // const res = await fetch("/api/images", {
+      //   method: "POST",
+      //   body: formData,
+      // });
       const listingInformation = {
         owner_id: sessionUser.id,
         name,
         price,
         description,
-        // image,
       };
+
       console.log(listingInformation);
 
       // need to send aws url to create listing thunk
-      let newListing = await dispatch(createListingThunk(listingInformation));
+      let newListing = await dispatch(createListingThunk(formData));
 
       //   push to new Listing id
-      history.push(`/listings/${newListing.id}`);
+      // history.push(`/listings/${newListing.id}`);
       setImageLoading(false);
     }
     setHasSubmitted(true);

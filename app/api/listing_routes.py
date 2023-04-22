@@ -5,6 +5,9 @@ from flask_login import current_user, login_required
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from ..forms.listing_form import ListingForm
 from ..utils import pog 
+from .aws_helpers import (
+    upload_file_to_s3, get_unique_filename)
+
 
 
 listing_routes = Blueprint('listings', __name__)
@@ -48,33 +51,103 @@ def search_all_listings(name):
 @listing_routes.route("", methods=["POST"])
 @login_required
 def create_listing():
-    form = ListingForm()
+    # pog(request.form)
+
+
+    listingDataDict = request.form.getlist('listing')[0]
+    pog(listingDataDict)
+    pog(request.form)
+    form = ListingForm(request.form)
+    pog(form.data)
+    # we need to know what a form takes normally an obj a dictionary?
     form['csrf_token'].data = request.cookies['csrf_token']
     # pog(dir(form))
     # pog(dir(request))
     # pog(request.data)
         
     if form.validate_on_submit():
-        new_listing = Listing(
-            owner_id=form.data['owner_id'],
-            name=form.data['name'],
-            price=form.data['price'],
-            description=form.data['description']
-        )
-        db.session.add(new_listing)
-        db.session.commit()
+        pog('am i here')
+        # new_listing = Listing(
+        #     owner_id=form.data['owner_id'],
+        #     name=form.data['name'],
+        #     price=form.data['price'],
+        #     description=form.data['description']
+        # )
+        # pog(new_listing)
+        # db.session.add(new_listing)
+        # db.session.commit()
         # going to need to loop through image data
-        new_image = Image(
-            listing_id=new_listing.id,
-            owner_id=form.data['owner_id'],
-            image=form.data['image'],
-            is_display_image=form.data['is_display_image'],
-        )
-        db.session.add(new_image)
-        db.session.commit()
+        # new_image = Image(
+        #     listing_id=new_listing.id,
+        #     owner_id=form.data['owner_id'],
+        #     image=form.data['image'],
+        #     is_display_image=form.data['is_display_image'],
+        # )
+        # db.session.add(new_image)
+        # db.session.commit()
 
         return new_listing.to_dict()
     return 'BAD DATA'
+
+
+
+
+    for file in request.files.getlist('image'):
+        file.filename = get_unique_filename(file.filename)
+        upload = upload_file_to_s3(file)
+        # pog('letsa go', file)
+        if "url" not in upload:
+            return {"error": "url not here"}
+        url = upload["url"]
+        new_image = Image(image= url)
+        db.session.add(new_image)
+        db.session.commit()
+
+
+
+
+
+
+
+# * -----------  POST  --------------
+# Create a new listing
+
+# @listing_routes.route("", methods=["POST"])
+# @login_required
+# def create_listing():
+
+#     form = ListingForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     # pog(dir(form))
+#     # pog(dir(request))
+#     # pog(request.data)
+        
+#     if form.validate_on_submit():
+#         new_listing = Listing(
+#             owner_id=form.data['owner_id'],
+#             name=form.data['name'],
+#             price=form.data['price'],
+#             description=form.data['description']
+#         )
+#         db.session.add(new_listing)
+#         db.session.commit()
+#         # going to need to loop through image data
+#         new_image = Image(
+#             listing_id=new_listing.id,
+#             owner_id=form.data['owner_id'],
+#             image=form.data['image'],
+#             is_display_image=form.data['is_display_image'],
+#         )
+#         db.session.add(new_image)
+#         db.session.commit()
+
+#         return new_listing.to_dict()
+#     return 'BAD DATA'
+
+
+
+
+
 
 
 # * -----------  POST  --------------

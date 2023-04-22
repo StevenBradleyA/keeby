@@ -12,6 +12,4 @@ class ListingForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     price = IntegerField('Price', validators=[DataRequired()])
     description = TextAreaField('Description', validators=[DataRequired()])
-    image = URLField("Image", validators=[DataRequired()])
-    # image = FileField("Image File", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
     is_display_image = BooleanField("Display Image")
