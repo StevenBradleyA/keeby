@@ -74,7 +74,7 @@ const ProfilePage = () => {
         <div
           id="profile-titles"
           className="title-text"
-        >{`Username:  ${sessionUser.username}`}</div>
+        >{`[ Username ]  ${sessionUser.username}`}</div>
         <FontAwesomeIcon
           icon={faUserPen}
           onClick={handleUserNameEdit}
@@ -86,7 +86,7 @@ const ProfilePage = () => {
         <div
           id="profile-titles"
           className="title-text"
-        >{`Email:  ${sessionUser.email}`}</div>
+        >{`[ Email ]    ${sessionUser.email}`}</div>
         <FontAwesomeIcon
           icon={faUserPen}
             onClick={handleEmailEdit}
@@ -96,9 +96,9 @@ const ProfilePage = () => {
 
       <div className="edit-section-container">
         <div id="profile-titles" className="title-text">
-          {`First name:  ${sessionUser.first_name}`}
+          {`[ First name ]  ${sessionUser.first_name}`}
           <br />
-          {`Last name:  ${sessionUser.last_name}`}
+          {`[ Last name ]  ${sessionUser.last_name}`}
         </div>
         <FontAwesomeIcon
           icon={faUserPen}
@@ -108,7 +108,7 @@ const ProfilePage = () => {
       </div>
       <div className="edit-section-container">
         <div id="profile-titles" className="title-text">
-          {"Change your password"}
+          {" [ Change your password ]"}
         </div>
         <FontAwesomeIcon
           icon={faUserPen}
@@ -119,14 +119,17 @@ const ProfilePage = () => {
 
       <div className="edit-section-container">
         <div id="profile-titles" className="title-text">
-          {`Daily-Driver-Keeb:  ${sessionUser.daily_driver} ${sessionUser.keycaps} ${sessionUser.switches}`}
-        </div>
+          {`[ What Keyboard do you main? ]`} 
         <FontAwesomeIcon
           icon={faUserPen}
             onClick={handleDailyDriverEdit}
           className="edit-profile-buttons"
         />
+          <p></p>
+           {`[ board ] ${sessionUser.daily_driver}      [ keycaps ] ${sessionUser.keycaps}      [switches] ${sessionUser.switches}`}
+        </div>
       </div>
+      <p></p>
       <div className="delete-user-container">
         <button className="no-delete-button" onClick={handleDeleteUser}>delete my profile</button>
       </div>

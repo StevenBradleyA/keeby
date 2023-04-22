@@ -1,19 +1,19 @@
 /* TODO Add site wide styles */
 
 
-/* #modal-content {
+#modal-content {
     opacity: 1;
-    background-color: white;
+    background-color: #222;
     height: 50%;
     border-radius: 12px;
-    box-shadow: 0 0 20px #1f3645;
+    box-shadow: 0 0 20px #1e197a6b;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: absolute;
     font-family: 'Noto Sans', sans-serif;
- }   */
+ }  
 
 
  body{
