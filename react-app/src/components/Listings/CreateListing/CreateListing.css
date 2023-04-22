@@ -1,0 +1,9 @@
+.create-listing-page-container{
+    margin-top: 50px;
+
+}
+.view-uploaded-image{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}

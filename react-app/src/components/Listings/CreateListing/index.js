@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createListingThunk } from "../../../store/listing";
+import "./CreateListing.css";
 
 function CreateListingForm() {
   const dispatch = useDispatch();
@@ -84,7 +85,7 @@ function CreateListingForm() {
   };
 
   return (
-    <div className="channel-form-container">
+    <div className="create-listing-page-container">
       {sessionUser && (
         <>
           <div>

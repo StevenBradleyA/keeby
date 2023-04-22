@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { getListingByIdThunk } from "../../store/listing";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import "./ListingPage.css"
 
 const ListingPage = () => {
   const dispatch = useDispatch();
@@ -16,14 +17,17 @@ const ListingPage = () => {
   //   going to need all comment info
   // going to need all photos here
   // everything doe
+  if (!currentListing) {
+    return <h1>LOADING...</h1>;
+  }
+
+
+
   return (
-    <div>
+    <div className="single-listing-page-container">
       <div>{currentListing.name}</div>
       <div>{currentListing.price}</div>
       <div>{currentListing.description}</div>
-      
-
-
     </div>
   );
 };
