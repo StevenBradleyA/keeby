@@ -26,7 +26,7 @@ function CreateListingForm() {
     if (price.toString().length === 0) {
       errorsObj.price = "Price is required";
     }
-    if (description.length < 400) {
+    if (description.length < 4) {
       errorsObj.description =
         "Your Description must be at least 400 characters";
     }
@@ -51,13 +51,13 @@ function CreateListingForm() {
     });
     setImageLoading(true);
 
-
-
-
     if (!Object.values(errors).length) {
+      const res = await fetch("/api/images", {
+        method: "POST",
+        body: formData,
+      });
 
-      // const res = await fetch(`/api/images`)
-
+      console.log(res)
 
 
       const listingInformation = {
@@ -65,12 +65,11 @@ function CreateListingForm() {
         name,
         price,
         description,
-        image,
+        // image,
       };
-      console.log(listingInformation)
+      console.log(listingInformation);
 
-
-      // need to send aws url to create listing thunk 
+      // need to send aws url to create listing thunk
       let newListing = await dispatch(createListingThunk(listingInformation));
 
       //   push to new Listing id

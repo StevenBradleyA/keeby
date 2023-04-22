@@ -50,9 +50,9 @@ def search_all_listings(name):
 def create_listing():
     form = ListingForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    pog(dir(form))
-    pog(dir(request))
-    pog(request.data)
+    # pog(dir(form))
+    # pog(dir(request))
+    # pog(request.data)
         
     if form.validate_on_submit():
         new_listing = Listing(
