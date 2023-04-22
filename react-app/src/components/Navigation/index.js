@@ -7,7 +7,7 @@ import UserIconModal from "./ProfileModal";
 import DemoLogin from "./DemoLogin";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faKeyboard } from "@fortawesome/free-solid-svg-icons";
-
+import keebyTitle from "../../media/keebyTitle.png"
 
 
 import "./Navigation.css";
@@ -42,7 +42,10 @@ function Navigation() {
   // I want to make list your keeb redirect to log in if not session User
   return (
     <div className="nav-bar-container">
-      <FontAwesomeIcon icon={faKeyboard} onClick={handleHomeClick} className="home-button"/>
+      <div className="keeby-title-container">
+      <img className="keeby-title" src={keebyTitle} onClick={handleHomeClick}/> 
+      </div>
+      {/* <FontAwesomeIcon icon={faKeyboard} onClick={handleHomeClick} className="home-button"/> */}
       <input
         className="search-input-login"
         type="search"
@@ -76,8 +79,8 @@ function Navigation() {
       {!sessionUser && (
         <>
           <DemoLogin/>
-          <button onClick={handleLogInClick} className="log-in-button">Log In</button>
-          <button onClick={handleSignUpClick} className="sign-up-button">Sign Up</button>
+          <button onClick={handleLogInClick} className="log-in-button">{`[ Log In ]`}</button>
+          <button onClick={handleSignUpClick} className="sign-up-button">{`[ Sign Up ]`}</button>
         </>
       )}
     </div>

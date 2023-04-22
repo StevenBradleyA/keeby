@@ -9,32 +9,36 @@
   /* display: flex;
   align-items: center;
   justify-content: space-between; */
-  background-color: rgb(33, 234, 245);
+  /* background-color: rgb(33, 234, 245); */
+  background-color: #222;
 }
 
 .home-button {
   color: rgb(95, 92, 92);
   position: absolute;
   left: 5%;
-  top: 0.70rem;
-
-
+  top: 0.7rem;
 }
 
 .log-in-button {
   position: absolute;
   left: 83%;
-  top: 0.70rem;
+  top: 0.7rem;
   padding: 0;
   border: none;
   background: none;
   font-size: 12px;
+  color: rgb(255, 255, 255);
+  text-shadow: 0.5px -0.5px 0 rgba(255, 255, 255, 0.5),
+    2.5px 1px 2.5px rgba(255, 0, 255, 0.85),
+    -2.5px -2px 2.5px rgba(0, 0, 255, 0.85),
+    0.5px -1.5px 0 rgba(255, 255, 255, 0.8);
 }
 
 .sign-up-button {
   position: absolute;
   left: 90%;
-  top: 0.70rem;
+  top: 0.7rem;
   padding: 0;
   border: none;
   background: none;
@@ -44,7 +48,7 @@
 .demo-log-in-button {
   position: absolute;
   left: 75%;
-  top: 0.70rem;
+  top: 0.7rem;
   padding: 0;
   border: none;
   background: none;
@@ -54,22 +58,17 @@
 .search-input-login {
   position: absolute;
   left: 25%;
-  top: 0.70rem;
+  top: 0.7rem;
   width: 40%;
   font-size: 12px;
 }
 
-
-.list-a-keeb-button{
+.list-a-keeb-button {
   position: absolute;
   left: 80%;
   font-size: 12px;
-  top: 0.70rem;
-
-
-
+  top: 0.7rem;
 }
-
 
 .profile-icon {
   position: absolute;
@@ -77,6 +76,15 @@
   height: 20px;
   width: 20px;
   margin: 10px;
+}
+
+.keeby-title {
+  height: 30px;
+  width: 169px;
+  /* height: 2rem;
+width: 10rem; */
+  margin-top: 5px;
+  margin-left: 5px;
 }
 
 /* ------------        User Icon Modal     ----------- */

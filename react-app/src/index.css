@@ -14,3 +14,11 @@
     position: absolute;
     font-family: 'Noto Sans', sans-serif;
  }   */
+
+
+ body{
+	background-color: #222; 
+	color: #FFF; 
+	font-family: 'Saira', sans-serif; 
+	font-weight: 700;
+ }
