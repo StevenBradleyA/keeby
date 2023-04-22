@@ -56,23 +56,33 @@ def create_listing():
 
     listingDataDict = request.form.getlist('listing')[0]
     pog(listingDataDict)
-    pog(request.form)
-    form = ListingForm(request.form)
-    pog(form.data)
+
+    # pog(request.form)
+    # pog(form.data)
     # we need to know what a form takes normally an obj a dictionary?
-    form['csrf_token'].data = request.cookies['csrf_token']
+    # form = ListingForm(formdata=None, obj=listingDataDict)
+    # form = ListingForm(request.form, obj=listingDataDict)
+
+
+    # form = ListingForm(request.form)
+    # form.populate_obj(listingDataDict)
+    # form['csrf_token'].data = request.cookies['csrf_token']
     # pog(dir(form))
     # pog(dir(request))
     # pog(request.data)
-        
-    if form.validate_on_submit():
-        pog('am i here')
-        # new_listing = Listing(
-        #     owner_id=form.data['owner_id'],
-        #     name=form.data['name'],
-        #     price=form.data['price'],
-        #     description=form.data['description']
-        # )
+    # this is saving the keys in a form but not the values
+    # pog(dir(form))
+    # pog(form.name)
+    # pog(form.price.value)
+    # pog(form.owner_id)
+    # if form.validate_on_submit():
+    #     pog('am i here')
+    #     new_listing = Listing(
+    #         owner_id=form.owner_id.data,
+    #         name=form['name'],
+    #         price=form.data['price'],
+    #         description=form.data['description']
+    #     )
         # pog(new_listing)
         # db.session.add(new_listing)
         # db.session.commit()
@@ -86,7 +96,7 @@ def create_listing():
         # db.session.add(new_image)
         # db.session.commit()
 
-        return new_listing.to_dict()
+        # return new_listing.to_dict()
     return 'BAD DATA'
 
 

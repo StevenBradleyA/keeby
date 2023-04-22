@@ -3,11 +3,11 @@ from wtforms import StringField, BooleanField, IntegerField, TextAreaField, Mult
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from wtforms.validators import DataRequired
 from app.api.aws_helpers import ALLOWED_EXTENSIONS
-
+from ..utils import pog
 
 
 class ListingForm(FlaskForm):
-
+    pog('am I in the form ')
     owner_id = IntegerField('User Id')
     name = StringField('Name', validators=[DataRequired()])
     price = IntegerField('Price', validators=[DataRequired()])
