@@ -1,19 +1,17 @@
 /* ------------        Nav Bar     ----------- */
 
-.button-styling{
+.button-styling {
   color: rgb(255, 255, 255);
   text-shadow: 0.5px -0.5px 0 rgba(255, 255, 255, 0.5),
     2.5px 1px 2.5px rgba(255, 0, 255, 0.85),
     -2.5px -2px 2.5px rgba(0, 0, 255, 0.85),
     0.5px -1.5px 0 rgba(255, 255, 255, 0.8);
-  
 }
 
-.button-styling:hover{
+.button-styling:hover {
   color: red;
   text-shadow: none;
 }
-
 
 .nav-bar-container {
   position: fixed;
@@ -145,23 +143,54 @@ width: 10rem; */
 /* ------------        User Icon Modal     ----------- */
 
 .user-icon-modal-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding-top: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 150px;
 }
 
 .profile-icon-modal {
   width: 96px;
   height: 96px;
 }
+.profile-icon-letter-modal {
+  width: 96px;
+  height: 96px;
+}
 
+#manage-profile-button {
+  background: none;
+  border: none;
+  padding: 0;
+  position: relative;
+  left: 10%;
+}
 
+#manage-listings-button {
+  background: none;
+  border: none;
+  padding: 0;
+  position: relative;
+  left: 8%;
+}
+
+#log-out-button {
+  background: none;
+  border: none;
+  padding: 0;
+  position: relative;
+  left: 30%;
+}
+
+.user-image-container-modal {
+  position: relative;
+  top: 3%;
+  left: 20%;
+}
 
 /* ------------        Log In Modal     ----------- */
 
-
-.log-in-modal-container{
+.log-in-modal-container {
   /* position: absolute; */
   padding-top: 0px;
   padding-left: 10px;
@@ -169,34 +198,28 @@ width: 10rem; */
   width: 300px;
   /* background-image: url('../../media/blue\ loop.gif'); */
 }
-.log-in-modal-title{
+.log-in-modal-title {
   position: relative;
   left: 30%;
   bottom: 10%;
 }
 
-.email-field-container{
-position: relative;
-left: 15%;
+.email-field-container {
+  position: relative;
+  left: 15%;
 }
 
-
-.password-field-container{
+.password-field-container {
   position: relative;
   left: 10%;
-  }
-  
-#log-in-button-modal{
+}
+
+#log-in-button-modal {
   background: none;
   border: none;
   padding: 0;
   position: relative;
-left: 35%;
-
+  left: 35%;
 }
 
-
-
 /* ------------        Sign Up Modal     ----------- */
-
-

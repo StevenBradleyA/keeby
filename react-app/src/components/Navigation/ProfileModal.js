@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../store/session";
+import "./Navigation.css"
 
 function UserIconModal() {
   const history = useHistory();
@@ -42,22 +43,24 @@ function UserIconModal() {
           />
         </div>
         <div className="user-modal-name-status-container">
-          <div id="profile-names" className="title-text">
-            {sessionUser.first_name}
+            {`${sessionUser.first_name} `}
             {sessionUser.last_name}
-          </div>
         </div>
+        <p></p>
       </div>
-      <button className="user-icon-modal-button" onClick={handleProfileClick}>
-        Manage My Profile
+      <button id="manage-profile-button" className="button-styling" onClick={handleProfileClick}>
+        {`[ Manage My Profile ]`}
       </button>
-      <button className="user-icon-modal-button">
-        Manage My Listings
+      <p></p>
+      <button id="manage-listings-button" className="button-styling">
+        {`[ Manage My Listings ]`}
       </button>
+<p></p>
       <button
-        className="user-icon-modal-button"
+      id="log-out-button"
+        className="button-styling"
         onClick={handleLogOut}
-      >{`Log out`}</button>
+      >{`[ Log out ]`}</button>
     </div>
   );
 }
