@@ -16,11 +16,18 @@ def upload_image():
     # pog('pog', dir(request.files))
     # pog('stack', request.files.getlist('image'))
     for file in request.files.getlist('image'):
-        image.filename = get_unique_filename(image.filename)
-        upload = upload_file_to_s3(image)
+        file.filename = get_unique_filename(file.filename)
+        upload = upload_file_to_s3(file)
+        # pog('letsa go', file)
+        if "url" not in upload:
+            return {"error": "url not here"}
+        url = upload["url"]
+        new_image = Image(image= url)
+        db.session.add(new_image)
+        db.session.commit()
 
 
-        pog('letsa go', file)
+
 
     # if "url" not in upload:
     # if the dictionary doesn't have a url key
@@ -28,11 +35,7 @@ def upload_image():
     # so we send back that error message
     #     return render_template("post_form.html", form=form, errors=[upload])
 
-    # url = upload["url"]
-    # new_image = Image(image= url)
-    # db.session.add(new_image)
-    # db.session.commit()
-    # return redirect("/posts/all")
+
 
     # if form.errors:
     #     print(form.errors)
