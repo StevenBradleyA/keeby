@@ -56,7 +56,7 @@ function Navigation() {
 
       {sessionUser && (
 		<>
-      <div className="list-a-keeb-button" onClick={handleListYourKeeb}>List your Keeb</div>
+      <div className="list-a-keeb-button" onClick={handleListYourKeeb}>{`[ List your Keeb ]`}</div>
         <img
           alt="profile"
           className={
