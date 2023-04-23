@@ -35,30 +35,29 @@ const ListingPage = () => {
         alt="display"
         src={displayImageArr[0].image}
       />
-      <div>{`${currentListing.description.slice(0, 250)}...`}</div>
+      <div className="listing-page-description">{`${currentListing.description.slice(0, 250)}...`}</div>
       <img
         className="listing-page-additional-image"
         alt="listing"
         src={currentListing.listing_images[1].image}
       />
 
-      <div>{`${currentListing.description.slice(250, 500)}...`}</div>
+      <div className="listing-page-description">{`${currentListing.description.slice(250, 500)}...`}</div>
       <img
         className="listing-page-additional-image"
         alt="listing"
         src={currentListing.listing_images[2].image}
       />
 
-      {/* <div>{`${currentListing.description.slice(200, 300)}...`}</div> */}
-      {/* <div>{`${currentListing.description.slice(300, 400)}...`}</div> */}
-      <div>{`${currentListing.description.slice(500, 750)}...`}</div>
+
+      <div className="listing-page-description">{`${currentListing.description.slice(500, 750)}...`}</div>
       <img
         className="listing-page-additional-image"
         alt="listing"
         src={currentListing.listing_images[3].image}
       />
 
-      <div>{`${currentListing.description.slice(750)}`}</div>
+      <div className="listing-page-description">{`${currentListing.description.slice(750)}`}</div>
 
       <h2>{`Photo Gallery`}</h2>
       <div className="listing-page-photo-gallery">
