@@ -3,10 +3,13 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getListingByIdThunk } from "../../../store/listing";
 import "./ManageListings.css";
+import DeleteListingModal from "../DeleteListing";
+import { useModal } from "../../../context/Modal";
 
 const ManageListingCard = ({ listing }) => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const { setModalContent } = useModal();
 
   const handleCardClick = (e) => {
     e.preventDefault();
@@ -22,15 +25,17 @@ const ManageListingCard = ({ listing }) => {
   };
 
   const handleDeleteListing = () => {
-    // setModalContent(<DeleteUserModal sessionUser={sessionUser}/>)
+    setModalContent(<DeleteListingModal listing={listing} />);
   };
 
+  //   todo  I want to style this page so that the cards are pretty small and the update and delete
+  // are more sizeable.
   return (
     <div className="manage-listings-container">
       <h1>Manage Your Listings</h1>
       <div className="manage-listing-button-containers">
         <button className="manage-listing-update-button">Update</button>
-        <button className="manage-listing-delete-button">Delete</button>
+        <button className="manage-listing-delete-button" onClick={handleDeleteListing}>Delete</button>
       </div>
       <div className="listing-card-container" onClick={handleCardClick}>
         <div className="home-page-listing-title">{listing.name}</div>

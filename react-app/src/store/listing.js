@@ -86,7 +86,7 @@ export const updateChannelThunk =
     }
   };
 
-export const deleteChannelThunk = (listingId) => async (dispatch) => {
+export const deleteListingThunk = (listingId) => async (dispatch) => {
   const response = await fetch(`/api/listings/${listingId}`, {
     method: "DELETE",
   });

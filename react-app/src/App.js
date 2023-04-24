@@ -7,7 +7,7 @@ import HomePage from "./components/HomePage";
 import ListingPage from "./components/ListingPage";
 import CreateListingForm from "./components/Listings/CreateListing";
 import ProfilePage from "./components/ProfilePage";
-import ManageListingsIndex from "./components/Listings/ManageListings";
+import ManageListingsIndex from "./components/Listings/ManageListingsPage";
 
 function App() {
   const dispatch = useDispatch();
