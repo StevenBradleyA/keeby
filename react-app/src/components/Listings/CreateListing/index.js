@@ -27,16 +27,16 @@ function CreateListingForm() {
     if (price.toString().length === 0) {
       errorsObj.price = "Price is required";
     }
-    if (description.length < 4) {
+    if (description.length < 750) {
       errorsObj.description =
-        "Your Description must be at least 400 characters";
+        "Your Description must be at least 750 characters";
     }
-    // if (image.length < 4) {
-    //   errorsObj.image = "Provide at least 4 Photos";
-    // }
-    // if (image.length > 50) {
-    //   errorsObj.imageExcess = "Cannot provide more than 50 photos";
-    // }
+    if (imageFiles.length < 4) {
+      errorsObj.image = "Provide at least 4 Photos";
+    }
+    if (imageFiles.length > 50) {
+      errorsObj.imageExcess = "Cannot provide more than 50 photos";
+    }
     setErrors(errorsObj);
   };
 
@@ -115,7 +115,7 @@ function CreateListingForm() {
                 Description:
                 <input
                   type="text"
-                  placeholder="Must be greater than 400 characters"
+                  placeholder="Must be greater than 750 characters"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                 />
@@ -136,7 +136,7 @@ function CreateListingForm() {
                   }}
                 />
               </label>
-              {imageLoading && <p>Loading...</p>}
+              {/* {imageLoading && <p>Loading...</p>} */}
               {imageFiles.map((e, i) => {
                 return (
                   <>
@@ -151,12 +151,12 @@ function CreateListingForm() {
                 );
               })}
               <p></p>
-              {/* {hasSubmitted && errors.image && (
+              {hasSubmitted && errors.image && (
                 <p className="errors">{errors.image}</p>
               )}
               {hasSubmitted && errors.imageExcess && (
                 <p className="errors">{errors.imageExcess}</p>
-              )} */}
+              )}
               <input
                 type="submit"
                 value={"Create Listing"}
