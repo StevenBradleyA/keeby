@@ -24,8 +24,6 @@ const ListingPage = () => {
     (e) => e.is_display_image === true
   );
 
-  // todo
-  // make a modal for each preview image. the modal is just the image on click
 
   const handlePhotoGalleryClick = (image) => {
     return () => {
