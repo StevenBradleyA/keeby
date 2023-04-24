@@ -24,6 +24,12 @@ function UserIconModal() {
     closeModal();
   };
 
+  const handleManageListingsClick = (e) => {
+    e.preventDefault();
+    history.push(`/listings/manage`);
+    closeModal();
+  };
+
   return (
     <div className="user-icon-modal-container">
       <div className="user-image-container-modal">
@@ -52,7 +58,7 @@ function UserIconModal() {
         {`[ Manage My Profile ]`}
       </button>
       <p></p>
-      <button id="manage-listings-button" className="button-styling">
+      <button id="manage-listings-button" className="button-styling" onClick={handleManageListingsClick}>
         {`[ Manage My Listings ]`}
       </button>
 <p></p>

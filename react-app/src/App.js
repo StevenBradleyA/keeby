@@ -7,6 +7,7 @@ import HomePage from "./components/HomePage";
 import ListingPage from "./components/ListingPage";
 import CreateListingForm from "./components/Listings/CreateListing";
 import ProfilePage from "./components/ProfilePage";
+import ManageListingsIndex from "./components/Listings/ManageListings";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,9 @@ function App() {
         <Switch>
           <Route path="/profile/:userId">
             <ProfilePage />
+          </Route>
+          <Route path="/listings/manage">
+            <ManageListingsIndex />
           </Route>
           <Route path="/listings/create">
             <CreateListingForm />

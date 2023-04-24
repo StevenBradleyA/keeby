@@ -1,0 +1,10 @@
+.manage-listings-container{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* .manage-listing-button-containers{} */
+/* .manage-listing-update-button{} */
+/* .manage-listing-delete-button{} */
