@@ -103,56 +103,6 @@ def create_listing():
     return 'BAD DATA'
 
 
-
-
-
-
-
-
-
-
-
-# * -----------  POST  --------------
-# Create a new listing
-
-# @listing_routes.route("", methods=["POST"])
-# @login_required
-# def create_listing():
-
-#     form = ListingForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     # pog(dir(form))
-#     # pog(dir(request))
-#     # pog(request.data)
-        
-#     if form.validate_on_submit():
-#         new_listing = Listing(
-#             owner_id=form.data['owner_id'],
-#             name=form.data['name'],
-#             price=form.data['price'],
-#             description=form.data['description']
-#         )
-#         db.session.add(new_listing)
-#         db.session.commit()
-#         # going to need to loop through image data
-#         new_image = Image(
-#             listing_id=new_listing.id,
-#             owner_id=form.data['owner_id'],
-#             image=form.data['image'],
-#             is_display_image=form.data['is_display_image'],
-#         )
-#         db.session.add(new_image)
-#         db.session.commit()
-
-#         return new_listing.to_dict()
-#     return 'BAD DATA'
-
-
-
-
-
-
-
 # * -----------  POST  --------------
 # Create a new comment for a specific listing
 
@@ -165,3 +115,22 @@ def create_listing():
 
 # * -----------  DELETE  --------------
 # Delete a listing
+
+@listing_routes.route('/<listing_id>', methods=['DELETE'])
+@login_required
+def delete_listing_by_id(listing_id):
+    listing = Listing.query.get(listing_id)
+
+    if not listing:
+        return {"message": "listing could not be found"}, 404
+
+    if listing.owner_id != current_user.id:
+        return {
+            "message": "Forbidden",
+            "status_code": 403
+        }, 403
+    
+    db.session.delete(listing)
+    db.session.commit()
+
+    return {"message": "Successfully Deleted!"}
