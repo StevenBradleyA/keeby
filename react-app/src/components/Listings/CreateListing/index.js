@@ -55,7 +55,7 @@ function CreateListingForm() {
     const listingInformation = {
       owner_id: sessionUser.id,
       name,
-      price,
+      price: Number(price),
       description,
     };
     formData.append("listing", JSON.stringify(listingInformation));

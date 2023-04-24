@@ -5,6 +5,7 @@ from flask_login import current_user, login_required
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from ..forms.listing_form import ListingForm
 from ..utils import pog 
+import json
 from .aws_helpers import (
     upload_file_to_s3, get_unique_filename)
 
@@ -52,13 +53,17 @@ def search_all_listings(name):
 @login_required
 def create_listing():
     # pog(request.form)
+    # listingDataDict = request.form.getlist('listing')[0]
+
+    listing_str = request.form.to_dict()['listing']
+    listing_dictionary = json.loads(listing_str)
+    pog(listing_dictionary)
+    pog(listing_dictionary['owner_id'])
+    pog(listing_dictionary['name'])
+    pog(listing_dictionary['price'])
+    pog(listing_dictionary['description'])
 
 
-    listingDataDict = request.form.getlist('listing')[0]
-    pog(listingDataDict)
-
-    # pog(request.form)
-    # pog(form.data)
     # we need to know what a form takes normally an obj a dictionary?
     # form = ListingForm(formdata=None, obj=listingDataDict)
     # form = ListingForm(request.form, obj=listingDataDict)
