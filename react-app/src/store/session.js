@@ -142,7 +142,6 @@ export const deleteUserThunk = (userId) => async (dispatch) => {
   const response = await fetch(`/api/users/${userId}`, {
     method: "DELETE",
   });
-  console.log('yo', response)
   if (response.ok) {
     dispatch(deleteUser(userId));
   }

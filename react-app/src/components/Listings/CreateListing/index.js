@@ -44,8 +44,6 @@ function CreateListingForm() {
     handleInputErrors();
   }, [name, price, description, imageFiles]);
 
-  console.log(imageFiles.name);
-
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -67,22 +65,13 @@ function CreateListingForm() {
     formData.append("listing", JSON.stringify(listingInformation));
 
     if (!Object.values(errors).length) {
-      const listingInformation = {
-        owner_id: sessionUser.id,
-        name,
-        price,
-        description,
-      };
       let newListing = await dispatch(createListingThunk(formData));
 
-      //   push to new Listing id
-      // history.push(`/listings/${newListing.id}`);
+      history.push(`/listing/${newListing.id}`);
       setImageLoading(false);
     }
     setHasSubmitted(true);
   };
-
-  console.log(previewImage);
 
   return (
     <div className="create-listing-page-container">

@@ -16,7 +16,6 @@ const ManageListingsIndex = () => {
   const ownedListings = allListings.filter((e)=>
     e.owner_id === sessionUser.id
   )
-  console.log("hello", ownedListings);
 
   return (
     <div className="listing-index-container">
