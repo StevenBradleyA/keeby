@@ -13,6 +13,8 @@ function CreateListingForm() {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [imageFiles, setImageFiles] = useState([]);
+  const [previewImage, setPreviewImage] = useState("");
+
 
   const [imageLoading, setImageLoading] = useState(false);
 
@@ -61,20 +63,12 @@ function CreateListingForm() {
     formData.append("listing", JSON.stringify(listingInformation));
 
     if (!Object.values(errors).length) {
-      // const res = await fetch("/api/images", {
-      //   method: "POST",
-      //   body: formData,
-      // });
       const listingInformation = {
         owner_id: sessionUser.id,
         name,
         price,
         description,
       };
-
-      console.log(listingInformation);
-
-      // need to send aws url to create listing thunk
       let newListing = await dispatch(createListingThunk(formData));
 
       //   push to new Listing id
