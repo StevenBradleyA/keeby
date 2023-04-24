@@ -1,11 +1,12 @@
 const normalizer = (data) => {
-    const obj = {};
-    data.forEach((item) => {
-      obj[item.id] = item;
-    });
-    return obj;
-  };
+  const obj = {};
+  data.forEach((item) => {
+    obj[item.id] = item;
+  });
+  return obj;
+};
 
+// --------      Actions         --------
 
 const LOAD_COMMENTS = "comments/LOAD_COMMENTS";
 const CREATE_COMMENT = "comments/CREATE_COMMENT";
@@ -35,14 +36,17 @@ export const clearComment = () => ({
   type: CLEAR_COMMENT,
 });
 
-export const getAllCommentsPerListingThunk = (listingId) => async (dispatch) => {
-  const response = await fetch(`/api/listings/${listingId}/comments`);
-  if (response.ok) {
-    const { comments } = await response.json();
-    const normalizedCommentData = normalizer(comments);
-    dispatch(loadComments(normalizedCommentData));
-  }
-};
+// --------      Thunks         --------
+
+export const getAllCommentsPerListingThunk =
+  (listingId) => async (dispatch) => {
+    const response = await fetch(`/api/listings/${listingId}/comments`);
+    if (response.ok) {
+      const { comments } = await response.json();
+      const normalizedCommentData = normalizer(comments);
+      dispatch(loadComments(normalizedCommentData));
+    }
+  };
 
 export const getCommentByIdThunk = (commentId) => async (dispatch) => {
   const response = await fetch(`/api/comments/${commentId}`);
@@ -56,24 +60,25 @@ export const getCommentByIdThunk = (commentId) => async (dispatch) => {
   }
 };
 
-export const createCommentThunk = (listingId, newCommentData) => async (dispatch) => {
-  try {
-    const response = await fetch(`/api/listings/${listingId}/comments`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newCommentData),
-    });
+export const createCommentThunk =
+  (listingId, newCommentData) => async (dispatch) => {
+    try {
+      const response = await fetch(`/api/listings/${listingId}/comments`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newCommentData),
+      });
 
-    const data = await response.json();
-    const normalizedCommentData = {
-      [data.id]: data,
-    };
-    dispatch(createComment(normalizedCommentData));
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
+      const data = await response.json();
+      const normalizedCommentData = {
+        [data.id]: data,
+      };
+      dispatch(createComment(normalizedCommentData));
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
 export const updateMessageThunk =
   (newCommentData, commentId) => async (dispatch) => {
