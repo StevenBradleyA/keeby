@@ -22,12 +22,12 @@ class User(db.Model, UserMixin):
 
     # * Relationships 💚
     # One to Many
-    owned_comments = db.relationship("Comment", back_populates="comment_owner")
-    owned_listings = db.relationship("Listing", back_populates="listing_owner")
-    owned_images = db.relationship("Image", back_populates="image_owner")
+    owned_comments = db.relationship("Comment", back_populates="comment_owner", cascade="all, delete")
+    owned_listings = db.relationship("Listing", back_populates="listing_owner", cascade="all, delete")
+    owned_images = db.relationship("Image", back_populates="image_owner", cascade="all, delete")
 
     # Many to Many
-    user_likes = db.relationship("Comment", secondary=likes, back_populates= 'liked')
+    user_likes = db.relationship("Comment", secondary=likes, back_populates= 'liked', cascade="all, delete")
     
 
 

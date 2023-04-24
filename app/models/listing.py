@@ -18,8 +18,8 @@ class Listing(db.Model):
     # One to Many
 
     listing_owner = db.relationship("User", back_populates="owned_listings")
-    listing_comments = db.relationship("Comment", back_populates="in_listing")
-    listing_images = db.relationship("Image", back_populates="listing")
+    listing_comments = db.relationship("Comment", back_populates="in_listing", cascade="all, delete")
+    listing_images = db.relationship("Image", back_populates="listing", cascade="all, delete")
 
 
     def to_dict_simple(self):
