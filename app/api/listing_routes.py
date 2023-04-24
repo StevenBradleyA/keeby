@@ -55,12 +55,13 @@ def create_listing():
     listing_str = request.form.to_dict()['listing']
     listing_dictionary = json.loads(listing_str)
     listing_images = request.files.getlist('image')
+    preview_image = request.files.getlist('preview')[0]
 
     form = ListingForm(**listing_dictionary)
     form['csrf_token'].data = request.cookies['csrf_token']
-    pog(form.owner_id.data)
+    # pog(form.owner_id.data)
     if form.validate_on_submit():
-        pog('route do I validate?')
+        # pog('route do I validate?')
         new_listing = Listing(
             owner_id=form.data["owner_id"],
             name=form.data['name'],
@@ -69,6 +70,22 @@ def create_listing():
         )
         db.session.add(new_listing)
         db.session.commit()
+
+        preview_image.filename = get_unique_filename(preview_image.filename)
+        upload = upload_file_to_s3(preview_image)
+        # pog('letsa go', preview_image)
+        if "url" not in upload:
+            return {"error": "url not here"}
+        url = upload["url"]
+        new_image = Image(
+            listing_id=new_listing.id, 
+            owner_id=form.data["owner_id"],
+            image= url,
+            is_display_image=True
+        )
+
+        db.session.add(new_image)
+
 
         for file in listing_images:
             file.filename = get_unique_filename(file.filename)

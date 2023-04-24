@@ -14,8 +14,6 @@ function CreateListingForm() {
   const [description, setDescription] = useState("");
   const [imageFiles, setImageFiles] = useState([]);
   const [previewImage, setPreviewImage] = useState("");
-
-
   const [imageLoading, setImageLoading] = useState(false);
 
   const [errors, setErrors] = useState({});
@@ -46,11 +44,17 @@ function CreateListingForm() {
     handleInputErrors();
   }, [name, price, description, imageFiles]);
 
+  console.log(imageFiles.name);
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     imageFiles.forEach((e) => {
-      formData.append("image", e);
+      if (e.name === previewImage) {
+        formData.append("preview", e);
+      } else {
+        formData.append("image", e);
+      }
     });
     setImageLoading(true);
 
@@ -77,6 +81,8 @@ function CreateListingForm() {
     }
     setHasSubmitted(true);
   };
+
+  console.log(previewImage);
 
   return (
     <div className="create-listing-page-container">
@@ -142,13 +148,15 @@ function CreateListingForm() {
                 />
               </label>
               {imageLoading && <p>Loading...</p>}
-              {imageFiles.map((e) => {
+              {imageFiles.map((e, i) => {
                 return (
                   <>
                     <img
+                      onClick={() => setPreviewImage(e.name)}
                       className="view-uploaded-image"
-                      alt="listing"
+                      alt={`listing-${i}`}
                       src={URL.createObjectURL(e)}
+                      key={i}
                     />
                   </>
                 );
