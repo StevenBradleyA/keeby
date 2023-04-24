@@ -52,76 +52,47 @@ def search_all_listings(name):
 @listing_routes.route("", methods=["POST"])
 @login_required
 def create_listing():
-    # pog(request.form)
-    # listingDataDict = request.form.getlist('listing')[0]
-
     listing_str = request.form.to_dict()['listing']
     listing_dictionary = json.loads(listing_str)
-    pog(listing_dictionary)
-    pog(listing_dictionary['owner_id'])
-    pog(listing_dictionary['name'])
-    pog(listing_dictionary['price'])
-    pog(listing_dictionary['description'])
+    listing_images = request.files.getlist('image')
 
-
-    # we need to know what a form takes normally an obj a dictionary?
     form = ListingForm(**listing_dictionary)
-    # form = ListingForm(formdata=None, obj=listing_dictionary)
-
-    # form = ListingForm(request.form, obj=listingDataDict)
-    # form.populate_obj(listingDataDict)
-    pog(form)
-
-    # form = ListingForm(request.form)
     form['csrf_token'].data = request.cookies['csrf_token']
-    # pog(dir(form))
-    # pog(dir(request))
-    # pog(request.data)
-    # this is saving the keys in a form but not the values
-    # pog(dir(form))
-    # pog(form.name)
-    # pog(form.price.value)
-    # pog(form.owner_id)
     pog(form.owner_id.data)
     if form.validate_on_submit():
         pog('route do I validate?')
         new_listing = Listing(
-            owner_id=form.owner_id.data,
-            name=form['name'],
+            owner_id=form.data["owner_id"],
+            name=form.data['name'],
             price=form.data['price'],
             description=form.data['description']
         )
-        # db.session.add(new_listing)
-        # db.session.commit()
+        db.session.add(new_listing)
+        db.session.commit()
+
+        for file in listing_images:
+            file.filename = get_unique_filename(file.filename)
+            upload = upload_file_to_s3(file)
+            # pog('letsa go', file)
+            if "url" not in upload:
+                return {"error": "url not here"}
+            url = upload["url"]
+            new_image = Image(
+                listing_id=new_listing.id, 
+                owner_id=form.data["owner_id"],
+                image= url,
+            )
+
+            db.session.add(new_image)
+        db.session.commit()
+    
     else:
         pog(form.errors)
-        # pog(new_listing)
-        # going to need to loop through image data
-        # new_image = Image(
-        #     listing_id=new_listing.id,
-        #     owner_id=form.data['owner_id'],
-        #     image=form.data['image'],
-        #     is_display_image=form.data['is_display_image'],
-        # )
-        # db.session.add(new_image)
-        # db.session.commit()
-
-        # return new_listing.to_dict()
     return 'BAD DATA'
 
 
 
 
-    for file in request.files.getlist('image'):
-        file.filename = get_unique_filename(file.filename)
-        upload = upload_file_to_s3(file)
-        # pog('letsa go', file)
-        if "url" not in upload:
-            return {"error": "url not here"}
-        url = upload["url"]
-        new_image = Image(image= url)
-        db.session.add(new_image)
-        db.session.commit()
 
 
 
