@@ -65,13 +65,15 @@ def create_listing():
 
 
     # we need to know what a form takes normally an obj a dictionary?
-    # form = ListingForm(formdata=None, obj=listingDataDict)
-    # form = ListingForm(request.form, obj=listingDataDict)
+    form = ListingForm(**listing_dictionary)
+    # form = ListingForm(formdata=None, obj=listing_dictionary)
 
+    # form = ListingForm(request.form, obj=listingDataDict)
+    # form.populate_obj(listingDataDict)
+    pog(form)
 
     # form = ListingForm(request.form)
-    # form.populate_obj(listingDataDict)
-    # form['csrf_token'].data = request.cookies['csrf_token']
+    form['csrf_token'].data = request.cookies['csrf_token']
     # pog(dir(form))
     # pog(dir(request))
     # pog(request.data)
@@ -80,17 +82,20 @@ def create_listing():
     # pog(form.name)
     # pog(form.price.value)
     # pog(form.owner_id)
-    # if form.validate_on_submit():
-    #     pog('am i here')
-    #     new_listing = Listing(
-    #         owner_id=form.owner_id.data,
-    #         name=form['name'],
-    #         price=form.data['price'],
-    #         description=form.data['description']
-    #     )
-        # pog(new_listing)
+    pog(form.owner_id.data)
+    if form.validate_on_submit():
+        pog('route do I validate?')
+        new_listing = Listing(
+            owner_id=form.owner_id.data,
+            name=form['name'],
+            price=form.data['price'],
+            description=form.data['description']
+        )
         # db.session.add(new_listing)
         # db.session.commit()
+    else:
+        pog(form.errors)
+        # pog(new_listing)
         # going to need to loop through image data
         # new_image = Image(
         #     listing_id=new_listing.id,

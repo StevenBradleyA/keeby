@@ -6,10 +6,15 @@ from app.api.aws_helpers import ALLOWED_EXTENSIONS
 from ..utils import pog
 
 
+
 class ListingForm(FlaskForm):
-    pog('am I in the form ')
+    # pog('am I in the form ')
     owner_id = IntegerField('User Id')
     name = StringField('Name', validators=[DataRequired()])
     price = IntegerField('Price', validators=[DataRequired()])
     description = TextAreaField('Description', validators=[DataRequired()])
-    is_display_image = BooleanField("Display Image")
+    # is_display_image = BooleanField("Display Image")
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # pog(kwargs)
