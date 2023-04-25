@@ -5,6 +5,7 @@ import { getListingByIdThunk } from "../../../store/listing";
 import "./ManageListings.css";
 import DeleteListingModal from "../DeleteListing";
 import { useModal } from "../../../context/Modal";
+import EditListingModal from "../UpdateListing";
 
 const ManageListingCard = ({ listing }) => {
   const history = useHistory();
@@ -21,7 +22,7 @@ const ManageListingCard = ({ listing }) => {
   );
 
   const handleEditListing = () => {
-    // setModalContent(<EditDailyDriverModal sessionUser={sessionUser} />);
+    history.push(`/listing/${listing.id}/edit`, {listing: listing})
   };
 
   const handleDeleteListing = () => {
@@ -33,7 +34,7 @@ const ManageListingCard = ({ listing }) => {
   return (
     <div className="manage-listings-container">
       <div className="manage-listing-button-containers">
-        <button className="manage-listing-update-button">Update</button>
+        <button className="manage-listing-update-button" onClick={handleEditListing}>Update</button>
         <button className="manage-listing-delete-button" onClick={handleDeleteListing}>Delete</button>
       </div>
       <div className="listing-card-container" onClick={handleCardClick}>

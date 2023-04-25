@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { updateListingThunk } from "../../../store/listing";
 
-function EditListingModal({ listing }) {
+function EditListingPage() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation()
+  const {listing} = location.state
   const sessionUser = useSelector((state) => state.session.user);
-
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -64,16 +65,16 @@ function EditListingModal({ listing }) {
     formData.append("listing", JSON.stringify(listingInformation));
 
     if (!Object.values(errors).length) {
-      let newListing = await dispatch(updateListingThunk(formData, listing.id));
+      await dispatch(updateListingThunk(formData, listing.id));
 
-      history.push(`/listing/${newListing.id}`);
+      // history.push(`/listing/${listing.id}`);
       setImageLoading(false);
     }
     setHasSubmitted(true);
   };
 
   return (
-    <div className="create-listing-page-container">
+    <div className="update-listing-page-container">
       {sessionUser && (
         <>
           <div>
@@ -83,7 +84,7 @@ function EditListingModal({ listing }) {
                 Name of Listing:
                 <input
                   type="text"
-                  placeholder="Name"
+                  placeholder={listing.name}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
@@ -96,7 +97,7 @@ function EditListingModal({ listing }) {
                 Price:
                 <input
                   type="text"
-                  placeholder="Price"
+                  placeholder={listing.price}
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
                 />
@@ -112,9 +113,8 @@ function EditListingModal({ listing }) {
               </p>
               <label>
                 Description:
-                <input
-                  type="text"
-                  placeholder="Must be greater than 750 characters"
+                <textarea
+                  placeholder={listing.description}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                 />
@@ -158,7 +158,7 @@ function EditListingModal({ listing }) {
               )}
               <input
                 type="submit"
-                value={"Create Listing"}
+                value={"Update Listing"}
                 disabled={hasSubmitted && Object.values(errors).length > 0}
               />
             </form>
@@ -169,4 +169,4 @@ function EditListingModal({ listing }) {
   );
 }
 
-export default EditListingModal;
+export default EditListingPage;

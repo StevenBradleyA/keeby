@@ -122,9 +122,9 @@ def update_listing(listing_id):
     form = ListingForm(**listing_dictionary)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        listing.owner_id=form.data['owner_id'],
-        listing.name=form.data['name'],
-        listing.price=form.data['price'],
+        listing.owner_id=form.data['owner_id']
+        listing.name=form.data['name']
+        listing.price=form.data['price']
         listing.description=form.data['description']
 
 
@@ -133,19 +133,13 @@ def update_listing(listing_id):
         if "url" not in upload:
             return {"error": "url not here"}
         url = upload["url"]
-
-        preview = Image.query.filter_by(listing_id=listing.id, is_display_image=True).first()
-        pog(preview)
-        if preview:
-            preview.image = url
-        else:
-            update_preview_image = Image(
-            listing_id=listing.id,
-            owner_id=form.data["owner_id"],
-            image=url,
-            is_display_image=True
-            )
-            db.session.add(update_preview_image)
+        update_preview_image = Image(
+        listing_id=listing.id,
+        owner_id=form.data["owner_id"],
+        image=url,
+        is_display_image=True
+        )
+        db.session.add(update_preview_image)
 
         for file in listing_images:
             file.filename = get_unique_filename(file.filename)

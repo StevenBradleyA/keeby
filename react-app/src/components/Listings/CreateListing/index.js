@@ -113,8 +113,7 @@ function CreateListingForm() {
               </p>
               <label>
                 Description:
-                <input
-                  type="text"
+                <textarea
                   placeholder="Must be greater than 750 characters"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}

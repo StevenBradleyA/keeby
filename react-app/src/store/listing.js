@@ -73,8 +73,7 @@ export const updateListingThunk =
     try {
       const response = await fetch(`/api/listings/${listingId}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newListingData),
+        body: newListingData,
       });
       const data = await response.json();
       const normalizedListingData = {};
