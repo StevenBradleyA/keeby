@@ -135,7 +135,6 @@ def create_comment(listing_id):
             owner_id = form.data['owner_id'], 
             listing_id = listing_id,
             content = form.data['content'],
-
         )
 
         db.session.add(new_comment)

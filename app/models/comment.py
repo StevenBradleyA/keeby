@@ -37,5 +37,5 @@ class Comment(db.Model):
             "owner_id": self.owner_id,
             "listing_id": self.listing_id,
             "content": self.content,
-            "liked": self.liked.to_dict_simple()
+            "liked": [like.to_dict_simple() for like in self.liked]
         }
