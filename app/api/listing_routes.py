@@ -33,7 +33,7 @@ def get_listing_by_id(id):
     listing = Listing.query.get(id)
     if not listing:
         return {
-            "message": "Listing could not be found",
+            "message": "Listing not found",
             "status_code": 404
         }, 404
     return listing.to_dict()
@@ -44,6 +44,23 @@ def get_listing_by_id(id):
 def search_all_listings(name):
     listings = Listing.query.filter(Listing.name.like(f"{name}%")).all()
     return [listing.to_dict_simple() for listing in listings]
+
+
+
+# * -----------  GET  --------------
+# Returns all comments for a single listing
+
+@listing_routes.route('/<int:listing_id>/comments')
+@login_required
+def get_listing_comments(listing_id):
+    comments = Comment.query.filter(Comment.listing_id == listing_id)
+    if not comments: 
+        return {
+            "message": "Listing not found",
+        }, 404
+    return {"comments": [comment.to_dict_simple() for comment in comments]}
+
+
 
 
 # * -----------  POST  --------------
@@ -105,6 +122,20 @@ def create_listing():
 
 # * -----------  POST  --------------
 # Create a new comment for a specific listing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

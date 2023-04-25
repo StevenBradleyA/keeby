@@ -6,3 +6,20 @@ from flask_wtf.csrf import CSRFProtect, generate_csrf
 
 
 comment_routes = Blueprint('comments', __name__)
+
+
+#* ------------------------         FULL CRUD          --------------------------
+
+
+# * -----------  GET  --------------
+#  Returns a single comment and its likes
+
+
+
+
+# * -----------  PUT  --------------
+# Edit a comment 
+
+
+# * -----------  DELETE  --------------
+# Delete a comment

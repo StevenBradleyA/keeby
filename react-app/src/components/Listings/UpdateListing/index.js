@@ -9,9 +9,9 @@ function EditListingPage() {
   const location = useLocation()
   const {listing} = location.state
   const sessionUser = useSelector((state) => state.session.user);
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
+  const [name, setName] = useState(listing.name);
+  const [price, setPrice] = useState(listing.price);
+  const [description, setDescription] = useState(listing.description);
   const [imageFiles, setImageFiles] = useState([]);
   const [previewImage, setPreviewImage] = useState("");
   const [imageLoading, setImageLoading] = useState(false);
