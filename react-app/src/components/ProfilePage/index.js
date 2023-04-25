@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,12 +11,13 @@ import EditPasswordModal from "./ProfilePageModals/EditPasswordModal";
 import EditNameModal from "./ProfilePageModals/EditNameModal";
 import EditDailyDriverModal from "./ProfilePageModals/EditDailyDriverModal";
 import DeleteUserModal from "./DeleteUser";
-
 import "./Profile.css";
 
 const ProfilePage = () => {
   const history = useHistory();
   const { setModalContent } = useModal();
+  const [text, setText] = useState("");
+
   const sessionUser = useSelector((state) => state.session.user);
 
   if (!sessionUser) {
@@ -43,13 +44,29 @@ const ProfilePage = () => {
   };
 
   const handleDeleteUser = () => {
-    setModalContent(<DeleteUserModal sessionUser={sessionUser}/>)
-  }
+    setModalContent(<DeleteUserModal sessionUser={sessionUser} />);
+  };
 
+  useEffect(() => {
+    const phrases = [
+      "Initializing",
+      "checking systems",
+      "deleting hard drive",
+      "jk",
+      "your profile",
+    ];
+    const delay = [0, 2000, 4000, 6000, 8000];
+
+    phrases.forEach((phrase, i) =>
+      setTimeout(() => {
+        setText(phrase);
+      }, delay[i])
+    );
+  }, []);
 
   return (
     <div className="profile-page-container">
-      <h1 className="profile-title-text">Your Profile</h1>
+      <h1 className="profile-title-text">{text}</h1>
       <div className="profile-picture-container">
         <img
           src={
@@ -89,7 +106,7 @@ const ProfilePage = () => {
         >{`[ Email ]    ${sessionUser.email}`}</div>
         <FontAwesomeIcon
           icon={faUserPen}
-            onClick={handleEmailEdit}
+          onClick={handleEmailEdit}
           className="edit-profile-buttons"
         />
       </div>
@@ -102,7 +119,7 @@ const ProfilePage = () => {
         </div>
         <FontAwesomeIcon
           icon={faUserPen}
-            onClick={handleNameEdit}
+          onClick={handleNameEdit}
           className="edit-profile-buttons"
         />
       </div>
@@ -112,28 +129,29 @@ const ProfilePage = () => {
         </div>
         <FontAwesomeIcon
           icon={faUserPen}
-            onClick={handlePasswordEdit}
+          onClick={handlePasswordEdit}
           className="edit-profile-buttons"
         />
       </div>
 
       <div className="edit-section-container">
         <div id="profile-titles" className="title-text">
-          {`[ What Keyboard do you main? ]`} 
-        <FontAwesomeIcon
-          icon={faUserPen}
+          {`[ What Keyboard do you main? ]`}
+          <FontAwesomeIcon
+            icon={faUserPen}
             onClick={handleDailyDriverEdit}
-          className="edit-profile-buttons"
-        />
+            className="edit-profile-buttons"
+          />
           <p></p>
-           {`[ board ] ${sessionUser.daily_driver}      [ keycaps ] ${sessionUser.keycaps}      [switches] ${sessionUser.switches}`}
+          {`[ board ] ${sessionUser.daily_driver}      [ keycaps ] ${sessionUser.keycaps}      [switches] ${sessionUser.switches}`}
         </div>
       </div>
       <p></p>
       <div className="delete-user-container">
-        <button className="no-delete-button" onClick={handleDeleteUser}>delete my profile</button>
+        <button className="no-delete-button" onClick={handleDeleteUser}>
+          delete my profile
+        </button>
       </div>
-     
     </div>
   );
 };
