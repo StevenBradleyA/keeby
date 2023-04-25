@@ -32,7 +32,6 @@ const ManageListingCard = ({ listing }) => {
   // are more sizeable.
   return (
     <div className="manage-listings-container">
-      <h1>Manage Your Listings</h1>
       <div className="manage-listing-button-containers">
         <button className="manage-listing-update-button">Update</button>
         <button className="manage-listing-delete-button" onClick={handleDeleteListing}>Delete</button>

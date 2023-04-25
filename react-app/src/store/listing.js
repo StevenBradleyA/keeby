@@ -68,7 +68,7 @@ export const createListingThunk = (newListingData) => async (dispatch) => {
   }
 };
 
-export const updateChannelThunk =
+export const updateListingThunk =
   (newListingData, listingId) => async (dispatch) => {
     try {
       const response = await fetch(`/api/listings/${listingId}`, {
