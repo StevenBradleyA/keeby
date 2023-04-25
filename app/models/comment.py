@@ -30,3 +30,12 @@ class Comment(db.Model):
             "listing_id": self.listing_id,
             "content": self.content
         }
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "owner_id": self.owner_id,
+            "listing_id": self.listing_id,
+            "content": self.content,
+            "liked": self.liked.to_dict_simple()
+        }

@@ -4,6 +4,7 @@ from app.models.like import likes
 from flask_login import current_user, login_required
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from ..forms.listing_form import ListingForm
+from ..forms.comment_form import CommentForm
 from ..utils import pog 
 import json
 from .aws_helpers import (
@@ -58,7 +59,7 @@ def get_listing_comments(listing_id):
         return {
             "message": "Listing not found",
         }, 404
-    return {"comments": [comment.to_dict_simple() for comment in comments]}
+    return {"comments": [comment.to_dict() for comment in comments]}
 
 
 
@@ -123,15 +124,25 @@ def create_listing():
 # * -----------  POST  --------------
 # Create a new comment for a specific listing
 
+@listing_routes.route('/<int:listing_id>', methods=['POST'])
+@login_required
+def create_comment(listing_id):
+    form = CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
 
+        new_comment = Comment(
+            owner_id = form.data['owner_id'], 
+            listing_id = listing_id,
+            content = form.data['content'],
 
+        )
 
+        db.session.add(new_comment)
+        db.session.commit()
 
-
-
-
-
-
+        return new_comment.to_dict_simple()
+    return 'BAD DATA'
 
 
 
