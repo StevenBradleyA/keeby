@@ -34,8 +34,7 @@ def get_listing_by_id(id):
     listing = Listing.query.get(id)
     if not listing:
         return {
-            "message": "Listing not found",
-            "status_code": 404
+            "message": "Listing not found"
         }, 404
     return listing.to_dict()
 
@@ -124,7 +123,7 @@ def create_listing():
 # * -----------  POST  --------------
 # Create a new comment for a specific listing
 
-@listing_routes.route('/<int:listing_id>', methods=['POST'])
+@listing_routes.route('/<int:listing_id>/comments', methods=['POST'])
 @login_required
 def create_comment(listing_id):
     form = CommentForm()
