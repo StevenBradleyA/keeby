@@ -5,10 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./ListingPage.css";
 import PhotoGalleryModal from "./PhotoGalleryModal";
-import {
-  deleteCommentThunk,
-  getAllCommentsPerListingThunk,
-} from "../../store/comment";
+import { getAllCommentsPerListingThunk } from "../../store/comment";
 import CommentCard from "../Comments/CommentsIndex";
 import CreateComment from "../Comments/CreateComment";
 
@@ -16,6 +13,7 @@ const ListingPage = () => {
   const dispatch = useDispatch();
   const { listingId } = useParams();
   const { setModalContent } = useModal();
+
   useEffect(() => {
     dispatch(getListingByIdThunk(listingId));
   }, [dispatch, listingId]);
@@ -28,14 +26,9 @@ const ListingPage = () => {
 
   const allComments = useSelector((state) => Object.values(state.comments));
 
-  console.log("hello there", allComments);
-
   if (!currentListing) {
     return <h1>LOADING...</h1>;
   }
-  // if (!allComments) {
-  //   return <h1>LOADING...</h1>;
-  // }
 
   const displayImageArr = currentListing.listing_images.filter(
     (e) => e.is_display_image === true
@@ -103,7 +96,7 @@ const ListingPage = () => {
         ))}
         <div className="comments-container">
           {allComments.map((comment) => (
-            <CommentCard key={comment.id} comment={comment} />
+            <CommentCard key={comment.id} comment={comment} currentListing={currentListing}/>
           ))}
           <div className="create-comment-container">
             <CreateComment currentListing={currentListing} />

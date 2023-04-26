@@ -80,8 +80,8 @@ export const createCommentThunk =
     }
   };
 
-export const updateMessageThunk =
-  (newCommentData, commentId) => async (dispatch) => {
+export const updateCommentThunk =
+  (commentId, newCommentData) => async (dispatch) => {
     try {
       const response = await fetch(`/api/comments/${commentId}`, {
         method: "PUT",
