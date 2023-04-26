@@ -38,6 +38,7 @@ z-index: 5;
   left: 10px;
   height: 200px;
   width: 200px;
+  object-fit: cover;
   z-index: -1;
 }
 

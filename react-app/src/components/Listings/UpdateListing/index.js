@@ -37,12 +37,15 @@ function EditListingPage() {
     if (imageFiles.length > 50) {
       errorsObj.imageExcess = "Cannot provide more than 50 photos";
     }
+    if (previewImage.length === 0) {
+      errorsObj.previewImage = "Select a preview image";
+    }
     setErrors(errorsObj);
   };
 
   useEffect(() => {
     handleInputErrors();
-  }, [name, price, description, imageFiles]);
+  }, [name, price, description, imageFiles, previewImage]);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -141,6 +144,11 @@ function EditListingPage() {
                   <>
                     <img
                       onClick={() => setPreviewImage(e.name)}
+                      style={
+                        previewImage === e.name
+                          ? { border: "5px solid green" }
+                          : null
+                      }
                       className="view-uploaded-image"
                       alt={`listing-${i}`}
                       src={URL.createObjectURL(e)}
@@ -155,6 +163,9 @@ function EditListingPage() {
               )}
               {hasSubmitted && errors.imageExcess && (
                 <p className="errors">{errors.imageExcess}</p>
+              )}
+               {hasSubmitted && errors.previewImage && (
+                <p className="errors">{errors.previewImage}</p>
               )}
               <input
                 type="submit"

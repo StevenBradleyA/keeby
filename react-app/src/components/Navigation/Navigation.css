@@ -129,6 +129,7 @@
   left: 95%;
   height: 20px;
   width: 20px;
+  object-fit: cover;
   /* margin: 10px; */
 }
 
@@ -153,6 +154,7 @@ width: 10rem; */
 .profile-icon-modal {
   width: 96px;
   height: 96px;
+  object-fit: cover;
 }
 .profile-icon-letter-modal {
   width: 96px;

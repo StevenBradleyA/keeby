@@ -15,7 +15,7 @@ function CreateListingForm() {
   const [imageFiles, setImageFiles] = useState([]);
   const [previewImage, setPreviewImage] = useState("");
   const [imageLoading, setImageLoading] = useState(false);
-
+  console.log('heythere', previewImage)
   const [errors, setErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -27,7 +27,7 @@ function CreateListingForm() {
     if (price.toString().length === 0) {
       errorsObj.price = "Price is required";
     }
-    if (description.length < 750) {
+    if (description.length < 10) {
       errorsObj.description =
         "Your Description must be at least 750 characters";
     }
@@ -37,12 +37,16 @@ function CreateListingForm() {
     if (imageFiles.length > 50) {
       errorsObj.imageExcess = "Cannot provide more than 50 photos";
     }
+    if (previewImage.length === 0) {
+      errorsObj.previewImage = "Select a preview image";
+    }
+
     setErrors(errorsObj);
   };
 
   useEffect(() => {
     handleInputErrors();
-  }, [name, price, description, imageFiles]);
+  }, [name, price, description, imageFiles, previewImage]);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -66,7 +70,8 @@ function CreateListingForm() {
 
     if (!Object.values(errors).length) {
       let newListing = await dispatch(createListingThunk(formData));
-
+      // todo I want to push to a loading component or a video since it takes some time to go to aws and back...
+      // if !newListing then load component and pass newlisting as a prop
       history.push(`/listing/${newListing.id}`);
       setImageLoading(false);
     }
@@ -129,6 +134,8 @@ function CreateListingForm() {
                 <input
                   type="file"
                   multiple
+                  // accept="image/png, image/jpg, image/jpeg"
+                  // gifs are kinda fun tho
                   accept="image/*"
                   onChange={(e) => {
                     setImageFiles([...imageFiles, ...e.target.files]);
@@ -141,6 +148,11 @@ function CreateListingForm() {
                   <>
                     <img
                       onClick={() => setPreviewImage(e.name)}
+                      style={
+                        previewImage === e.name
+                          ? { border: "5px solid green" }
+                          : null
+                      }
                       className="view-uploaded-image"
                       alt={`listing-${i}`}
                       src={URL.createObjectURL(e)}
@@ -155,6 +167,9 @@ function CreateListingForm() {
               )}
               {hasSubmitted && errors.imageExcess && (
                 <p className="errors">{errors.imageExcess}</p>
+              )}
+              {hasSubmitted && errors.previewImage && (
+                <p className="errors">{errors.previewImage}</p>
               )}
               <input
                 type="submit"
