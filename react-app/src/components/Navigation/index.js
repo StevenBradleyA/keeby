@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import LoginFormModal from "./LoginModal";
 import SignupFormModal from "./SignUpModal";
@@ -12,10 +12,14 @@ import keebyTitle from "../../media/keebyTitle.png"
 
 import "./Navigation.css";
 import { useHistory } from "react-router-dom";
+import ListingSearchResults from "../Listings/SearchListing";
 
 function Navigation() {
   const history = useHistory()
   const { setModalContent } = useModal();
+  const [name, setName] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
+
   const sessionUser = useSelector((state) => state.session.user);
   // const [listingName, setListingName] = useState('')
 
@@ -38,6 +42,26 @@ function Navigation() {
     history.push(`/listings/create`)
 
   }
+
+  useEffect(async () => {
+    if (name.length) {
+      const results = await fetch(`/api/listings/${name}`);
+      const data = await results.json();
+      setSearchResult(data);
+    } else {
+      setSearchResult('')
+    }
+  }, [name]);
+
+console.log("testing search", searchResult)
+
+
+
+
+
+
+
+
   
   // I want to make list your keeb redirect to log in if not session User
   return (
@@ -50,9 +74,12 @@ function Navigation() {
         className="search-input-login"
         type="search"
         placeholder="Search for a Keyboard name ..."
-        // value={listingName}
-        // onChange={(e) => setListingName(e.target.value)}
+        value={name}
+        onChange={(e) => setName(e.target.value)}
       />
+      {searchResult.length > 0 && searchResult.map((listing) => (
+        <ListingSearchResults key={listing.id} listing={listing} />
+      ))}
 
       {sessionUser && (
 		<>

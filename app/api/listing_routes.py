@@ -43,7 +43,7 @@ def get_listing_by_id(id):
 @listing_routes.route("/<string:name>")
 def search_all_listings(name):
     listings = Listing.query.filter(Listing.name.like(f"{name}%")).all()
-    return [listing.to_dict_simple() for listing in listings]
+    return [listing.to_dict() for listing in listings]
 
 
 

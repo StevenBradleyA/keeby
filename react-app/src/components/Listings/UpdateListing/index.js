@@ -17,19 +17,13 @@ function EditListingPage() {
   const [description, setDescription] = useState(listing.description);
   const [imageFiles, setImageFiles] = useState([]);
   const [deleteImages, setDeleteImages] = useState([]);
-
   const [previewImage, setPreviewImage] = useState("");
   const [imageLoading, setImageLoading] = useState(false);
-
   const [errors, setErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
-  console.log("hellooooooo", listing.listing_images);
-  console.log("howdy", deleteImages);
-
-  // write a ternary for imagefiles array
-  // if empty render our listing_images on the page once added the imageFiles are displayed
-  // the problem is that we need to delete the current images from the db
+  // console.log("hellooooooo", listing.listing_images);
+  // console.log("howdy", deleteImages);
 
   const handleInputErrors = () => {
     const errorsObj = {};
@@ -75,6 +69,20 @@ function EditListingPage() {
         formData.append("image", e);
       }
     });
+
+    // deleteImages.forEach((e) => {
+    //   if (e.name === previewImage) {
+    //     formData.append("preview", e);
+    //   } else {
+    //     formData.append("image", e);
+    //   }
+    // });
+
+    // need to append each id to be delete
+    // need to append a new preview image if an existing image is choosen
+    // if a current preview is chosen it will be an integer.
+    // can filter for that...
+
     setImageLoading(true);
 
     const listingInformation = {
@@ -154,7 +162,9 @@ function EditListingPage() {
               {hasSubmitted && errors.description && (
                 <p className="errors">{errors.description}</p>
               )}
-              <div>{`[ Current Listing Images ] must have at least 4 images total`}</div>
+              <div>{`Current Listing Images`}</div>
+              <div>{`[ Choose a preview image by clicking an image ]      [ must have a total of 4 images]`}</div>
+
               {listing.listing_images.map((e) => {
                 return (
                   <>
@@ -191,21 +201,16 @@ function EditListingPage() {
                   </>
                 );
               })}
-              <p>
-                Upload new images of your keyboard and select a new preview
-                image!
-              </p>
-              <label>
-                Upload at least 4 images:
-                <input
-                  type="file"
-                  multiple
-                  accept="image/*"
-                  onChange={(e) => {
-                    setImageFiles([...imageFiles, ...e.target.files]);
-                  }}
-                />
-              </label>
+              <p>Add more Images to your listing!</p>
+
+              <input
+                type="file"
+                multiple
+                accept="image/*"
+                onChange={(e) => {
+                  setImageFiles([...imageFiles, ...e.target.files]);
+                }}
+              />
               {/* {imageLoading && <p>Loading...</p>} */}
               {imageFiles.map((e, i) => {
                 return (
