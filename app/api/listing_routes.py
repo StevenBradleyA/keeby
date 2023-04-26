@@ -139,7 +139,7 @@ def create_comment(listing_id):
         db.session.add(new_comment)
         db.session.commit()
 
-        return new_comment.to_dict_simple()
+        return new_comment.to_dict()
     return 'BAD DATA'
 
 

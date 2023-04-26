@@ -1,37 +1,55 @@
 import React from "react";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import "./CommentsIndex.css";
+import { deleteCommentThunk } from "../../../store/comment";
+import { useModal } from "../../../context/Modal";
 const CommentCard = ({ comment }) => {
-  // const dispatch = useDispatch();
-  const sessionUser = useSelector((state)=> state.sessionUser)
-  console.log('card', comment);
+  const dispatch = useDispatch();
+  const {setModalContent} = useModal()
+  const sessionUser = useSelector((state) => state.session.user);
+
+  // console.log("card", comment);
+
+  // console.log(sessionUser.id)
+
+  const handleEditComment = () => {
+    // setModalContent(<EditProfilePictureModal sessionUser={sessionUser} />);
+  }
+
+  const handleDeleteComment = async (e) => {
+    e.preventDefault();
+    // await dispatch(deleteCommentThunk(comment.id));
+  };
+
+
+  if(!comment.comment_owner){
+    return <h1>LOADING...</h1>
+  }
 
   return (
-    <div>
-      <div className="message">
-        <div className="message-content">
-          <div className="image-container">
-            {/* <img
-              src={
-                message.message_owner.profile_picture === null
-                  ? message.message_owner.name[0]
-                  : message.message_owner.profile_picture
-              }
-              alt="profile"
-              className="message-profile-pic"
-            /> */}
-          </div>
-          <div className="message-content">
-            <p>{comment.content}</p>
-          </div>
-        </div>
-        {/* {sessionUser.id === comment.owner_id && (
-          <div className="message-buttons">
+    <div className="comment-card-container">
+      <img
+        className="comment-image-container"
+        src={
+          comment.comment_owner.profile_picture === null
+            ? comment.comment_owner.name[0]
+            : comment.comment_owner.profile_picture
+        }
+        alt="profile"
+      />
+      <div>
+        {comment.comment_owner.username}
+      </div>
+      {sessionUser.id === comment.owner_id && (
+          <div className="comment-buttons">
             <button>Edit</button>
             <button>Delete</button>
           </div>
-        )} */}
+        )}
+      <div className="comment-content">
+        <p>{comment.content}</p>
       </div>
+
     </div>
   );
 };
