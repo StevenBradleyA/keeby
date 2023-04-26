@@ -8,7 +8,7 @@ from ..forms.comment_form import CommentForm
 from ..utils import pog 
 import json
 from .aws_helpers import (
-    upload_file_to_s3, get_unique_filename)
+    upload_file_to_s3, get_unique_filename, remove_file_from_s3)
 
 
 
