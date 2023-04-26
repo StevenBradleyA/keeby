@@ -65,94 +65,100 @@ const ProfilePage = () => {
   }, []);
 
   return (
-    <div className="profile-page-container">
+    <>
+      <div className="retro-scanlines"></div>
+
       <h1 className="profile-title-text">{text}</h1>
-      <div className="profile-picture-container">
-        <img
-          src={
-            sessionUser.profile_picture === null
-              ? sessionUser.first_name[0]
-              : sessionUser.profile_picture
-          }
-          alt="Profile"
-          className={
-            sessionUser.profile_picture === null
-              ? "profile-page-icon-letter"
-              : "profile-page-icon"
-          }
-        />
-        <FontAwesomeIcon
-          icon={faUserPen}
-          onClick={handleProfilePictureEdit}
-          className="edit-profile-picture"
-        />
-      </div>
-      <div className="edit-section-container">
-        <div
-          id="profile-titles"
-          className="title-text"
-        >{`[ Username ]  ${sessionUser.username}`}</div>
-        <FontAwesomeIcon
-          icon={faUserPen}
-          onClick={handleUserNameEdit}
-          className="edit-profile-buttons"
-        />
-      </div>
 
-      <div className="edit-section-container">
-        <div
-          id="profile-titles"
-          className="title-text"
-        >{`[ Email ]    ${sessionUser.email}`}</div>
-        <FontAwesomeIcon
-          icon={faUserPen}
-          onClick={handleEmailEdit}
-          className="edit-profile-buttons"
-        />
-      </div>
-
-      <div className="edit-section-container">
-        <div id="profile-titles" className="title-text">
-          {`[ First name ]  ${sessionUser.first_name}`}
-          <br />
-          {`[ Last name ]  ${sessionUser.last_name}`}
-        </div>
-        <FontAwesomeIcon
-          icon={faUserPen}
-          onClick={handleNameEdit}
-          className="edit-profile-buttons"
-        />
-      </div>
-      <div className="edit-section-container">
-        <div id="profile-titles" className="title-text">
-          {" [ Change your password ]"}
-        </div>
-        <FontAwesomeIcon
-          icon={faUserPen}
-          onClick={handlePasswordEdit}
-          className="edit-profile-buttons"
-        />
-      </div>
-
-      <div className="edit-section-container">
-        <div id="profile-titles" className="title-text">
-          {`[ What Keyboard do you main? ]`}
+      <div className="icon-user-info-container">
+        <div className="profile-picture-container">
+          <img
+            src={
+              sessionUser.profile_picture === null
+                ? sessionUser.first_name[0]
+                : sessionUser.profile_picture
+            }
+            alt="Profile"
+            className={
+              sessionUser.profile_picture === null
+                ? "profile-page-icon-letter"
+                : "profile-page-icon"
+            }
+          />
           <FontAwesomeIcon
             icon={faUserPen}
-            onClick={handleDailyDriverEdit}
-            className="edit-profile-buttons"
+            onClick={handleProfilePictureEdit}
+            className="edit-profile-picture"
           />
-          <p></p>
-          {`[ board ] ${sessionUser.daily_driver}      [ keycaps ] ${sessionUser.keycaps}      [switches] ${sessionUser.switches}`}
         </div>
-      </div>
-      <p></p>
-      <div className="delete-user-container">
+        <div className="profile-page-container">
+          {/* <div className="user-info-container"> */}
+          <div className="edit-section-container">
+            <div
+              id="profile-titles"
+              className="profile-page-text"
+            >{`[ Username ]  ${sessionUser.username}`}</div>
+            <FontAwesomeIcon
+              icon={faUserPen}
+              onClick={handleUserNameEdit}
+              className="edit-profile-buttons"
+            />
+          </div>
+
+          <div className="edit-section-container">
+            <div
+              id="profile-titles"
+              className="profile-page-text"
+            >{`[ Email ]    ${sessionUser.email}`}</div>
+            <FontAwesomeIcon
+              icon={faUserPen}
+              onClick={handleEmailEdit}
+              className="edit-profile-buttons"
+            />
+          </div>
+
+          <div className="edit-section-container">
+            <div id="profile-titles" className="profile-page-text">
+              {`[ First name ]  ${sessionUser.first_name}     [ Last name ]  ${sessionUser.last_name}`}
+            </div>
+            <FontAwesomeIcon
+              icon={faUserPen}
+              onClick={handleNameEdit}
+              className="edit-profile-buttons"
+            />
+          </div>
+          <div className="edit-section-container">
+            <div id="profile-titles" className="profile-page-text">
+              {" [ Change your password ]"}
+            </div>
+            <FontAwesomeIcon
+              icon={faUserPen}
+              onClick={handlePasswordEdit}
+              className="edit-profile-buttons"
+            />
+          </div>
+          <p></p>
+        </div>
+        <div className="edit-section-container">
+          <div  className="profile-page-text">
+            {`[ What Keyboard do you main? ]`}
+            <FontAwesomeIcon
+              icon={faUserPen}
+              onClick={handleDailyDriverEdit}
+              id="edit-profile-buttons"
+            />
+            <p></p>
+            {`[ board ] ${sessionUser.daily_driver}      [ keycaps ] ${sessionUser.keycaps}      [switches] ${sessionUser.switches}`}
+          </div>
+        </div>
+        {/* </div> */}
+        <p></p>
+
         <button className="no-delete-button" onClick={handleDeleteUser}>
           delete my profile
         </button>
       </div>
-    </div>
+    </>
   );
 };
 

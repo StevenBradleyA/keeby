@@ -24,6 +24,7 @@
   justify-content: space-between; */
   /* background-color: rgb(33, 234, 245); */
   background-color: #222;
+  z-index: 2;
 }
 
 .home-button {
