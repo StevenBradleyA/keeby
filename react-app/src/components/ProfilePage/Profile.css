@@ -1,3 +1,15 @@
+/* ------------      Hacking Time       --------------- */
+
+/* .hacking-time{
+  margin: 0;
+  padding: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+z-index: 5;
+} */
+
+
 .profile-page-container {
   margin-top: 50px;
   display: flex;
@@ -43,7 +55,7 @@
   bottom: 22px;
   height: 20px;
   left: 0px;
-  color: #720404;
+  color: #da0000;
 }
 
 .profile-page-username {
@@ -51,6 +63,49 @@
   bottom: 52px;
   height: 20px;
 }
+
+#profile-page-edit-modal {
+  position: relative;
+  left: 500px;
+  bottom: 18px;
+  color: #da0000;
+}
+
+#profile-page-edit-keeb-modal {
+  position: relative;
+  left: 732px;
+  bottom: 82px;
+  color: #da0000;
+}
+
+
+
+#optional-keeb-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* align-content: center; */
+}
+#keyboard-main-text{
+  position: relative;
+  bottom: 25px;
+  right: 52px;
+}
+
+.delete-yeet-profile{
+  position: relative;
+  left:38%;
+  color: red;
+  border: none;
+  padding: none;
+  background: none;
+  font-family: "VT323", Courier;
+  font-size: 20px;
+}
+
+
+
+
 
 /* -------------         Moving Title           ----------------- */
 .profile-title-text {

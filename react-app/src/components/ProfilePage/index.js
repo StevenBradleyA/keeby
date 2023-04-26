@@ -12,7 +12,7 @@ import EditNameModal from "./ProfilePageModals/EditNameModal";
 import EditDailyDriverModal from "./ProfilePageModals/EditDailyDriverModal";
 import DeleteUserModal from "./DeleteUser";
 import "./Profile.css";
-
+// import hackTime from "../../media/hackTime.mov"
 const ProfilePage = () => {
   const history = useHistory();
   const { setModalContent } = useModal();
@@ -66,6 +66,9 @@ const ProfilePage = () => {
 
   return (
     <>
+      {/* <div className="hacking-time">
+        <video src={hackTime} autoPlay loop muted/>
+      </div> */}
       <div className="retro-scanlines"></div>
 
       <h1 className="profile-title-text">{text}</h1>
@@ -93,19 +96,16 @@ const ProfilePage = () => {
         </div>
         <div className="profile-page-container">
           {/* <div className="user-info-container"> */}
-          <div className="edit-section-container">
-            <div
-              id="profile-titles"
-              className="profile-page-text"
-            >{`[ Username ]  ${sessionUser.username}`}</div>
+          <div>
+            <div className="profile-page-text">{`[ Username ]     ${sessionUser.username}`}</div>
             <FontAwesomeIcon
               icon={faUserPen}
               onClick={handleUserNameEdit}
-              className="edit-profile-buttons"
+              id="profile-page-edit-modal"
             />
           </div>
 
-          <div className="edit-section-container">
+          <div>
             <div
               id="profile-titles"
               className="profile-page-text"
@@ -113,49 +113,49 @@ const ProfilePage = () => {
             <FontAwesomeIcon
               icon={faUserPen}
               onClick={handleEmailEdit}
-              className="edit-profile-buttons"
+              id="profile-page-edit-modal"
             />
           </div>
 
-          <div className="edit-section-container">
-            <div id="profile-titles" className="profile-page-text">
+          <div>
+            <div className="profile-page-text">
               {`[ First name ]  ${sessionUser.first_name}     [ Last name ]  ${sessionUser.last_name}`}
             </div>
             <FontAwesomeIcon
               icon={faUserPen}
               onClick={handleNameEdit}
-              className="edit-profile-buttons"
+              id="profile-page-edit-modal"
             />
           </div>
-          <div className="edit-section-container">
+          <div>
             <div id="profile-titles" className="profile-page-text">
               {" [ Change your password ]"}
             </div>
             <FontAwesomeIcon
               icon={faUserPen}
               onClick={handlePasswordEdit}
-              className="edit-profile-buttons"
+              id="profile-page-edit-modal"
             />
           </div>
           <p></p>
         </div>
-        <div className="edit-section-container">
-          <div  className="profile-page-text">
-            {`[ What Keyboard do you main? ]`}
-            <FontAwesomeIcon
-              icon={faUserPen}
-              onClick={handleDailyDriverEdit}
-              id="edit-profile-buttons"
-            />
-            <p></p>
-            {`[ board ] ${sessionUser.daily_driver}      [ keycaps ] ${sessionUser.keycaps}      [switches] ${sessionUser.switches}`}
+        <div>
+          <div id="optional-keeb-info" className="profile-page-text">
+            
+          <p id="keyboard-main-text">{`[ What Keyboard do you main? ]`}</p>
+          {`[ board ] ${sessionUser.daily_driver}      [ keycaps ] ${sessionUser.keycaps}      [switches] ${sessionUser.switches}`}
           </div>
+          <FontAwesomeIcon
+            icon={faUserPen}
+            onClick={handleDailyDriverEdit}
+            id="profile-page-edit-keeb-modal"
+          />
         </div>
         {/* </div> */}
         <p></p>
 
-        <button className="no-delete-button" onClick={handleDeleteUser}>
-          delete my profile
+        <button className="delete-yeet-profile" onClick={handleDeleteUser}>
+          {`[ delete my profile ]`}
         </button>
       </div>
     </>
