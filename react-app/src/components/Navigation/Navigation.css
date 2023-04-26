@@ -91,21 +91,7 @@
   text-shadow: none;
 }
 
-.search-input-login {
-  position: absolute;
-  background-color: #222;
-  color: rgb(255, 255, 255);
-  border: none;
-  box-shadow: 2.5px 2px 3px rgba(248, 105, 210, 0.85),
-    -2px 2px 3px rgba(255, 255, 255, 0.65),
-    2.5px -2px 3px rgba(255, 255, 255, 0.65),
-    -2.5px -2px 3px rgba(255, 255, 255, 0.85);
-  padding: none;
-  left: 220px;
-  top: 0.7rem;
-  width: 40%;
-  font-size: 12px;
-}
+
 
 .list-a-keeb-button {
   position: absolute;
@@ -190,6 +176,55 @@ width: 10rem; */
   top: 3%;
   left: 20%;
 }
+
+
+/* ------------        Search Results     ----------- */
+
+.search-input-login {
+  position: absolute;
+  background-color: #222;
+  color: rgb(255, 255, 255);
+  border: none;
+  box-shadow: 2.5px 2px 3px rgba(248, 105, 210, 0.85),
+    -2px 2px 3px rgba(255, 255, 255, 0.65),
+    2.5px -2px 3px rgba(255, 255, 255, 0.65),
+    -2.5px -2px 3px rgba(255, 255, 255, 0.85);
+  padding: none;
+  left: 220px;
+  top: 0.7rem;
+  width: 40%;
+  font-size: 12px;
+}
+
+
+.search-result-container{
+  position: absolute;
+  left: 220px;
+  width: 40%;
+  height: 200px;
+  /* background-image: url("../../media/blue\ loop.gif") ;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; */
+  background-color: black;
+  object-fit: cover;
+  display: flex;  
+  flex-direction: column;
+  /* align-items: center; */
+  overflow: auto;
+
+/*   
+  align-content: center;
+  align-items: center; */
+  /* width: 60%; */
+  /* height: 100%; */
+}
+
+
+
+
+
+
 
 /* ------------        Log In Modal     ----------- */
 
