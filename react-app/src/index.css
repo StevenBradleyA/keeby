@@ -2,7 +2,7 @@
 
 @import url(https://fonts.googleapis.com/css?family=VT323);
 
-#modal-content {
+.modal-content {
     opacity: 1;
     background-color: #222;
     height: 50%;

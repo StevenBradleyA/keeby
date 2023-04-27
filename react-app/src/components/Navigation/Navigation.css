@@ -128,12 +128,40 @@ width: 10rem; */
 
 /* ------------        User Icon Modal     ----------- */
 
-.user-icon-modal-container {
-  padding-top: 0px;
-  padding-left: 10px;
-  padding-right: 10px;
-  width: 150px;
+#user-icon-modal-container {
+  position: fixed;
+  top: 10%;
+  right: 0;
+  left: 70%;
+  bottom: 0;
+  height: 250px;
+  width: 175px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("../../media/blueGrid.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #325aab;
+  /* background-color: rgba(255, 255, 255, 0.1); */
+
 }
+
+/* #user-icon-modal-container::after{
+  background-color: rgba(0, 0, 0, 0.1);
+
+} */
+/* .modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+} */
+
+
 
 .profile-icon-modal {
   width: 96px;
@@ -149,30 +177,27 @@ width: 10rem; */
   background: none;
   border: none;
   padding: 0;
-  position: relative;
-  left: 10%;
+  margin: 5px;
+  margin-bottom: 10px;
 }
 
 #manage-listings-button {
   background: none;
   border: none;
   padding: 0;
-  position: relative;
-  left: 8%;
+  margin: 5px;
+  margin-bottom: 10px;
 }
 
 #log-out-button {
   background: none;
   border: none;
   padding: 0;
-  position: relative;
-  left: 30%;
+  margin: 5px;
 }
 
 .user-image-container-modal {
-  position: relative;
-  top: 3%;
-  left: 20%;
+  margin: 10px;
 }
 
 /* ------------        Search Results     ----------- */
@@ -237,6 +262,8 @@ width: 10rem; */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #9f7eca;
 }
 .log-in-modal-title {
   display: flex;
@@ -288,6 +315,8 @@ width: 10rem; */
   background-repeat: no-repeat;
   background-position: center;
   padding-left: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #faafaf;
 }
 
 .optional-signup-container {

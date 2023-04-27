@@ -31,7 +31,7 @@ function UserIconModal() {
   };
 
   return (
-    <div className="user-icon-modal-container">
+    <div id="user-icon-modal-container">
       <div className="user-image-container-modal">
         <div className="image-container-2">
           <img
@@ -52,16 +52,13 @@ function UserIconModal() {
             {`${sessionUser.first_name} `}
             {sessionUser.last_name}
         </div>
-        <p></p>
       </div>
       <button id="manage-profile-button" className="button-styling" onClick={handleProfileClick}>
         {`[ Manage My Profile ]`}
       </button>
-      <p></p>
       <button id="manage-listings-button" className="button-styling" onClick={handleManageListingsClick}>
         {`[ Manage My Listings ]`}
       </button>
-<p></p>
       <button
       id="log-out-button"
         className="button-styling"
