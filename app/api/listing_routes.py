@@ -16,7 +16,7 @@ listing_routes = Blueprint('listings', __name__)
 
 #* ------------------------         FULL CRUD          --------------------------
 
-
+# todo Need to look at all querys so they end with a .all or first or whates
 # * -----------  GET  --------------
 #  Returns all the listings
 
@@ -53,7 +53,7 @@ def search_all_listings(name):
 @listing_routes.route('/<int:listing_id>/comments')
 @login_required
 def get_listing_comments(listing_id):
-    comments = Comment.query.filter(Comment.listing_id == listing_id)
+    comments = Comment.query.filter(Comment.listing_id == listing_id).all()
     if not comments: 
         return {
             "message": "Listing not found",
@@ -181,61 +181,65 @@ def update_listing(listing_id):
         listing.price=form.data['price']
         listing.description=form.data['description']
 
+    else:
+        return 'BAD DATA'
 
-# todo change the is_display_image false on the old preview image
+    current_preview_image = Image.query.filter(Image.listing_id == listing_id, Image.is_display_image == True).first()
 
-    current_preview_list = Image.query.get(listing_id)
-    pog(current_preview_list)
 
-    # if len(preview_image) != 0:
+    if len(preview_image) != 0:
+        current_preview_image.is_display_image = False
+        
+        preview_image.filename = get_unique_filename(preview_image.filename)
+        upload = upload_file_to_s3(preview_image)
+        if "url" not in upload:
+            return {"error": "url not here"}
+        url = upload["url"]
+        update_preview_image = Image(
+        listing_id=listing.id,
+        owner_id=form.data["owner_id"],
+        image=url,
+        is_display_image=True
+        )
+        db.session.add(update_preview_image)
+
+    else:
+        preview_id = int(request.form.getlist('preview')[0])
+        if current_preview_image.id != preview_id:
+            current_preview_image.is_display_image = False
+            new_display = Image.query.filter(Image.id == preview_id).first()
+            new_display.is_display_image = True
         
 
+    if len(listing_images): 
+        for file in listing_images:
+            file.filename = get_unique_filename(file.filename)
+            upload = upload_file_to_s3(file)
+            if "url" not in upload:
+                return {"error": "url not here"}
+            url = upload["url"]
+
+            new_image = Image(
+            listing_id=listing.id,
+            owner_id=form.data["owner_id"],
+            image=url,
+            )
+
+            db.session.add(new_image)
+        # db.session.commit()
 
 
+    if len(delete_image_ids):
+        for image_id in delete_image_ids:
+            goodbye_image = Image.query.filter(Image.id == image_id).first()
+            remove_file_from_s3(goodbye_image.image)
+            db.session.delete(goodbye_image)
+    
+    
+    
+    db.session.commit()
 
-
-
-    # else:
-    #     preview_id = int(request.form.getlist('preview')[0])
-
-
-    #     if preview_id 
-    #     pog(preview_image)
-
-
-
-
-    #     preview_image.filename = get_unique_filename(preview_image.filename)
-    #     upload = upload_file_to_s3(preview_image)
-    #     if "url" not in upload:
-    #         return {"error": "url not here"}
-    #     url = upload["url"]
-    #     update_preview_image = Image(
-    #     listing_id=listing.id,
-    #     owner_id=form.data["owner_id"],
-    #     image=url,
-    #     is_display_image=True
-    #     )
-    #     db.session.add(update_preview_image)
-
-    #     for file in listing_images:
-    #         file.filename = get_unique_filename(file.filename)
-    #         upload = upload_file_to_s3(file)
-    #         if "url" not in upload:
-    #             return {"error": "url not here"}
-    #         url = upload["url"]
-
-    #         new_image = Image(
-    #         listing_id=listing.id,
-    #         owner_id=form.data["owner_id"],
-    #         image=url,
-    #         )
-
-    #         db.session.add(new_image)
-    #     db.session.commit()
-
-    #     return listing.to_dict()
-    return 'BAD DATA'
+    return listing.to_dict()
 
 
 # * -----------  DELETE  --------------

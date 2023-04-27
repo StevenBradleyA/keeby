@@ -59,7 +59,6 @@ function EditListingPage() {
     handleInputErrors();
   }, [name, price, description, imageFiles, previewImage, deleteImages]);
 
-  console.log(listing);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -92,7 +91,7 @@ function EditListingPage() {
     if (!Object.values(errors).length) {
       await dispatch(updateListingThunk(formData, listing.id));
 
-      // history.push(`/listing/${listing.id}`);
+      history.push(`/listing/${listing.id}`);
       setImageLoading(false);
     }
     setHasSubmitted(true);
