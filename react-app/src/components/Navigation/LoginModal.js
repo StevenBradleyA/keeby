@@ -3,7 +3,6 @@ import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 
-
 function LoginFormModal() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
@@ -17,7 +16,7 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
+      closeModal();
     }
   };
 
@@ -25,11 +24,11 @@ function LoginFormModal() {
     <div className="log-in-modal-container">
       <h1 className="log-in-modal-title">Log In</h1>
       <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
+      {errors.map((error, idx) => (
+          <div className="error-text-login" key={idx}>
+            {error}
+          </div>
+        ))}
         <label className="email-field-container">
           Email    
           <input
@@ -46,14 +45,17 @@ function LoginFormModal() {
           <input
             type="password"
             placeholder="Password..."
-
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
-        <p></p>
-        <button type="submit" id="log-in-button-modal" className="button-styling">{`[ Log In ]`}</button>
+       <p></p>
+        <button
+          type="submit"
+          id="log-in-button-modal"
+          className="button-styling"
+        >{`[ Log In ]`}</button>
       </form>
     </div>
   );
