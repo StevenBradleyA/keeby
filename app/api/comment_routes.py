@@ -8,7 +8,7 @@ from flask_wtf.csrf import CSRFProtect, generate_csrf
 comment_routes = Blueprint('comments', __name__)
 
 
-#* ------------------------         FULL CRUD          --------------------------
+# * ------------------------         FULL CRUD          --------------------------
 
 
 # * -----------  GET  --------------
@@ -29,26 +29,25 @@ def get_comment_by_id(id):
 @login_required
 def create_like(id):
     comment = Comment.query.get(id)
-    if not comment: 
+    if not comment:
         return {
             "message": "Comment not found"
         }, 404
-    
+
     user = User.query.get(request.json['owner_id'])
     if not user:
         return {
             "message": "User not found"
         }, 404
-    
+
     comment.liked.append(user)
     db.session.commit()
 
     return comment.to_dict()
 
 
-
 # * -----------  PUT  --------------
-# Edit a comment 
+# Edit a comment
 
 @comment_routes.route('/<int:id>', methods=["PUT"])
 @login_required
@@ -56,7 +55,7 @@ def update_comment(id):
     edit = request.json
     comment = Comment.query.get(id)
 
-    if not comment: 
+    if not comment:
         return {
             "message": "Comment not found"
         }, 404
@@ -65,7 +64,7 @@ def update_comment(id):
         return {
             "message": "Forbidden"
         }, 403
-    
+
     comment.content = edit['content']
     db.session.commit()
     return comment.to_dict()
@@ -78,7 +77,7 @@ def update_comment(id):
 def delete_comment(id):
     comment = Comment.query.get(id)
 
-    if not comment: 
+    if not comment:
         return {
             "message": "Comment not found"
         }, 404
@@ -99,17 +98,17 @@ def delete_comment(id):
 @login_required
 def delete_like(id):
     comment = Comment.query.get(id)
-    if not comment: 
+    if not comment:
         return {
             "message": "Comment not found"
         }, 404
-    
+
     user = User.query.get(request.json['owner_id'])
     if not user:
         return {
             "message": "User not found"
         }, 404
-    
+
     for remove_user in comment.liked:
         if remove_user.id == user.id:
             comment.liked.remove(user)
@@ -117,7 +116,7 @@ def delete_like(id):
     for remove_comment in user.user_likes:
         if remove_comment.id == comment.id:
             user.user_likes.remove(comment)
-    
-    db.session.commit()
 
-    return {"message": "Removed like from comment"}
+    db.session.commit()
+    return comment.to_dict()
+    # return {"message": "Removed like from comment"}

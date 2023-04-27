@@ -13,6 +13,8 @@ const CREATE_COMMENT = "comments/CREATE_COMMENT";
 const UPDATE_COMMENT = "comments/UPDATE_COMMENT";
 const DELETE_COMMENT = "comments/DELETE_COMMENT";
 const CLEAR_COMMENT = "comments/CLEAR_COMMENT";
+// const CREATE_LIKE = "comments/CREATE_LIKE";
+// const DELETE_LIKE = "comments/DELETE_LIKE";
 
 const loadComments = (allCommentData) => ({
   type: LOAD_COMMENTS,
@@ -35,6 +37,16 @@ const deleteComment = (CommentId) => ({
 export const clearComment = () => ({
   type: CLEAR_COMMENT,
 });
+
+// const createLike = (CommentId) => ({
+//   type: CREATE_LIKE,
+//   payload: CommentId,
+// });
+
+// const deleteLike = (CommentId) => ({
+//   type: DELETE_LIKE,
+//   payload: CommentId,
+// });
 
 // --------      Thunks         --------
 
@@ -105,6 +117,41 @@ export const deleteCommentThunk = (commentId) => async (dispatch) => {
   });
   if (response.ok) {
     dispatch(deleteComment(commentId));
+  }
+};
+
+export const createLikeThunk = (commentId, ownerId) => async (dispatch) => {
+  try {
+    const response = await fetch(`/api/comments/${commentId}/like`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        owner_id: ownerId,
+      }),
+    });
+    const data = await response.json();
+    const normalizedCommentData = {};
+    normalizedCommentData[data.id] = data;
+    dispatch(loadComments(normalizedCommentData));
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteLikeThunk = (commentId, ownerId) => async (dispatch) => {
+  const response = await fetch(`/api/comments/${commentId}/like`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      owner_id: ownerId,
+    }),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    const normalizedCommentData = {};
+    normalizedCommentData[data.id] = data;
+    dispatch(loadComments(normalizedCommentData));
   }
 };
 
