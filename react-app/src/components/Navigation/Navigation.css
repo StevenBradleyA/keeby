@@ -241,7 +241,7 @@ width: 10rem; */
 .log-in-modal-title {
   display: flex;
   justify-content: center;
-  position: relative; 
+  position: relative;
   bottom: 5%;
 }
 
@@ -263,11 +263,11 @@ width: 10rem; */
   left: 40%;
 }
 
-#log-in-button-modal:hover{
-color: red;
+#log-in-button-modal:hover {
+  color: red;
 }
 
-.error-text-login{
+.error-text-login {
   color: red;
   font-size: 12px;
   position: relative;
@@ -275,6 +275,54 @@ color: red;
   left: 20%;
 }
 
-
-
 /* ------------        Sign Up Modal     ----------- */
+
+.signup-modal-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  height: 375px;
+  width: 500px;
+  background-image: url("../../media/redGrid.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-left: 10px;
+}
+
+.optional-signup-container {
+  position: absolute;
+  left: 65%;
+  bottom: 22%;
+}
+
+
+.signup-modal-title{
+position: relative;
+left: 35%;
+
+
+}
+
+
+.sign-up-submit {
+  background: none;
+  padding: none;
+  border: none;
+  color: rgb(0, 255, 247);
+  font-size: 20px;
+  position:absolute;
+  left: 41%;
+  top: 85%;
+}
+
+.sign-up-submit:hover{
+  color: red
+}
+
+
+.error-text-signup{
+  color:red;
+  position: absolute;
+  top: 10px;
+}
