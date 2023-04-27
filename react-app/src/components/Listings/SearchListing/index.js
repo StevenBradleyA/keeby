@@ -21,7 +21,7 @@ const history = useHistory()
     console.log(previewImage)
   return (
     <div onClick={handleListingClick} className="search-result-listing-card-container">
-        <img src={previewImage[0].image} className="search-result-listing-image"style={{"height":"25px", "width": "25px"}}/>
+        <img src={previewImage[0].image} className="search-result-listing-image"/>
         <div className="search-result-listing-name">{listing.name}</div>
     </div>
   );

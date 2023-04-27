@@ -91,8 +91,6 @@
   text-shadow: none;
 }
 
-
-
 .list-a-keeb-button {
   position: absolute;
   left: 75%;
@@ -177,7 +175,6 @@ width: 10rem; */
   left: 20%;
 }
 
-
 /* ------------        Search Results     ----------- */
 
 .search-input-login {
@@ -196,35 +193,36 @@ width: 10rem; */
   font-size: 12px;
 }
 
-
-.search-result-container{
+.search-result-container {
   position: absolute;
   left: 220px;
   width: 40%;
   height: 200px;
-  /* background-image: url("../../media/blue\ loop.gif") ;
+  /* background-image: url("../../media/shapes.gif");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center; */
-  background-color: black;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #0fa005;
   object-fit: cover;
-  display: flex;  
+  display: flex;
   flex-direction: column;
-  /* align-items: center; */
   overflow: auto;
-
-/*   
-  align-content: center;
-  align-items: center; */
-  /* width: 60%; */
-  /* height: 100%; */
 }
+/* this psuedo element is for that sweet sweet opacity on background */
 
-
-
-
-
-
+.search-result-container::after {
+  content: "";
+  background: url("../../media/matrix.gif");
+  background-size: cover;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
 
 /* ------------        Log In Modal     ----------- */
 

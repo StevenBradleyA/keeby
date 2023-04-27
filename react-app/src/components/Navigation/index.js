@@ -74,7 +74,12 @@ function Navigation() {
       {searchResult.length > 0 && (
         <div className="search-result-container">
           {searchResult.map((listing) => (
-            <ListingSearchResults key={listing.id} listing={listing} setSearchResult={setSearchResult} setName={setName}/>
+            <ListingSearchResults
+              key={listing.id}
+              listing={listing}
+              setSearchResult={setSearchResult}
+              setName={setName}
+            />
           ))}
         </div>
       )}

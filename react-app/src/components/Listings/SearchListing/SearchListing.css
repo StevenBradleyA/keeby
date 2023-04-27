@@ -1,0 +1,18 @@
+.search-result-listing-card-container{
+    display: flex;
+    padding: 5px;
+    gap: 5px;
+    /* justify-content: center; */
+
+}
+
+.search-result-listing-image{
+    height: 20px;
+    width: 25px;
+    object-fit: cover;
+}
+
+.search-result-listing-name{
+    font-size: 15px;
+    color: #00dd00;
+}
