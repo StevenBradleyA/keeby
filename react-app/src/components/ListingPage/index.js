@@ -102,6 +102,7 @@ const ListingPage = () => {
             <CommentCard key={comment.id} comment={comment} currentListing={currentListing}/>
           ))}
           <div className="create-comment-container">
+            {`${allComments.length} COMMENTS`}
             <CreateComment listingId={listingId} />
           </div>
         </div>
