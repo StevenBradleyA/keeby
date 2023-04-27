@@ -8,7 +8,6 @@ from ..utils import pog
 
 
 class ListingForm(FlaskForm):
-    # pog('am I in the form ')
     owner_id = IntegerField('User Id')
     name = StringField('Name', validators=[DataRequired()])
     price = IntegerField('Price', validators=[DataRequired()])
@@ -17,4 +16,3 @@ class ListingForm(FlaskForm):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # pog(kwargs)

@@ -61,8 +61,6 @@ def get_listing_comments(listing_id):
     return {"comments": [comment.to_dict() for comment in comments]}
 
 
-
-
 # * -----------  POST  --------------
 # Create a new listing
 
@@ -143,17 +141,6 @@ def create_comment(listing_id):
     return 'BAD DATA'
 
 
-
-
-
-
-
-
-
-
-
-
-
 # * -----------  PUT  --------------
 # Edit a listing
 @listing_routes.route('/<int:listing_id>', methods=['PUT'])
@@ -167,11 +154,9 @@ def update_listing(listing_id):
 
     delete_images = request.form.getlist('delete')
     delete_image_ids = [int(id) for id in delete_images]
-    pog(delete_image_ids)
+    
     preview_image = request.files.getlist('preview')
-    pog(preview_image)
 
-   
 
     form = ListingForm(**listing_dictionary)
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -226,7 +211,6 @@ def update_listing(listing_id):
             )
 
             db.session.add(new_image)
-        # db.session.commit()
 
 
     if len(delete_image_ids):

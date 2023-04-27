@@ -3,7 +3,7 @@ from app.models import Listing, User, Image, Comment, db
 from app.models.like import likes
 from flask_login import current_user, login_required
 from flask_wtf.csrf import CSRFProtect, generate_csrf
-
+from ..utils import pog 
 
 comment_routes = Blueprint('comments', __name__)
 
@@ -119,4 +119,3 @@ def delete_like(id):
 
     db.session.commit()
     return comment.to_dict()
-    # return {"message": "Removed like from comment"}

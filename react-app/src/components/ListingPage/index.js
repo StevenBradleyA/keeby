@@ -26,10 +26,6 @@ const ListingPage = () => {
 
   const allComments = useSelector((state) => Object.values(state.comments).filter((e)=> e.listing_id));
 
-
-  // console.log('uhhhhh', allComments)
-
-
   if (!currentListing) {
     return <h1>LOADING...</h1>;
   }

@@ -59,15 +59,12 @@ def update_user(id):
 @user_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_user(id):
-    pog(id)
     user = User.query.get(id)
     if user is None:
         return 'User not found', 404
-    pog(user)
 
     if user.id != current_user.id:
         return {"message": "Unauthorized"}, 401
-    pog(user.id)
     db.session.delete(user)
     db.session.commit()
 

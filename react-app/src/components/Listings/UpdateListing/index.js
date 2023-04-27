@@ -22,9 +22,6 @@ function EditListingPage() {
   const [errors, setErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
-  // console.log("hellooooooo", listing.listing_images);
-  // console.log("howdy", deleteImages);
-
   const handleInputErrors = () => {
     const errorsObj = {};
     if (name.length === 0) {
@@ -37,9 +34,7 @@ function EditListingPage() {
       errorsObj.description =
         "Your Description must be at least 750 characters";
     }
-    // if (imageFiles.length < 4) {
-    //   errorsObj.image = "Provide at least 4 Photos";
-    // }
+
     if (imageFiles.length > 50) {
       errorsObj.imageExcess = "Cannot provide more than 50 photos";
     }
@@ -59,7 +54,6 @@ function EditListingPage() {
     handleInputErrors();
   }, [name, price, description, imageFiles, previewImage, deleteImages]);
 
-
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -74,7 +68,6 @@ function EditListingPage() {
     if (typeof previewImage === "number") {
       formData.append("preview", previewImage);
     }
-    console.log('test', deleteImages)
     deleteImages.forEach((e) => {
       formData.append("delete", e);
     });

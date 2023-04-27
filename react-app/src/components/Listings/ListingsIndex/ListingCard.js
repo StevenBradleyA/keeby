@@ -8,12 +8,6 @@ import "./ListingIndex.css";
 const ListingCard = ({ listing }) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  // const allListingImages = Object.values(listing.listing_images);
-  // console.log(allListingImages[0])
-  //    const displayImage = allListingImages.filter((e)=> {
-  //     e.is_display_image === true
-  //     })
-  // not sure why this is undefined???
 
   const handleCardClick = (e) => {
     e.preventDefault();
