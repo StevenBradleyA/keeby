@@ -37,9 +37,9 @@ function EditListingPage() {
       errorsObj.description =
         "Your Description must be at least 750 characters";
     }
-    if (imageFiles.length < 4) {
-      errorsObj.image = "Provide at least 4 Photos";
-    }
+    // if (imageFiles.length < 4) {
+    //   errorsObj.image = "Provide at least 4 Photos";
+    // }
     if (imageFiles.length > 50) {
       errorsObj.imageExcess = "Cannot provide more than 50 photos";
     }
@@ -47,7 +47,7 @@ function EditListingPage() {
       errorsObj.previewImage = "Select a preview image";
     }
     if (
-      imageFiles.length + listing.listing_images.length - deleteImages.length >
+      imageFiles.length + listing.listing_images.length - deleteImages.length <
       4
     ) {
       errorsObj.imageLow = "Need to have a total of 4 listing Images";
@@ -58,6 +58,8 @@ function EditListingPage() {
   useEffect(() => {
     handleInputErrors();
   }, [name, price, description, imageFiles, previewImage, deleteImages]);
+
+  console.log(listing);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -70,19 +72,13 @@ function EditListingPage() {
       }
     });
 
-    // deleteImages.forEach((e) => {
-    //   if (e.name === previewImage) {
-    //     formData.append("preview", e);
-    //   } else {
-    //     formData.append("image", e);
-    //   }
-    // });
-
-    // need to append each id to be delete
-    // need to append a new preview image if an existing image is choosen
-    // if a current preview is chosen it will be an integer.
-    // can filter for that...
-
+    if (typeof previewImage === "number") {
+      formData.append("preview", previewImage);
+    }
+    console.log('test', deleteImages)
+    deleteImages.forEach((e) => {
+      formData.append("delete", e);
+    });
     setImageLoading(true);
 
     const listingInformation = {

@@ -15,7 +15,6 @@ function CreateListingForm() {
   const [imageFiles, setImageFiles] = useState([]);
   const [previewImage, setPreviewImage] = useState("");
   const [imageLoading, setImageLoading] = useState(false);
-  console.log('heythere', previewImage)
   const [errors, setErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
 

@@ -51,7 +51,6 @@ function Navigation() {
     }
   }, [name]);
 
-  console.log("testing search", searchResult);
 
   // I want to make list your keeb redirect to log in if not session User
   return (

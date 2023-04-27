@@ -7,7 +7,6 @@ import Navigation from "../../Navigation";
 function ListingSearchResults({listing, setSearchResult, setName}) {
 const dispatch = useDispatch()
 const history = useHistory()
-    console.log(listing)
     const handleListingClick = (e) => {
         e.preventDefault()
         history.push(`/listing/${listing.id}`)
@@ -18,7 +17,6 @@ const history = useHistory()
   const previewImage =  listing.listing_images.filter((e)=> {
         return e.is_display_image === true
     })
-    console.log(previewImage)
   return (
     <div onClick={handleListingClick} className="search-result-listing-card-container">
         <img src={previewImage[0].image} className="search-result-listing-image"/>

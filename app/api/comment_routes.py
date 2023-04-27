@@ -112,7 +112,7 @@ def delete_like(id):
     for remove_user in comment.liked:
         if remove_user.id == user.id:
             comment.liked.remove(user)
-
+# test removal of one for loop
     for remove_comment in user.user_likes:
         if remove_comment.id == comment.id:
             user.user_likes.remove(comment)

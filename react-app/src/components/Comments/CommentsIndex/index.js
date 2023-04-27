@@ -14,7 +14,6 @@ import "./CommentsIndex.css";
 const CommentCard = ({ comment, currentListing }) => {
   const dispatch = useDispatch();
 
-  console.log("okay", comment);
   const { setModalContent } = useModal();
   const sessionUser = useSelector((state) => state.session.user);
 

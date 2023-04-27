@@ -161,9 +161,17 @@ def create_comment(listing_id):
 def update_listing(listing_id):
     listing = Listing.query.get(listing_id)
     listing_str = request.form.to_dict()['listing']
+
     listing_dictionary = json.loads(listing_str)
     listing_images = request.files.getlist('image')
-    preview_image = request.files.getlist('preview')[0]
+
+    delete_images = request.form.getlist('delete')
+    delete_image_ids = [int(id) for id in delete_images]
+    pog(delete_image_ids)
+    preview_image = request.files.getlist('preview')
+    pog(preview_image)
+
+   
 
     form = ListingForm(**listing_dictionary)
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -174,36 +182,59 @@ def update_listing(listing_id):
         listing.description=form.data['description']
 
 
-        preview_image.filename = get_unique_filename(preview_image.filename)
-        upload = upload_file_to_s3(preview_image)
-        if "url" not in upload:
-            return {"error": "url not here"}
-        url = upload["url"]
-        update_preview_image = Image(
-        listing_id=listing.id,
-        owner_id=form.data["owner_id"],
-        image=url,
-        is_display_image=True
-        )
-        db.session.add(update_preview_image)
+# todo change the is_display_image false on the old preview image
 
-        for file in listing_images:
-            file.filename = get_unique_filename(file.filename)
-            upload = upload_file_to_s3(file)
-            if "url" not in upload:
-                return {"error": "url not here"}
-            url = upload["url"]
+    current_preview_list = Image.query.get(listing_id)
+    pog(current_preview_list)
 
-            new_image = Image(
-            listing_id=listing.id,
-            owner_id=form.data["owner_id"],
-            image=url,
-            )
+    # if len(preview_image) != 0:
+        
 
-            db.session.add(new_image)
-        db.session.commit()
 
-        return listing.to_dict()
+
+
+
+
+    # else:
+    #     preview_id = int(request.form.getlist('preview')[0])
+
+
+    #     if preview_id 
+    #     pog(preview_image)
+
+
+
+
+    #     preview_image.filename = get_unique_filename(preview_image.filename)
+    #     upload = upload_file_to_s3(preview_image)
+    #     if "url" not in upload:
+    #         return {"error": "url not here"}
+    #     url = upload["url"]
+    #     update_preview_image = Image(
+    #     listing_id=listing.id,
+    #     owner_id=form.data["owner_id"],
+    #     image=url,
+    #     is_display_image=True
+    #     )
+    #     db.session.add(update_preview_image)
+
+    #     for file in listing_images:
+    #         file.filename = get_unique_filename(file.filename)
+    #         upload = upload_file_to_s3(file)
+    #         if "url" not in upload:
+    #             return {"error": "url not here"}
+    #         url = upload["url"]
+
+    #         new_image = Image(
+    #         listing_id=listing.id,
+    #         owner_id=form.data["owner_id"],
+    #         image=url,
+    #         )
+
+    #         db.session.add(new_image)
+    #     db.session.commit()
+
+    #     return listing.to_dict()
     return 'BAD DATA'
 
 
