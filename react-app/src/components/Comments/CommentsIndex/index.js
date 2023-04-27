@@ -34,12 +34,14 @@ const CommentCard = ({ comment, currentListing }) => {
 
   //todo if user not logged in they can see the likes
   //todo  but clicking like asks them to log in or redirects etc...
-
-  
-
-  const userLiked = comment.liked.filter((e) => {
-    return e.id === sessionUser.id;
-  });
+  let userLiked;
+  if (sessionUser) {
+    userLiked = comment.liked.filter((e) => {
+      return e.id === sessionUser.id;
+    });
+  } else {
+    userLiked = comment.liked;
+  }
 
   const handleLikeComment = async (e) => {
     e.preventDefault();
@@ -63,19 +65,28 @@ const CommentCard = ({ comment, currentListing }) => {
         alt="profile"
       />
       <div>{comment.comment_owner.username}</div>
-      <div
-        className="comment-like-container"
-        onClick={!userLiked.length ? handleLikeComment : handleUnlikeComment}
-      >
-        <div className="comment-like-total">{comment.liked.length} </div>
+      {sessionUser && (
+        <div
+          className="comment-like-container"
+          onClick={!userLiked.length ? handleLikeComment : handleUnlikeComment}
+        >
+          <div className="comment-like-total">{comment.liked.length} </div>
 
-        <FontAwesomeIcon
-          icon={faThumbsUp}
-          className={!userLiked.length ? "comment-unlike" : "comment-liked"}
-        />
-      </div>
+          <FontAwesomeIcon
+            icon={faThumbsUp}
+            className={!userLiked.length ? "comment-unlike" : "comment-liked"}
+          />
+        </div>
+      )}
+      {!sessionUser && (
+        <div className="comment-like-container">
+          <div className="comment-like-total">{comment.liked.length} </div>
 
-      {sessionUser.id === comment.owner_id && (
+          <FontAwesomeIcon icon={faThumbsUp} className="comment-unlike" />
+        </div>
+      )}
+
+      {sessionUser && sessionUser.id === comment.owner_id && (
         <div className="comment-buttons">
           <button onClick={handleEditComment}>Edit</button>
           <button onClick={handleDeleteComment}>Delete</button>

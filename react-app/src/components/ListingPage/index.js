@@ -22,6 +22,7 @@ const ListingPage = () => {
     dispatch(getAllCommentsPerListingThunk(listingId));
   }, [dispatch, listingId]);
 
+  
   const currentListing = useSelector((state) => state.listings)[listingId];
 
   const allComments = useSelector((state) => Object.values(state.comments).filter((e)=> e.listing_id));
