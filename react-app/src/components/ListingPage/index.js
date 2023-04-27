@@ -31,6 +31,9 @@ const ListingPage = () => {
     return <h1>LOADING...</h1>;
   }
 
+  if (!currentListing.listing_images){
+    return <h1>LOADING...</h1>;
+  }
   const displayImageArr = currentListing.listing_images.filter(
     (e) => e.is_display_image === true
   );
