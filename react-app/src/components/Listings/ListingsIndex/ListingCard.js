@@ -18,7 +18,6 @@ const ListingCard = ({ listing }) => {
   const handleCardClick = (e) => {
     e.preventDefault();
     dispatch(getListingByIdThunk(listing.id));
-    dispatch(clearComment())
     dispatch(getAllCommentsPerListingThunk(listing.id));
     history.push(`/listing/${listing.id}`);
   };

@@ -24,9 +24,10 @@ const ListingPage = () => {
 
   const currentListing = useSelector((state) => state.listings)[listingId];
 
-  const allComments = useSelector((state) => Object.values(state.comments));
+  const allComments = useSelector((state) => Object.values(state.comments).filter((e)=> e.listing_id));
 
-  console.log('uhhhhh', allComments)
+
+  // console.log('uhhhhh', allComments)
 
 
   if (!currentListing) {
