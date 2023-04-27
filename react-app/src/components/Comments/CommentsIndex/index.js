@@ -1,11 +1,15 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./CommentsIndex.css";
 import { deleteCommentThunk } from "../../../store/comment";
 import { useModal } from "../../../context/Modal";
 import EditCommentModal from "../UpdateComment";
+import "./CommentsIndex.css";
+
+
 const CommentCard = ({ comment, currentListing }) => {
   const dispatch = useDispatch();
+
+  console.log('okay', comment)
   const { setModalContent } = useModal();
   const sessionUser = useSelector((state) => state.session.user);
 

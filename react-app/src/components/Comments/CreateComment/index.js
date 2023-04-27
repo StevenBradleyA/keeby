@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
-function CreateComment({ currentListing }) {
+function CreateComment({ listingId }) {
   const dispatch = useDispatch();
   const [comment, setComment] = useState("");
   const [errors, setErrors] = useState({});
   const sessionUser = useSelector((state) => state.session.user);
   const [hasSubmitted, setHasSubmitted] = useState(false);
-
+  const currentListingId = Number(listingId)
   const handleInputErrors = () => {
     const errorsObj = {};
     if (comment.length === 0) {
@@ -32,10 +32,10 @@ function CreateComment({ currentListing }) {
     if (!Object.values(errors).length) {
       const commentInformation = {
         owner_id: sessionUser.id,
-        listing_id: currentListing.id,
+        listing_id: currentListingId,
         content: comment,
       };
-      dispatch(createCommentThunk(currentListing.id, commentInformation));
+      dispatch(createCommentThunk(currentListingId, commentInformation));
       setComment("");
     }
     setHasSubmitted(true);

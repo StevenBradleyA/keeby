@@ -26,6 +26,9 @@ const ListingPage = () => {
 
   const allComments = useSelector((state) => Object.values(state.comments));
 
+  console.log('uhhhhh', allComments)
+
+
   if (!currentListing) {
     return <h1>LOADING...</h1>;
   }
@@ -99,7 +102,7 @@ const ListingPage = () => {
             <CommentCard key={comment.id} comment={comment} currentListing={currentListing}/>
           ))}
           <div className="create-comment-container">
-            <CreateComment currentListing={currentListing} />
+            <CreateComment listingId={listingId} />
           </div>
         </div>
       </div>

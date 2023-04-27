@@ -296,14 +296,10 @@ width: 10rem; */
   bottom: 22%;
 }
 
-
-.signup-modal-title{
-position: relative;
-left: 35%;
-
-
+.signup-modal-title {
+  position: relative;
+  left: 35%;
 }
-
 
 .sign-up-submit {
   background: none;
@@ -311,18 +307,17 @@ left: 35%;
   border: none;
   color: rgb(0, 255, 247);
   font-size: 20px;
-  position:absolute;
+  position: absolute;
   left: 41%;
   top: 85%;
 }
 
-.sign-up-submit:hover{
-  color: red
+.sign-up-submit:hover {
+  color: red;
 }
 
-
-.error-text-signup{
-  color:red;
+.error-text-signup {
+  color: red;
   position: absolute;
   top: 10px;
 }
