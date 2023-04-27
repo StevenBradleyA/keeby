@@ -4,7 +4,7 @@ from sqlalchemy.sql import text
 
 # Adds a demo user, you can add other users here if you want
 demo = User(
-    username='Demo', password='password', email='demo@aa.io', first_name="Demo", last_name="Lition", profile_picture="https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg", daily_driver="Keychron Q8", keycaps="Enjoy-PBT Japan", switches="Neopolitan Ice Creams" )
+    username='Demo', password='password', email='demo@aa.io', first_name="Demo", last_name="Lition", profile_picture="https://cdn.costumewall.com/wp-content/uploads/2017/08/hackerman.jpg", daily_driver="Keychron Q8", keycaps="Enjoy-PBT Japan", switches="Neopolitan Ice Creams" )
 spongebob = User(
     username='spongebob',  password='password', email='spongebob@aa.io', first_name="Spongebob", last_name="Squarepants", profile_picture="https://www.freepnglogos.com/uploads/spongebob-png/ish-twitter-quot-redrew-favorite-scene-spongebob-9.png", daily_driver="", keycaps="", switches="") 
 patrick = User(
