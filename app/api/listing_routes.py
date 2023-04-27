@@ -51,7 +51,6 @@ def search_all_listings(name):
 # Returns all comments for a single listing
 
 @listing_routes.route('/<int:listing_id>/comments')
-@login_required
 def get_listing_comments(listing_id):
     comments = Comment.query.filter(Comment.listing_id == listing_id).all()
     if not comments: 
