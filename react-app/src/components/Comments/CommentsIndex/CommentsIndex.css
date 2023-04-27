@@ -1,0 +1,31 @@
+.comment-image-container{
+    height: 20px;
+    width: 20px;
+}
+
+
+
+
+
+
+
+/*   -----------------              likes            --------------------- */
+
+
+.comment-like-total{
+    font-size: 12px;
+}
+
+.comment-like-container{
+    display: flex;
+    gap: 5px;
+}
+
+.comment-unlike{
+    font-size: 12px;
+}
+
+.comment-liked{
+    font-size: 12px;
+    color: red;
+}

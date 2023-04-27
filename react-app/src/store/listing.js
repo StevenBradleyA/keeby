@@ -55,8 +55,7 @@ export const createListingThunk = (newListingData) => async (dispatch) => {
   try {
     const response = await fetch(`/api/listings`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newListingData),
+      body: newListingData,
     });
 
     const data = await response.json();
@@ -69,13 +68,12 @@ export const createListingThunk = (newListingData) => async (dispatch) => {
   }
 };
 
-export const updateChannelThunk =
+export const updateListingThunk =
   (newListingData, listingId) => async (dispatch) => {
     try {
       const response = await fetch(`/api/listings/${listingId}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newListingData),
+        body: newListingData,
       });
       const data = await response.json();
       const normalizedListingData = {};
@@ -87,7 +85,7 @@ export const updateChannelThunk =
     }
   };
 
-export const deleteChannelThunk = (listingId) => async (dispatch) => {
+export const deleteListingThunk = (listingId) => async (dispatch) => {
   const response = await fetch(`/api/listings/${listingId}`, {
     method: "DELETE",
   });

@@ -13,8 +13,6 @@ const ListingsIndex = () => {
 
   const allListings = useSelector((state) => Object.values(state.listings));
 
-  // console.log("hello", allListings);
-
   return (
     <div className="listing-index-container">
       {allListings.map((listing) => (

@@ -1,0 +1,260 @@
+/* ------------      Hacking Time       --------------- */
+
+/* .hacking-time{
+  margin: 0;
+  padding: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+z-index: 5;
+} */
+
+
+.profile-page-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  position: absolute;
+  /* height: 100%; */
+  width: 60%;
+  bottom: 160px;
+  left: 240px;
+}
+
+/* ------------- Universal text for this page ------------- */
+
+.profile-page-text {
+  color: #00dd00;
+  font-family: "VT323", Courier;
+  font-size: 20px;
+}
+
+/*  --------------      Individual          --------------              */
+
+.profile-page-icon {
+  position: relative;
+  bottom: 20px;
+  left: 10px;
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.profile-page-icon-letter {
+  position: relative;
+  bottom: 20px;
+  left: 10px;
+  height: 200px;
+  width: 200px;
+  z-index: -1;
+}
+
+.edit-profile-picture {
+  position: relative;
+  bottom: 22px;
+  height: 20px;
+  left: 0px;
+  color: #da0000;
+}
+
+.profile-page-username {
+  position: relative;
+  bottom: 52px;
+  height: 20px;
+}
+
+#profile-page-edit-modal {
+  position: relative;
+  left: 500px;
+  bottom: 18px;
+  color: #da0000;
+}
+
+#profile-page-edit-keeb-modal {
+  position: relative;
+  left: 732px;
+  bottom: 82px;
+  color: #da0000;
+}
+
+
+
+#optional-keeb-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* align-content: center; */
+}
+#keyboard-main-text{
+  position: relative;
+  bottom: 25px;
+  right: 52px;
+}
+
+.delete-yeet-profile{
+  position: relative;
+  left:38%;
+  color: red;
+  border: none;
+  padding: none;
+  background: none;
+  font-family: "VT323", Courier;
+  font-size: 20px;
+}
+
+
+
+
+
+/* -------------         Moving Title           ----------------- */
+.profile-title-text {
+  z-index: 3;
+  position: relative;
+  /* color: #1fff66; */
+  color: #00dd00;
+  font-family: "VT323", Courier;
+  font-size: 50px;
+  text-align: center;
+  z-index: 1;
+}
+
+.profile-title-text::after {
+  content: "";
+  position: absolute;
+  animation: periods 1s linear infinite;
+}
+
+@keyframes periods {
+  25% {
+    content: ".";
+  }
+
+  50% {
+    content: "..";
+  }
+
+  75% {
+    content: "...";
+  }
+}
+
+/* -------------         Scanlines && Flicker           ----------------- */
+
+@keyframes blink {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.15795;
+  }
+  5% {
+    opacity: 0.31511;
+  }
+  10% {
+    opacity: 0.94554;
+  }
+  15% {
+    opacity: 0.2469;
+  }
+  20% {
+    opacity: 0.62031;
+  }
+  25% {
+    opacity: 0.0293;
+  }
+  30% {
+    opacity: 0.00899;
+  }
+  35% {
+    opacity: 0.5344;
+  }
+  40% {
+    opacity: 0.12778;
+  }
+  45% {
+    opacity: 0.52042;
+  }
+  50% {
+    opacity: 0.3823;
+  }
+  55% {
+    opacity: 0.2198;
+  }
+  60% {
+    opacity: 0.9383;
+  }
+  65% {
+    opacity: 0.86615;
+  }
+  70% {
+    opacity: 0.68695;
+  }
+  75% {
+    opacity: 0.55749;
+  }
+  80% {
+    opacity: 0.96984;
+  }
+  85% {
+    opacity: 0.0361;
+  }
+  90% {
+    opacity: 0.24467;
+  }
+  95% {
+    opacity: 0.08351;
+  }
+  100% {
+    opacity: 0.54813;
+  }
+}
+
+.retro-scanlines {
+  height: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  z-index: 3;
+}
+/* scanlines are just made from varying linear-gradient values */
+/* need a content property for before/after  */
+/* need pointer events so I can still click my modals! */
+.retro-scanlines:before {
+  background: linear-gradient(#101010 50%, rgba(16, 16, 16, 0.2) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.03),
+      rgba(0, 255, 0, 0.02),
+      rgba(0, 0, 255, 0.03)
+    );
+  background-size: 100% 2px, 8px 100%;
+  content: "";
+  display: block;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+}
+
+.retro-scanlines:after {
+  animation: flicker 0.9s infinite;
+  background: rgba(16, 16, 16, 0.2);
+  content: "";
+  display: block;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+}

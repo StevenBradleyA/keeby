@@ -1,18 +1,46 @@
-.listing-index-container{
-    position: absolute;
+.listing-index-container {
+  /* position: absolute;
     top: 3.5rem;
     width: 80%;
     padding-top: 5%;
     padding-left: 5%;
     padding-right: 5%;
-    background-color: rgb(199, 252, 199);
     object-fit: cover;
+     */
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  align-items: center;
 }
 
+.listing-card-container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-.listing-card-container{
-    width: 75%;
+.home-page-display-image {
+  margin-top: 10px;
 
+  height: 225px;
+  width: 75%;
+  object-fit: cover;
+}
 
+.home-page-description {
+  margin-top: 10px;
+  width: 75%;
+}
 
+.read-more-button {
+  margin-top: 10px;
+}
+
+.home-page-listing-title {
+  font-size: 25px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

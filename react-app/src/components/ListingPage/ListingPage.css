@@ -1,0 +1,41 @@
+.single-listing-page-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.listing-page-display-image {
+  height: 250px;
+  width: 60%;
+  object-fit: cover;
+}
+
+.listing-page-additional-image {
+  height: 250px;
+  width: 60%;
+  object-fit: cover;
+}
+
+.listing-page-description {
+  width: 60%;
+}
+
+/* .listing-page-photo-gallery-title{} */
+.listing-page-photo-gallery-container {
+  display: flex;
+  width: 60%;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.listing-page-photo-gallery-each {
+  height: 80px;
+  width: 20%;
+  object-fit: cover;
+}
+
+.gallery-preview-modal{
+    height: 300px;
+    width: 500px;
+    object-fit: cover;
+}

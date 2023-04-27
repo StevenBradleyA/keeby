@@ -47,52 +47,58 @@ function SignupFormModal() {
   };
 
   return (
-    <>
-      <h1>Sign Up</h1>
+    <div className="signup-modal-container">
+      <h1 className="signup-modal-title">Sign Up</h1>
       <form onSubmit={handleSubmit}>
-        <ul>
           {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
+            <div className="error-text-signup" key={idx}>{error}</div>
           ))}
-        </ul>
         <label>
-          Email
+          Email     
           <input
             type="email"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </label>
+        <p></p>
         <label>
-          Username
+          Username     
           <input
             type="text"
+            placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
         </label>
+        <p></p>
         <label>
-          Password
+          Password     
           <input
             type="password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
+        <p></p>
         <label>
-          Confirm Password
+          Confirm Password     
           <input
             type="password"
+            placeholder="Must match password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
         </label>
+        <p></p>
         <label>
-          First Name
+          First Name     
           <input
             type="text"
             value={firstName}
@@ -101,8 +107,9 @@ function SignupFormModal() {
             required
           />
         </label>
+        <p></p>
         <label>
-          Last Name
+          Last Name     
           <input
             type="text"
             value={lastName}
@@ -111,9 +118,13 @@ function SignupFormModal() {
             required
           />
         </label>
-        <div>{`*optional* `} </div>
+        <p></p>
+        <button  className="sign-up-submit" type="submit">{`[ Sign Up ]`}</button>
+        <div className="optional-signup-container">
+        <div>{` --- optional --- `} </div>
+        <p></p>
         <label>
-          Profile Picture
+          Profile Picture     
           <input
             type="url"
             value={profilePicture}
@@ -122,8 +133,9 @@ function SignupFormModal() {
             required
           />
         </label>
+        <p></p>
         <label>
-          Daily Driver
+          Daily Driver     
           <input
             type="text"
             placeholder="Share your daily use keeb!"
@@ -132,8 +144,9 @@ function SignupFormModal() {
             required
           />
         </label>
+        <p></p>
         <label>
-          Keycaps
+          Keycaps     
           <input
             type="text"
             placeholder="what caps are on it?"
@@ -143,7 +156,7 @@ function SignupFormModal() {
           />
         </label>
         <label>
-          Switches
+          Switches     
           <input
             type="text"
             placeholder="what switches are on it?"
@@ -152,9 +165,10 @@ function SignupFormModal() {
             required
           />
         </label>
-        <button type="submit">Sign Up</button>
+        </div>
+        
       </form>
-    </>
+    </div>
   );
 }
 

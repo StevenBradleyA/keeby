@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../store/session";
+import "./Navigation.css"
 
 function UserIconModal() {
   const history = useHistory();
@@ -11,9 +12,9 @@ function UserIconModal() {
   const sessionUser = useSelector((state) => state.session.user);
 
   const handleProfileClick = (e) => {
-    // e.preventDefault();
-    // history.push(`/profile/${sessionUser.id}`);
-    // closeModal();
+    e.preventDefault();
+    history.push(`/profile/${sessionUser.id}`);
+    closeModal();
   };
 
   const handleLogOut = (e) => {
@@ -23,8 +24,14 @@ function UserIconModal() {
     closeModal();
   };
 
+  const handleManageListingsClick = (e) => {
+    e.preventDefault();
+    history.push(`/listings/manage`);
+    closeModal();
+  };
+
   return (
-    <div className="user-icon-modal-container">
+    <div id="user-icon-modal-container">
       <div className="user-image-container-modal">
         <div className="image-container-2">
           <img
@@ -42,22 +49,21 @@ function UserIconModal() {
           />
         </div>
         <div className="user-modal-name-status-container">
-          <div id="profile-names" className="title-text">
-            {sessionUser.first_name}
+            {`${sessionUser.first_name} `}
             {sessionUser.last_name}
-          </div>
         </div>
       </div>
-      <button className="user-icon-modal-button" onClick={handleProfileClick}>
-        Manage My Profile
+      <button id="manage-profile-button" className="button-styling" onClick={handleProfileClick}>
+        {`[ Manage My Profile ]`}
       </button>
-      <button className="user-icon-modal-button">
-        Manage My Listings
+      <button id="manage-listings-button" className="button-styling" onClick={handleManageListingsClick}>
+        {`[ Manage My Listings ]`}
       </button>
       <button
-        className="user-icon-modal-button"
+      id="log-out-button"
+        className="button-styling"
         onClick={handleLogOut}
-      >{`Log out`}</button>
+      >{`[ Log out ]`}</button>
     </div>
   );
 }
