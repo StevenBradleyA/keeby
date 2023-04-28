@@ -9,6 +9,7 @@ import CreateListingForm from "./components/Listings/CreateListing";
 import ProfilePage from "./components/ProfilePage";
 import ManageListingsIndex from "./components/Listings/ManageListingsPage";
 import EditListingPage from "./components/Listings/UpdateListing";
+import TransitionPage from "./components/TransitionPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route path="/profile/:userId">
             <ProfilePage />
+          </Route>
+          <Route path="/hackTime/:transitionId">
+            <TransitionPage />
           </Route>
           <Route path="/listings/manage">
             <ManageListingsIndex />

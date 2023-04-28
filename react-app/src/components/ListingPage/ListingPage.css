@@ -29,7 +29,6 @@
 #price-header {
   font-size: 14px;
   color: #676767;
-
 }
 
 .listing-page-display-image {
@@ -54,11 +53,11 @@
 /*  ------------          Photo Gallery        ------------- */
 
 .listing-page-photo-gallery-title {
-letter-spacing: 10px; 
+  letter-spacing: 10px;
   font-size: 1.5rem;
   text-transform: uppercase;
   color: #ffffff;
-  animation: red-flash 1s ease-in 10s infinite alternate;
+  animation: red-flash 1s ease-in infinite alternate;
 }
 
 @keyframes red-flash {
@@ -69,7 +68,6 @@ letter-spacing: 10px;
     color: rgb(221, 0, 0);
   }
 }
-
 
 .listing-page-photo-gallery-container {
   display: flex;
