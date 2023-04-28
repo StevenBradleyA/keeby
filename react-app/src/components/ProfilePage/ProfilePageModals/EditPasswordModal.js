@@ -68,6 +68,7 @@ function EditPasswordModal({ sessionUser }) {
             className="text-input-login"
             type="text"
             value={password}
+            placeholder="enter a new password"
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
@@ -80,6 +81,7 @@ function EditPasswordModal({ sessionUser }) {
             className="text-input-login"
             type="text"
             value={confirmPassword}
+            placeholder="must match password"
             onChange={(e) => setCofirmPassword(e.target.value)}
           />
         </label>

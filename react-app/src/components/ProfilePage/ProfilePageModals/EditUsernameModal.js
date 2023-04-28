@@ -8,7 +8,7 @@ import { refreshUser } from "../../../store/session";
 function EditUsernameModal({ sessionUser }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState(sessionUser.username);
   const [errors, setErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const { closeModal } = useModal();

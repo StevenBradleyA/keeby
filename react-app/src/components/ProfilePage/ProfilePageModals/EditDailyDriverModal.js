@@ -8,9 +8,9 @@ import { refreshUser } from "../../../store/session";
 function EditDailyDriverModal({ sessionUser }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [dailyDriver, setDailyDriver] = useState("");
-  const [keycaps, setKeycaps] = useState("");
-  const [switches, setSwitches] = useState("");
+  const [dailyDriver, setDailyDriver] = useState(sessionUser.daily_driver);
+  const [keycaps, setKeycaps] = useState(sessionUser.keycaps);
+  const [switches, setSwitches] = useState(sessionUser.switches);
   const [errors, setErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const { closeModal } = useModal();
