@@ -1,10 +1,96 @@
-.manage-listings-container{
+/* .manage-listing-title{
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+} */
+
+.manage-listing-full-page-container {
+  display: flex;
 }
 
-/* .manage-listing-button-containers{} */
-/* .manage-listing-update-button{} */
-/* .manage-listing-delete-button{} */
+.manage-listings-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.manage-listing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 350px;
+  margin: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.manage-listing-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px #0fa005;
+}
+
+.manage-listing-image {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+}
+.manage-listing-name {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: all 0.3s ease;
+}
+
+.manage-listing-card:hover .manage-listing-name {
+  top: 20px;
+  color: #00dd00;
+  background-image: url("../../../media/matrix.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.manage-listing-button-containers {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 20px;
+}
+.manage-listing-update-button,
+.manage-listing-delete-button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.manage-listing-update-button {
+  background-color: #393939;
+  color: #00dd00;
+  z-index: 3;
+}
+
+.manage-listing-delete-button {
+  background-color: #393939;
+  color: #f44336;
+  z-index: 3;
+}
+
+.manage-listing-update-button:hover,
+.manage-listing-delete-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}

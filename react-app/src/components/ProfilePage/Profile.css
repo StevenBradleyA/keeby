@@ -1,13 +1,6 @@
 /* ------------      Hacking Time       --------------- */
 
-/* .hacking-time{
-  margin: 0;
-  padding: 0;
-width: 100%;
-height: 100%;
-object-fit: cover;
-z-index: 5;
-} */
+
 
 
 .profile-page-container {
@@ -220,7 +213,7 @@ z-index: 5;
   top: 0;
   left: 0;
   width: 1px;
-  z-index: 3;
+  z-index: 25;
 }
 /* scanlines are just made from varying linear-gradient values */
 /* need a content property for before/after  */
@@ -242,7 +235,7 @@ z-index: 5;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 3;
+  z-index: 25;
 }
 
 .retro-scanlines:after {
@@ -256,5 +249,5 @@ z-index: 5;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 3;
+  z-index: 25;
 }

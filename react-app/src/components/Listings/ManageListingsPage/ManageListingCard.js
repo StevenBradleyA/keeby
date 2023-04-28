@@ -22,7 +22,7 @@ const ManageListingCard = ({ listing }) => {
   );
 
   const handleEditListing = () => {
-    history.push(`/listing/${listing.id}/edit`, {listing: listing})
+    history.push(`/listing/${listing.id}/edit`, { listing: listing });
   };
 
   const handleDeleteListing = () => {
@@ -33,23 +33,29 @@ const ManageListingCard = ({ listing }) => {
   // are more sizeable.
   return (
     <div className="manage-listings-container">
-      <div className="manage-listing-button-containers">
-        <button className="manage-listing-update-button" onClick={handleEditListing}>Update</button>
-        <button className="manage-listing-delete-button" onClick={handleDeleteListing}>Delete</button>
-      </div>
-      <div className="listing-card-container" onClick={handleCardClick}>
-        <div className="home-page-listing-title">{listing.name}</div>
+      <div className="manage-listing-card">
+        <div className="manage-listing-name">{listing.name}</div>
         <img
-          className="home-page-display-image"
+          onClick={handleCardClick}
+          className="manage-listing-image"
           alt="display"
           src={displayImageArr[0].image}
         />
-        <div className="home-page-description">{`${listing.description.slice(
-          0,
-          350
-        )}...`}</div>
-        <button className="read-more-button">Read More</button>
-        <p></p>
+
+        <div className="manage-listing-button-containers">
+          <button
+            className="manage-listing-update-button"
+            onClick={handleEditListing}
+          >
+            {`[ Update ]`}
+          </button>
+          <button
+            className="manage-listing-delete-button"
+            onClick={handleDeleteListing}
+          >
+            {`[ Delete ]`}
+          </button>
+        </div>
       </div>
     </div>
   );

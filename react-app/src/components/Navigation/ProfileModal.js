@@ -10,10 +10,10 @@ function UserIconModal() {
   const dispatch = useDispatch()
   const { closeModal } = useModal();
   const sessionUser = useSelector((state) => state.session.user);
-
+  const transitionId = 1
   const handleProfileClick = (e) => {
     e.preventDefault();
-    history.push(`/profile/${sessionUser.id}`);
+    history.push(`/hackTime/${transitionId}`);
     closeModal();
   };
 
