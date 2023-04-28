@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllListingsThunk } from "../../../store/listing";
 import ManageListingCard from "./ManageListingCard";
-
+import "./ManageListings.css"
 const ManageListingsIndex = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -17,12 +17,17 @@ const ManageListingsIndex = () => {
   )
 
   return (
-    <div className="listing-index-container">
-      <h1>Manage Your Listings</h1>
+    <>
+      <h1 className="manage-listing-title">Manage Your Listings</h1>
+    <div className="manage-listing-full-page-container">
       {ownedListings.map((listing) => (
         <ManageListingCard key={listing.id} listing={listing} />
       ))}
     </div>
+    
+    
+    
+    </>
   );
 };
 

@@ -15,7 +15,7 @@ function TransitionPage() {
 
       const pogPlay = setTimeout(() => {
           history.push(`/profile/${sessionUser.id}`);
-      }, 4000);
+      }, 3500);
 
       return (
         () => {

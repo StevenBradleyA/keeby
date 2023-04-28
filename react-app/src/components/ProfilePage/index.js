@@ -66,9 +66,6 @@ const ProfilePage = () => {
 
   return (
     <>
-      {/* <div className="hacking-time">
-        <video src={hackTime} autoPlay loop muted/>
-      </div> */}
       <div className="retro-scanlines"></div>
 
       <h1 className="profile-title-text">{text}</h1>
