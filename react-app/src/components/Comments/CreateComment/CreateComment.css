@@ -1,0 +1,14 @@
+.comment-input-box {
+  background-color: #2d2d2d;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 9px;
+  width: 95%;
+}
+
+.comment-input-box:focus {
+  outline: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}

@@ -88,19 +88,19 @@ const CommentCard = ({ comment, currentListing }) => {
               !userLiked.length ? handleLikeComment : handleUnlikeComment
             }
           >
-            <div className="comment-like-total">{comment.liked.length} </div>
-
             <FontAwesomeIcon
               icon={faThumbsUp}
               className={!userLiked.length ? "comment-unlike" : "comment-liked"}
             />
+            <div className="comment-like-total">{comment.liked.length} </div>
+
           </div>
         )}
         {!sessionUser && (
           <div className="comment-like-container">
+            <FontAwesomeIcon icon={faThumbsUp} className="comment-unlike" />
             <div className="comment-like-total">{comment.liked.length} </div>
 
-            <FontAwesomeIcon icon={faThumbsUp} className="comment-unlike" />
           </div>
         )}
         {sessionUser && sessionUser.id === comment.owner_id && (

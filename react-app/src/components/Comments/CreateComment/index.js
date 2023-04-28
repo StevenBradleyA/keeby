@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { createCommentThunk } from "../../../store/comment";
 import { useDispatch, useSelector } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import LoginFormModal from "../../Navigation/LoginModal";
 import { useModal } from "../../../context/Modal";
+import "./CreateComment.css";
 
 function CreateComment({ listingId }) {
   const dispatch = useDispatch();
@@ -65,12 +64,7 @@ function CreateComment({ listingId }) {
             className="create-message-button"
             type="submit"
             disabled={hasSubmitted && Object.values(errors).length > 0}
-          >
-            <FontAwesomeIcon
-              icon={faPaperPlane}
-              className="create-message-icon"
-            />
-          </button>
+          ></button>
         </form>
       )}
       {!sessionUser && (
@@ -84,12 +78,7 @@ function CreateComment({ listingId }) {
             className="create-message-button"
             type="submit"
             // disabled={true}
-          >
-            <FontAwesomeIcon
-              icon={faPaperPlane}
-              className="create-message-icon"
-            />
-          </button>
+          ></button>
         </form>
       )}
     </div>

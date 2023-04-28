@@ -51,6 +51,18 @@
 
 .comments-container{
   width: 70%;
-  background-color: rgb(69, 177, 174);
 
+}
+
+.create-comment-container{
+  width: 100%;
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.create-message-button{
+background:none;
+padding:none;
+border: none;
 }

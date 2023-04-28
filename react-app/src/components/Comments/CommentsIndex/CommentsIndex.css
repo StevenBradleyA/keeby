@@ -1,28 +1,27 @@
 /*               main  containers  */
 
 .comment-card-container {
-  background-color: green;
+  /* background-color: green; */
   display: flex;
-  border-color: blueviolet;
+  /* border-color: blueviolet; */
   margin-top: 5px;
   margin-bottom: 10px;
   word-wrap: break-word;
 }
 
-.comment-container-left {
-  background-color: red;
+/* .comment-container-left { */
+  /* background-color: red; */
   /* height: 60px;
 width: 50px; */
-}
+/* } */
 
 .comment-container-right {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  word-wrap: break-word;
   padding-left: 10px;
   overflow: hidden;
-width: 100%;
+  width: 100%;
 }
 
 .comment-like-edit-delete {
@@ -67,7 +66,6 @@ width: 100%;
   border: none;
   position: relative;
   bottom: 25px;
-
 }
 
 .comment-content {
@@ -99,5 +97,7 @@ width: 100%;
 
 .comment-liked {
   font-size: 12px;
-  color: red;
+  color: rgba(255, 0, 255, 0.75);
+  border-radius: 100%;
+
 }
