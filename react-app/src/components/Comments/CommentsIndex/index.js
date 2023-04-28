@@ -32,6 +32,7 @@ const CommentCard = ({ comment, currentListing }) => {
     return <h1>LOADING...</h1>;
   }
 
+  // ! I WANT TO HAVE MOST LIKES AT TOP EZ SORT MAYBE 
   //todo if user not logged in they can see the likes
   //todo  but clicking like asks them to log in or redirects etc...
   let userLiked;
