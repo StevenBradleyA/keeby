@@ -146,7 +146,6 @@ width: 10rem; */
   border-radius: 10px;
   box-shadow: 0 0 10px #325aab;
   /* background-color: rgba(255, 255, 255, 0.1); */
-
 }
 
 /* #user-icon-modal-container::after{
@@ -160,8 +159,6 @@ width: 10rem; */
   left: 0;
   bottom: 0;
 } */
-
-
 
 .profile-icon-modal {
   width: 96px;
@@ -308,8 +305,8 @@ width: 10rem; */
   display: flex;
   flex-direction: column;
   position: absolute;
-  height: 375px;
-  width: 500px;
+  height: 400px;
+  width: 610px;
   background-image: url("../../media/redGrid.gif");
   background-size: cover;
   background-repeat: no-repeat;
@@ -317,17 +314,36 @@ width: 10rem; */
   padding-left: 10px;
   border-radius: 10px;
   box-shadow: 0 0 20px #faafaf;
+  margin: 0 auto;
+}
+
+.left-signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: absolute;
+  width: 60%;
+  right: 45%;
+  bottom: 25%;
 }
 
 .optional-signup-container {
   position: absolute;
-  left: 65%;
-  bottom: 22%;
+  width: 50%;
+  left: 50%;
+  bottom: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
 .signup-modal-title {
+  display: flex;
+  justify-content: center;
   position: relative;
-  left: 35%;
+  bottom: 5px;
 }
 
 .sign-up-submit {
@@ -336,9 +352,11 @@ width: 10rem; */
   border: none;
   color: rgb(0, 255, 247);
   font-size: 20px;
-  position: absolute;
-  left: 41%;
-  top: 85%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 240px;
+  margin: 0 auto;
 }
 
 .sign-up-submit:hover {
@@ -347,6 +365,6 @@ width: 10rem; */
 
 .error-text-signup {
   color: red;
-  position: absolute;
-  top: 10px;
+  position: relative;
+  bottom: 35px;
 }
