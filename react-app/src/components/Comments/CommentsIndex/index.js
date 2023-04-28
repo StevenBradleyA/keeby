@@ -32,9 +32,8 @@ const CommentCard = ({ comment, currentListing }) => {
     return <h1>LOADING...</h1>;
   }
 
-  // ! I WANT TO HAVE MOST LIKES AT TOP EZ SORT MAYBE 
-  //todo if user not logged in they can see the likes
-  //todo  but clicking like asks them to log in or redirects etc...
+  // ! I WANT TO HAVE MOST RECENT AT TOP EZ SORT MAYBE
+
   let userLiked;
   if (sessionUser) {
     userLiked = comment.liked.filter((e) => {
@@ -72,52 +71,49 @@ const CommentCard = ({ comment, currentListing }) => {
         />
       </div>
       <div className="comment-container-right">
-        
-          <div className="comment-username">
-            {comment.comment_owner.username}
-          </div>
-        
+        <div className="comment-username">{comment.comment_owner.username}</div>
+
         <div className="comment-content">
           <p>{comment.content}</p>
         </div>
-       
+
         <div className="comment-like-edit-delete">
-        {sessionUser && (
-          <div
-            className="comment-like-container"
-            onClick={
-              !userLiked.length ? handleLikeComment : handleUnlikeComment
-            }
-          >
-            <FontAwesomeIcon
-              icon={faThumbsUp}
-              className={!userLiked.length ? "comment-unlike" : "comment-liked"}
-            />
-            <div className="comment-like-total">{comment.liked.length} </div>
-
-          </div>
-        )}
-        {!sessionUser && (
-          <div className="comment-like-container">
-            <FontAwesomeIcon icon={faThumbsUp} className="comment-unlike" />
-            <div className="comment-like-total">{comment.liked.length} </div>
-
-          </div>
-        )}
-        {sessionUser && sessionUser.id === comment.owner_id && (
-          <div>
-            <button
-            className="button-styling"
-              id="comment-edit-button"
-              onClick={handleEditComment}
-            >{`[ Edit ]`}</button>
-            <button
-            className="button-styling"
-              id="comment-delete-button"
-              onClick={handleDeleteComment}
-            >{`[ Delete ]`}</button>
-          </div>
-        )}
+          {sessionUser && (
+            <div
+              className="comment-like-container"
+              onClick={
+                !userLiked.length ? handleLikeComment : handleUnlikeComment
+              }
+            >
+              <FontAwesomeIcon
+                icon={faThumbsUp}
+                className={
+                  !userLiked.length ? "comment-unlike" : "comment-liked"
+                }
+              />
+              <div className="comment-like-total">{comment.liked.length} </div>
+            </div>
+          )}
+          {!sessionUser && (
+            <div className="comment-like-container">
+              <FontAwesomeIcon icon={faThumbsUp} className="comment-unlike" />
+              <div className="comment-like-total">{comment.liked.length} </div>
+            </div>
+          )}
+          {sessionUser && sessionUser.id === comment.owner_id && (
+            <div>
+              <button
+                className="button-styling"
+                id="comment-edit-button"
+                onClick={handleEditComment}
+              >{`[ Edit ]`}</button>
+              <button
+                className="button-styling"
+                id="comment-delete-button"
+                onClick={handleDeleteComment}
+              >{`[ Delete ]`}</button>
+            </div>
+          )}
         </div>
       </div>
     </div>
