@@ -58,7 +58,7 @@ const CommentCard = ({ comment, currentListing }) => {
       <div className="comment-container-left">
         <img
           className={
-            sessionUser.profile_picture === null
+            comment.comment_owner.profile_picture === null
               ? "comment-icon-letter"
               : "comment-icon"
           }

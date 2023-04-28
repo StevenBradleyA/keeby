@@ -5,20 +5,20 @@ from flask_login import current_user, login_required
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from ..forms.listing_form import ListingForm
 from ..forms.comment_form import CommentForm
-from ..utils import pog 
+from ..utils import pog
 import json
 from .aws_helpers import (
     upload_file_to_s3, get_unique_filename, remove_file_from_s3)
 
 
-
 listing_routes = Blueprint('listings', __name__)
 
-#* ------------------------         FULL CRUD          --------------------------
+# * ------------------------         FULL CRUD          --------------------------
 
 # todo Need to look at all querys so they end with a .all or first or whates
 # * -----------  GET  --------------
 #  Returns all the listings
+
 
 @listing_routes.route("")
 def get_listings():
@@ -27,7 +27,7 @@ def get_listings():
 
 
 # * -----------  GET  --------------
-# Returns a single listing by its id 
+# Returns a single listing by its id
 
 @listing_routes.route('/<int:id>')
 def get_listing_by_id(id):
@@ -40,11 +40,12 @@ def get_listing_by_id(id):
 
 # * -----------  GET  --------------
 # Search all listings by their name
+
+
 @listing_routes.route("/<string:name>")
 def search_all_listings(name):
     listings = Listing.query.filter(Listing.name.like(f"{name}%")).all()
     return [listing.to_dict() for listing in listings]
-
 
 
 # * -----------  GET  --------------
@@ -53,10 +54,10 @@ def search_all_listings(name):
 @listing_routes.route('/<int:listing_id>/comments')
 def get_listing_comments(listing_id):
     comments = Comment.query.filter(Comment.listing_id == listing_id).all()
-    if not comments: 
-        return {
-            "message": "Listing not found",
-        }, 404
+    # if not comments:
+    #     return {
+    #         "message": "Listing not found",
+    #     }, 404
     return {"comments": [comment.to_dict() for comment in comments]}
 
 
@@ -89,14 +90,13 @@ def create_listing():
             return {"error": "url not here"}
         url = upload["url"]
         new_image = Image(
-            listing_id=new_listing.id, 
+            listing_id=new_listing.id,
             owner_id=form.data["owner_id"],
-            image= url,
+            image=url,
             is_display_image=True
         )
 
         db.session.add(new_image)
-
 
         for file in listing_images:
             file.filename = get_unique_filename(file.filename)
@@ -105,14 +105,14 @@ def create_listing():
                 return {"error": "url not here"}
             url = upload["url"]
             new_image = Image(
-                listing_id=new_listing.id, 
+                listing_id=new_listing.id,
                 owner_id=form.data["owner_id"],
-                image= url,
+                image=url,
             )
 
             db.session.add(new_image)
         db.session.commit()
-    
+
         return new_listing.to_dict()
     return 'BAD DATA'
 
@@ -128,9 +128,9 @@ def create_comment(listing_id):
     if form.validate_on_submit():
 
         new_comment = Comment(
-            owner_id = form.data['owner_id'], 
-            listing_id = listing_id,
-            content = form.data['content'],
+            owner_id=form.data['owner_id'],
+            listing_id=listing_id,
+            content=form.data['content'],
         )
 
         db.session.add(new_comment)
@@ -153,37 +153,36 @@ def update_listing(listing_id):
 
     delete_images = request.form.getlist('delete')
     delete_image_ids = [int(id) for id in delete_images]
-    
-    preview_image = request.files.getlist('preview')
 
+    preview_image = request.files.getlist('preview')
 
     form = ListingForm(**listing_dictionary)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        listing.owner_id=form.data['owner_id']
-        listing.name=form.data['name']
-        listing.price=form.data['price']
-        listing.description=form.data['description']
+        listing.owner_id = form.data['owner_id']
+        listing.name = form.data['name']
+        listing.price = form.data['price']
+        listing.description = form.data['description']
 
     else:
         return 'BAD DATA'
 
-    current_preview_image = Image.query.filter(Image.listing_id == listing_id, Image.is_display_image == True).first()
-
+    current_preview_image = Image.query.filter(
+        Image.listing_id == listing_id, Image.is_display_image == True).first()
 
     if len(preview_image) != 0:
         current_preview_image.is_display_image = False
-        
+
         preview_image.filename = get_unique_filename(preview_image.filename)
         upload = upload_file_to_s3(preview_image)
         if "url" not in upload:
             return {"error": "url not here"}
         url = upload["url"]
         update_preview_image = Image(
-        listing_id=listing.id,
-        owner_id=form.data["owner_id"],
-        image=url,
-        is_display_image=True
+            listing_id=listing.id,
+            owner_id=form.data["owner_id"],
+            image=url,
+            is_display_image=True
         )
         db.session.add(update_preview_image)
 
@@ -193,9 +192,8 @@ def update_listing(listing_id):
             current_preview_image.is_display_image = False
             new_display = Image.query.filter(Image.id == preview_id).first()
             new_display.is_display_image = True
-        
 
-    if len(listing_images): 
+    if len(listing_images):
         for file in listing_images:
             file.filename = get_unique_filename(file.filename)
             upload = upload_file_to_s3(file)
@@ -204,22 +202,19 @@ def update_listing(listing_id):
             url = upload["url"]
 
             new_image = Image(
-            listing_id=listing.id,
-            owner_id=form.data["owner_id"],
-            image=url,
+                listing_id=listing.id,
+                owner_id=form.data["owner_id"],
+                image=url,
             )
 
             db.session.add(new_image)
-
 
     if len(delete_image_ids):
         for image_id in delete_image_ids:
             goodbye_image = Image.query.filter(Image.id == image_id).first()
             remove_file_from_s3(goodbye_image.image)
             db.session.delete(goodbye_image)
-    
-    
-    
+
     db.session.commit()
 
     return listing.to_dict()
@@ -241,7 +236,7 @@ def delete_listing_by_id(listing_id):
             "message": "Forbidden",
             "status_code": 403
         }, 403
-    
+
     db.session.delete(listing)
     db.session.commit()
 

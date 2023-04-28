@@ -12,6 +12,7 @@ import CreateComment from "../Comments/CreateComment";
 const ListingPage = () => {
   const dispatch = useDispatch();
   const { listingId } = useParams();
+  const currentListingId = Number(listingId);
   const { setModalContent } = useModal();
 
   useEffect(() => {
@@ -25,7 +26,9 @@ const ListingPage = () => {
   const currentListing = useSelector((state) => state.listings)[listingId];
 
   const allComments = useSelector((state) =>
-    Object.values(state.comments).filter((e) => e.listing_id)
+    Object.values(state.comments).filter(
+      (e) => e.listing_id === currentListingId
+    )
   );
 
   if (!currentListing) {
@@ -102,7 +105,7 @@ const ListingPage = () => {
       </div>
       <p></p>
       <div className="comments-container">
-      <div className="create-comment-container">
+        <div className="create-comment-container">
           {`${allComments.length} COMMENTS`}
           <CreateComment listingId={listingId} />
         </div>
@@ -113,7 +116,6 @@ const ListingPage = () => {
             currentListing={currentListing}
           />
         ))}
-       
       </div>
     </div>
   );
