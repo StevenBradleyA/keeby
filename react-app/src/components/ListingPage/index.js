@@ -48,27 +48,22 @@ const ListingPage = () => {
     };
   };
 
-const currentListingNameArr = currentListing.name.split(' ')
-const smallTitle = currentListingNameArr.pop()
-const bigTitle = currentListingNameArr.join(' ')
+  const currentListingNameArr = currentListing.name.split(" ");
+  const smallTitle = currentListingNameArr.pop();
+  const bigTitle = currentListingNameArr.join(" ");
 
   return (
     <div className="single-listing-page-container">
       <div className="listing-page-tile-container">
-
-
-      <h1 className="listing-page-title-big">{bigTitle}</h1>
-      <h1 className="listing-page-title-small">{smallTitle}</h1>
-
-
+        <h1 className="listing-page-title-big">{bigTitle}</h1>
+        <h1 className="listing-page-title-small">{smallTitle}</h1>
       </div>
 
       <div className="listing-price-comments-header-container">
-
-      <div id="price-header">{`Listing Price $ ${currentListing.price}`}</div>
-      <div className="gradient-blue-purple" id="comment-count-header"> {`${allComments.length} Comments 💬`}</div>
-
-
+        <div id="price-header">{`Listing Price $ ${currentListing.price}`}</div>
+        <div className="gradient-blue-purple" id="comment-count-header">
+          {`${allComments.length} Comments 💬`}
+        </div>
       </div>
       <img
         className="listing-page-display-image"
@@ -109,7 +104,7 @@ const bigTitle = currentListingNameArr.join(' ')
         750
       )}`}</div>
 
-      <h2 className="listing-page-photo-gallery-title">{`Photo Gallery`}</h2>
+      <h2 className="listing-page-photo-gallery-title">{`PHOTO GALLERY`}</h2>
       <div className="listing-page-photo-gallery-container">
         {currentListing.listing_images.map((image) => (
           <img
