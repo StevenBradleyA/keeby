@@ -1,6 +1,8 @@
 /* TODO Add site wide styles */
 
 @import url(https://fonts.googleapis.com/css?family=VT323);
+@import url(https://fonts.googleapis.com/css?family=Mr+Dafoe);
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:900);
 
 .modal-content {
   opacity: 1;
@@ -30,5 +32,43 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-fill-color: transparent;
+  /* text-fill-color: transparent; */
+}
+
+/* --------      landing page title                  ---------------- */
+
+.listing-page-title-big {
+  position: relative;
+  background-image: -webkit-linear-gradient(
+    #378dbc 0%,
+    #b6e8f1 46%,
+    #ffffff 50%,
+    #32120e 54%,
+    #e692eb 58%,
+    #1c0466 90%,
+    #f284f8 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1.5px #f5f5f5;
+  font-size: 50px;
+  font-family: "Titillium Web", sans-serif;
+  font-style: italic;
+  margin: 0;
+  line-height: 1.2;
+  margin-bottom: 35px;
+}
+
+.listing-page-title-small {
+  position: relative;
+  top: 1.5rem;
+  right: 3%;
+  margin: 0px;
+  font-family: "Mr Dafoe", cursive;
+  font-size: 40px;
+  color: #f975e7;
+  transform: rotate(-20deg);
+  -webkit-transform: rotate(-20deg);
+  -webkit-text-stroke: 0.5px #f008e4;
+  -webkit-filter: drop-shadow(2px 2px 20px#f008e4);
 }

@@ -14,10 +14,19 @@
 }
 
 
+.listing-page-tile-container{
+display: flex;
+
+}
+
+
 .listing-page-title{
-  font-size: 2rem;
-  color: #e0e0e0;
-  text-shadow: 2px 2px 0 #000;
+  /* font-size: 2rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 0 #000; */
+   font-size: 2rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 2px #000000;
 }
 
 #comment-count-header{

@@ -48,9 +48,21 @@ const ListingPage = () => {
     };
   };
 
+const currentListingNameArr = currentListing.name.split(' ')
+const smallTitle = currentListingNameArr.pop()
+const bigTitle = currentListingNameArr.join(' ')
+
   return (
     <div className="single-listing-page-container">
-      <h2 className="listing-page-title">{currentListing.name}</h2>
+      <div className="listing-page-tile-container">
+
+
+      <h1 className="listing-page-title-big">{bigTitle}</h1>
+      <h1 className="listing-page-title-small">{smallTitle}</h1>
+
+
+      </div>
+
       <div className="listing-price-comments-header-container">
 
       <div id="price-header">{`Listing Price $ ${currentListing.price}`}</div>
