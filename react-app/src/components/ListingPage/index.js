@@ -22,16 +22,17 @@ const ListingPage = () => {
     dispatch(getAllCommentsPerListingThunk(listingId));
   }, [dispatch, listingId]);
 
-  
   const currentListing = useSelector((state) => state.listings)[listingId];
 
-  const allComments = useSelector((state) => Object.values(state.comments).filter((e)=> e.listing_id));
+  const allComments = useSelector((state) =>
+    Object.values(state.comments).filter((e) => e.listing_id)
+  );
 
   if (!currentListing) {
     return <h1>LOADING...</h1>;
   }
 
-  if (!currentListing.listing_images){
+  if (!currentListing.listing_images) {
     return <h1>LOADING...</h1>;
   }
   const displayImageArr = currentListing.listing_images.filter(
@@ -98,15 +99,21 @@ const ListingPage = () => {
             onClick={handlePhotoGalleryClick(image)}
           />
         ))}
-        <div className="comments-container">
-          {allComments.map((comment) => (
-            <CommentCard key={comment.id} comment={comment} currentListing={currentListing}/>
-          ))}
-          <div className="create-comment-container">
-            {`${allComments.length} COMMENTS`}
-            <CreateComment listingId={listingId} />
-          </div>
+      </div>
+      <p></p>
+      <div className="comments-container">
+      <div className="create-comment-container">
+          {`${allComments.length} COMMENTS`}
+          <CreateComment listingId={listingId} />
         </div>
+        {allComments.map((comment) => (
+          <CommentCard
+            key={comment.id}
+            comment={comment}
+            currentListing={currentListing}
+          />
+        ))}
+       
       </div>
     </div>
   );
