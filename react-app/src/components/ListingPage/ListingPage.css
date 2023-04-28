@@ -21,12 +21,10 @@ display: flex;
 
 
 .listing-page-title{
-  /* font-size: 2rem;
+  font-size: 2rem;
   color: #ffffff;
-  text-shadow: 2px 2px 0 #000; */
-   font-size: 2rem;
-  color: #ffffff;
-  text-shadow: 2px 2px 2px #000000;
+  text-shadow: 2px 2px 0 #000;
+
 }
 
 #comment-count-header{
@@ -63,19 +61,36 @@ font-size: 14px;
 
 }
 
-/* .listing-page-photo-gallery-title{} */
+/*  ------------          Photo Gallery        ------------- */
+
 .listing-page-photo-gallery-container {
-  display: flex;
+  /* display: flex;
   width: 60%;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-evenly; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 60%;
+  gap: 10px;
 }
 
 .listing-page-photo-gallery-each {
-  height: 80px;
+  /* height: 80px;
   width: 20%;
+  object-fit: cover; */
+  height: 100px;
+  width: calc(25% - 10px);
   object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
+
+.listing-page-photo-gallery-each:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
 
 .gallery-preview-modal{
     height: 300px;
