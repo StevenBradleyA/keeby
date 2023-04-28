@@ -31,6 +31,8 @@
 .home-page-description {
   margin-top: 10px;
   width: 75%;
+  word-wrap: break-word;
+  flex-wrap: wrap;
 }
 
 .read-more-button {
