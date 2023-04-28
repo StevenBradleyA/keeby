@@ -3,21 +3,55 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
+
+
+.listing-price-comments-header-container{
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.listing-page-title{
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 2px 2px 0 #000;
+}
+
+#comment-count-header{
+font-size: 14px;
+}
+
+
+#price-header{
+  font-size: 14px;
+}
+
+
+
+
+
 .listing-page-display-image {
   height: 250px;
   width: 60%;
   object-fit: cover;
+  margin-bottom: 10px;
 }
 
 .listing-page-additional-image {
   height: 250px;
   width: 60%;
   object-fit: cover;
+  margin-bottom: 10px;
+
 }
 
 .listing-page-description {
   width: 60%;
+  margin-bottom: 10px;
+
 }
 
 /* .listing-page-photo-gallery-title{} */

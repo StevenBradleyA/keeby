@@ -50,8 +50,14 @@ const ListingPage = () => {
 
   return (
     <div className="single-listing-page-container">
-      <div>{currentListing.name}</div>
-      <div>{currentListing.price}</div>
+      <h2 className="listing-page-title">{currentListing.name}</h2>
+      <div className="listing-price-comments-header-container">
+
+      <div id="price-header">{`Listing Price $ ${currentListing.price}`}</div>
+      <div className="gradient-blue-purple" id="comment-count-header"> {`${allComments.length} Comments 💬`}</div>
+
+
+      </div>
       <img
         className="listing-page-display-image"
         alt="display"

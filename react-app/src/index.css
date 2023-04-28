@@ -25,12 +25,10 @@ body {
 
 /*  ---------    universal text styling       ------------ */
 
-/* .gradient-blue-purple {
+.gradient-blue-purple {
   background: linear-gradient(to right, #0367c5, #f70cdc);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent;
-} */
-
-
+}
