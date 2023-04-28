@@ -113,9 +113,9 @@ def delete_like(id):
         if remove_user.id == user.id:
             comment.liked.remove(user)
 # test removal of one for loop
-    for remove_comment in user.user_likes:
-        if remove_comment.id == comment.id:
-            user.user_likes.remove(comment)
+    # for remove_comment in user.user_likes:
+    #     if remove_comment.id == comment.id:
+    #         user.user_likes.remove(comment)
 
     db.session.commit()
     return comment.to_dict()

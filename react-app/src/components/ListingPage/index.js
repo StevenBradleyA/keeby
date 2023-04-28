@@ -12,6 +12,7 @@ import CreateComment from "../Comments/CreateComment";
 const ListingPage = () => {
   const dispatch = useDispatch();
   const { listingId } = useParams();
+  const currentListingId = Number(listingId);
   const { setModalContent } = useModal();
 
   useEffect(() => {
@@ -22,16 +23,19 @@ const ListingPage = () => {
     dispatch(getAllCommentsPerListingThunk(listingId));
   }, [dispatch, listingId]);
 
-  
   const currentListing = useSelector((state) => state.listings)[listingId];
 
-  const allComments = useSelector((state) => Object.values(state.comments).filter((e)=> e.listing_id));
+  const allComments = useSelector((state) =>
+    Object.values(state.comments).filter(
+      (e) => e.listing_id === currentListingId
+    )
+  );
 
   if (!currentListing) {
     return <h1>LOADING...</h1>;
   }
 
-  if (!currentListing.listing_images){
+  if (!currentListing.listing_images) {
     return <h1>LOADING...</h1>;
   }
   const displayImageArr = currentListing.listing_images.filter(
@@ -44,10 +48,28 @@ const ListingPage = () => {
     };
   };
 
+const currentListingNameArr = currentListing.name.split(' ')
+const smallTitle = currentListingNameArr.pop()
+const bigTitle = currentListingNameArr.join(' ')
+
   return (
     <div className="single-listing-page-container">
-      <div>{currentListing.name}</div>
-      <div>{currentListing.price}</div>
+      <div className="listing-page-tile-container">
+
+
+      <h1 className="listing-page-title-big">{bigTitle}</h1>
+      <h1 className="listing-page-title-small">{smallTitle}</h1>
+
+
+      </div>
+
+      <div className="listing-price-comments-header-container">
+
+      <div id="price-header">{`Listing Price $ ${currentListing.price}`}</div>
+      <div className="gradient-blue-purple" id="comment-count-header"> {`${allComments.length} Comments 💬`}</div>
+
+
+      </div>
       <img
         className="listing-page-display-image"
         alt="display"
@@ -98,15 +120,20 @@ const ListingPage = () => {
             onClick={handlePhotoGalleryClick(image)}
           />
         ))}
-        <div className="comments-container">
-          {allComments.map((comment) => (
-            <CommentCard key={comment.id} comment={comment} currentListing={currentListing}/>
-          ))}
-          <div className="create-comment-container">
-            {`${allComments.length} COMMENTS`}
-            <CreateComment listingId={listingId} />
-          </div>
+      </div>
+      <p></p>
+      <div className="comments-container">
+        <div className="create-comment-container">
+          {`${allComments.length} COMMENTS`}
+          <CreateComment listingId={listingId} />
         </div>
+        {allComments.map((comment) => (
+          <CommentCard
+            key={comment.id}
+            comment={comment}
+            currentListing={currentListing}
+          />
+        ))}
       </div>
     </div>
   );
