@@ -103,7 +103,6 @@
 
 /* -------------         Moving Title           ----------------- */
 .profile-title-text {
-  z-index: 3;
   position: relative;
   /* color: #1fff66; */
   color: #00dd00;

@@ -8,7 +8,7 @@ function CreateListingForm() {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
-
+  const [text, setText] = useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -79,6 +79,27 @@ function CreateListingForm() {
     }
     setHasSubmitted(true);
   };
+
+
+  useEffect(() => {
+    const phrases = [
+      "Please Stand By",
+      "Scanning for Thock",
+      "None found :(",
+      "Manage Your Listings",
+    ];
+    const delay = [0, 2000, 4000, 6000];
+
+    phrases.forEach((phrase, i) =>
+      setTimeout(() => {
+        setText(phrase);
+      }, delay[i])
+    );
+  }, []);
+
+
+
+
 
   return (
     <div className="create-listing-page-container">

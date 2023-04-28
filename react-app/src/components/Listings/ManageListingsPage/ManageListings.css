@@ -1,9 +1,40 @@
-/* .manage-listing-title{
+/* ----------             Moving Title         --------------- */
 
-} */
+.manage-listing-title {
+  color: #00dd00;
+  margin-top: 50px;
+  position: relative;
 
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.manage-listing-title::after {
+  content: "";
+  position: absolute;
+  animation: periods 1s linear infinite;
+}
+
+@keyframes periods {
+  25% {
+    content: ".";
+  }
+
+  50% {
+    content: "..";
+  }
+
+  75% {
+    content: "...";
+  }
+}
+
+/* ------------       manage listing page      ---------- */
 .manage-listing-full-page-container {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .manage-listings-container {
@@ -78,13 +109,15 @@
 }
 
 .manage-listing-update-button {
-  background-color: #393939;
+  background-color: #222;
+
   color: #00dd00;
   z-index: 3;
 }
 
 .manage-listing-delete-button {
-  background-color: #393939;
+  background-color: #222;
+
   color: #f44336;
   z-index: 3;
 }
