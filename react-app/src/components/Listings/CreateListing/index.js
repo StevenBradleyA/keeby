@@ -17,11 +17,15 @@ function CreateListingForm() {
   const [imageLoading, setImageLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const transitionId = 2;
 
   const handleInputErrors = () => {
     const errorsObj = {};
     if (name.length === 0) {
       errorsObj.name = "Name is required";
+    }
+    if (name.split(" ").length <= 1) {
+      errorsObj.nameTwoWord = "Name must be at least two words";
     }
     if (price.toString().length === 0) {
       errorsObj.price = "Price is required";
@@ -69,12 +73,9 @@ function CreateListingForm() {
 
     if (!Object.values(errors).length) {
       let newListing = await dispatch(createListingThunk(formData));
-      // todo I want to push to a loading component or a video since it takes some time to go to aws and back...
-      // if !newListing then load component and pass newlisting as a prop
-      // if (!newListing.id) {
-      //   return <h1>LOADING...</h1>;
-      // }
-      history.push(`/listing/${newListing.id}`);
+      history.push(`/hackTime/${transitionId}`, { listingId: newListing.id });
+
+      // history.push(`/listing/${newListing.id}`);
       setImageLoading(false);
     }
     setHasSubmitted(true);
@@ -119,6 +120,9 @@ function CreateListingForm() {
               </label>
               {hasSubmitted && errors.name && (
                 <p className="create-listing-errors">{errors.name}</p>
+              )}
+              {hasSubmitted && errors.nameTwoWord && (
+                <p className="create-listing-errors">{errors.nameTwoWord}</p>
               )}
               <label>
                 Price   
