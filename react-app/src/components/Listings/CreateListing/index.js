@@ -80,13 +80,12 @@ function CreateListingForm() {
     setHasSubmitted(true);
   };
 
-
   useEffect(() => {
     const phrases = [
       "Please Stand By",
       "Scanning for Thock",
-      "None found :(",
-      "Manage Your Listings",
+      "ಠ_ಠ none found",
+      "Create a Listing",
     ];
     const delay = [0, 2000, 4000, 6000];
 
@@ -97,106 +96,118 @@ function CreateListingForm() {
     );
   }, []);
 
-
-
-
-
   return (
     <div className="create-listing-page-container">
       {sessionUser && (
         <>
           <div>
-            <h1>Create a Listing for your Keyboard</h1>
-            <form onSubmit={handleFormSubmit} encType="multipart/form-data">
+            <h1 className="create-listing-title">{text}</h1>
+            <form
+              onSubmit={handleFormSubmit}
+              encType="multipart/form-data"
+              className="create-listing-form-container"
+            >
               <label>
-                Name of Listing:
+                Name of Listing   
                 <input
+                  className="create-listing-input"
                   type="text"
                   placeholder="Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
               </label>
-              <p></p>
               {hasSubmitted && errors.name && (
-                <p className="errors">{errors.name}</p>
+                <p className="create-listing-errors">{errors.name}</p>
               )}
               <label>
-                Price:
+                Price   
                 <input
+                  className="create-listing-input"
                   type="text"
                   placeholder="Price"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
                 />
               </label>
-              <p></p>
+
               {hasSubmitted && errors.price && (
-                <p className="errors">{errors.price}</p>
+                <p className="create-listing-errors">{errors.price}</p>
               )}
               <p>
                 Write a detailed description about your Product. The longer the
                 better! What your build consists of? What is it like to type on?
                 How is the sound profile? What do you like about it?
               </p>
-              <label>
-                Description:
-                <textarea
-                  placeholder="Must be greater than 750 characters"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                />
-              </label>
-              <p></p>
+
+              <textarea
+                className="create-listing-input"
+                id="create-listing-description-input"
+                placeholder="Must be greater than 750 characters"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+
               {hasSubmitted && errors.description && (
-                <p className="errors">{errors.description}</p>
+                <p className="create-listing-errors">{errors.description}</p>
               )}
-              <p>Upload Images of your keyboard!</p>
-              <label>
-                Upload at least 4 images:
-                <input
-                  type="file"
-                  multiple
-                  // accept="image/png, image/jpg, image/jpeg"
-                  // gifs are kinda fun tho
-                  accept="image/*"
-                  onChange={(e) => {
-                    setImageFiles([...imageFiles, ...e.target.files]);
-                  }}
-                />
-              </label>
-              {/* {imageLoading && <p>Loading...</p>} */}
-              {imageFiles.map((e, i) => {
-                return (
-                  <>
-                    <img
-                      onClick={() => setPreviewImage(e.name)}
-                      style={
-                        previewImage === e.name
-                          ? { border: "5px solid green" }
-                          : null
-                      }
-                      className="view-uploaded-image"
-                      alt={`listing-${i}`}
-                      src={URL.createObjectURL(e)}
-                      key={i}
-                    />
-                  </>
-                );
-              })}
-              <p></p>
+              <div className="create-listing-upload-title">
+                Upload Images of your keyboard!
+              </div>
+              <div className="create-listing-upload-tips">
+                <div className="create-listing-upload-tips-color">
+                  {" "}
+                  {`[ Upload at least 4 images ]`}{" "}
+                </div>
+                <div className="create-listing-upload-tips-color">{`[ Click an image to set as display image ]`}</div>
+              </div>
               {hasSubmitted && errors.image && (
-                <p className="errors">{errors.image}</p>
+                <p className="create-listing-errors">{errors.image}</p>
               )}
               {hasSubmitted && errors.imageExcess && (
-                <p className="errors">{errors.imageExcess}</p>
+                <p className="create-listing-errors">{errors.imageExcess}</p>
               )}
               {hasSubmitted && errors.previewImage && (
-                <p className="errors">{errors.previewImage}</p>
+                <p className="create-listing-errors">{errors.previewImage}</p>
               )}
+
               <input
+                className="create-listing-choose-files-input"
+                type="file"
+                multiple
+                // accept="image/png, image/jpg, image/jpeg"
+                // gifs are kinda fun tho
+                accept="image/*"
+                onChange={(e) => {
+                  setImageFiles([...imageFiles, ...e.target.files]);
+                }}
+              />
+              {/* {imageLoading && <p>Loading...</p>} */}
+              <div className="create-listing-image-upload-container">
+                {imageFiles.map((e, i) => {
+                  return (
+                    <>
+                      <img
+                        onClick={() => setPreviewImage(e.name)}
+                        style={
+                          previewImage === e.name
+                            ? { border: "5px solid green" }
+                            : null
+                        }
+                        className="each-uploaded-image"
+                        alt={`listing-${i}`}
+                        src={URL.createObjectURL(e)}
+                        key={i}
+                      />
+                    </>
+                  );
+                })}
+              </div>
+
+              <input
+                className="create-listing-submit-input"
                 type="submit"
-                value={"Create Listing"}
+                value={`[ Create Listing ]`}
                 disabled={hasSubmitted && Object.values(errors).length > 0}
               />
             </form>
