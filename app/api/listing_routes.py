@@ -172,9 +172,11 @@ def update_listing(listing_id):
 
     if len(preview_image) != 0:
         current_preview_image.is_display_image = False
+        preview_display_image = preview_image[0]
 
-        preview_image.filename = get_unique_filename(preview_image.filename)
-        upload = upload_file_to_s3(preview_image)
+        preview_display_image.filename = get_unique_filename(
+            preview_display_image.filename)
+        upload = upload_file_to_s3(preview_display_image)
         if "url" not in upload:
             return {"error": "url not here"}
         url = upload["url"]

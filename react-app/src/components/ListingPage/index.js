@@ -51,8 +51,7 @@ const ListingPage = () => {
   // currently this would not catch exclamation marks or question marks...
 
   const sentenceArr = currentListing.description.split(". ");
-  const endSentence = sentenceArr.slice(6);
-  const finalSentenceStr = endSentence.join(". ").replace(/\.$/, "") + ".";
+  const splitOn = Math.floor(sentenceArr.length / 4);
 
   const currentListingNameArr = currentListing.name.split(" ");
   const smallTitle = currentListingNameArr.pop();
@@ -76,28 +75,36 @@ const ListingPage = () => {
         alt="display"
         src={displayImageArr[0].image}
       />
-      <div className="listing-page-description">{`${sentenceArr[0]}. ${sentenceArr[1]}.`}</div>
+      <div className="listing-page-description">{`${sentenceArr
+        .slice(0, splitOn)
+        .join(". ")}.`}</div>
       <img
         className="listing-page-additional-image"
         alt="listing"
         src={currentListing.listing_images[1].image}
       />
 
-      <div className="listing-page-description">{`${sentenceArr[2]}. ${sentenceArr[3]}.`}</div>
+      <div className="listing-page-description">{`${sentenceArr
+        .slice(splitOn, splitOn * 2)
+        .join(". ")}.`}</div>
       <img
         className="listing-page-additional-image"
         alt="listing"
         src={currentListing.listing_images[2].image}
       />
 
-      <div className="listing-page-description">{`${sentenceArr[4]}. ${sentenceArr[5]}.`}</div>
+      <div className="listing-page-description">{`${sentenceArr
+        .slice(splitOn * 2, splitOn * 3)
+        .join(". ")}.`}</div>
       <img
         className="listing-page-additional-image"
         alt="listing"
         src={currentListing.listing_images[3].image}
       />
 
-      <div className="listing-page-description">{finalSentenceStr}</div>
+      <div className="listing-page-description">{`${sentenceArr
+        .slice(splitOn * 3)
+        .join(". ")}`}</div>
 
       <h2 className="listing-page-photo-gallery-title">{`PHOTO GALLERY`}</h2>
       <div className="listing-page-photo-gallery-container">
