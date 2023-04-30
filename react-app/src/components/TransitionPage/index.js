@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation, useParams } from "react-router-dom";
 import hackTime from "../../media/hackTime.mov";
-import update from "../../media/update.mov"
-import create from "../../media/create.mov"
+import update from "../../media/update.mov";
+import create from "../../media/create.mov";
 
 import "./TransitionPage.css";
 function TransitionPage() {
@@ -14,6 +14,7 @@ function TransitionPage() {
   const { transitionId } = useParams();
   const location = useLocation();
   const listingId = location.state.listingId;
+  const updateId = location.state.updateId;
 
   useEffect(() => {
     setPlay(true);
@@ -24,6 +25,9 @@ function TransitionPage() {
       }
       if (transitionId === "2") {
         history.push(`/listing/${listingId}`);
+      }
+      if (transitionId === "3") {
+        history.push(`/listing/${updateId}`);
       }
     }, 3500);
 

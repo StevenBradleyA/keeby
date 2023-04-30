@@ -22,6 +22,7 @@ function EditListingPage() {
   const [imageLoading, setImageLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const transitionId = 3;
 
   const handleInputErrors = () => {
     const errorsObj = {};
@@ -87,8 +88,9 @@ function EditListingPage() {
 
     if (!Object.values(errors).length) {
       await dispatch(updateListingThunk(formData, listing.id));
+      history.push(`/hackTime/${transitionId}`, { updateId: listing.id });
 
-      history.push(`/listing/${listing.id}`);
+      // history.push(`/listing/${listing.id}`);
       setImageLoading(false);
     }
     setHasSubmitted(true);
@@ -271,7 +273,7 @@ function EditListingPage() {
                   );
                 })}
               </div>
-             
+
               <input
                 className="update-listing-submit-input"
                 type="submit"
