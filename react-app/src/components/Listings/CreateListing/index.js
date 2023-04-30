@@ -30,7 +30,7 @@ function CreateListingForm() {
     if (price.toString().length === 0) {
       errorsObj.price = "Price is required";
     }
-    if (description.length < 10) {
+    if (description.length < 750) {
       errorsObj.description =
         "Your Description must be at least 750 characters";
     }
