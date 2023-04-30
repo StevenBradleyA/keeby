@@ -1,0 +1,53 @@
+.edit-comment-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding: 2rem 15rem 2rem 15rem;
+}
+
+.edit-comment-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edit-comment-input-box {
+  background-color: #444444;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.25rem;
+  margin-bottom: 1rem;
+  word-wrap: break-word;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 120px;
+}
+
+.edit-comment-input-box:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(119, 21, 176, 0.2);
+}
+
+.edit-comment-submit-button {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 150px;
+  background-color: #2f2f2f;
+  color: rgb(255, 255, 255);
+
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.edit-comment-submit-button:hover {
+  color: rgba(255, 0, 255, 0.75);
+
+  box-shadow: 0 0 10px rgba(119, 21, 176, 0.2);
+  transform: translateY(2px);
+}

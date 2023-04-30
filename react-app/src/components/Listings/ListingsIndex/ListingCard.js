@@ -32,7 +32,7 @@ const ListingCard = ({ listing }) => {
         0,
         350
       )}...`}</div>
-      <button id="read-more-button" className="gradient-blue-purple">{`[ Read More ]`}</button>
+      <button id="read-more-button" className="button-styling">{`[ Read More ]`}</button>
       <p></p>
     </div>
   );

@@ -13,8 +13,12 @@ function TransitionPage() {
   const videoRef = useRef(null);
   const { transitionId } = useParams();
   const location = useLocation();
-  const listingId = location.state.listingId;
-  const updateId = location.state.updateId;
+  let updateId;
+  let listingId;
+  if (transitionId !== "1") {
+    const listingId = location.state.listingId;
+    const updateId = location.state.updateId;
+  }
 
   useEffect(() => {
     setPlay(true);
