@@ -8,7 +8,7 @@ import { refreshUser } from "../../../store/session";
 function EditEmailModal({ sessionUser }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(sessionUser.email);
   const [errors, setErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const { closeModal } = useModal();

@@ -48,6 +48,9 @@
 .listing-page-description {
   width: 60%;
   margin-bottom: 10px;
+  word-wrap: break-word;
+  flex-wrap: wrap;
+
 }
 
 /*  ------------          Photo Gallery        ------------- */

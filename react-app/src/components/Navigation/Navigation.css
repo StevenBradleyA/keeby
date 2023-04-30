@@ -19,10 +19,6 @@
   left: 0px;
   width: 100%;
   height: 40px;
-  /* display: flex;
-  align-items: center;
-  justify-content: space-between; */
-  /* background-color: rgb(33, 234, 245); */
   background-color: #222;
   z-index: 2;
 }
@@ -146,7 +142,6 @@ width: 10rem; */
   border-radius: 10px;
   box-shadow: 0 0 10px #325aab;
   /* background-color: rgba(255, 255, 255, 0.1); */
-
 }
 
 /* #user-icon-modal-container::after{
@@ -160,8 +155,6 @@ width: 10rem; */
   left: 0;
   bottom: 0;
 } */
-
-
 
 .profile-icon-modal {
   width: 96px;
@@ -207,6 +200,7 @@ width: 10rem; */
   background-color: #222;
   color: rgb(255, 255, 255);
   border: none;
+  border-radius: 3px;
   box-shadow: 2.5px 2px 3px rgba(248, 105, 210, 0.85),
     -2px 2px 3px rgba(255, 255, 255, 0.65),
     2.5px -2px 3px rgba(255, 255, 255, 0.65),
@@ -216,6 +210,14 @@ width: 10rem; */
   top: 0.7rem;
   width: 40%;
   font-size: 12px;
+  padding: 0.10rem;
+
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.search-input-login:focus {
+  outline: none;
+  box-shadow: 0px 0 10px #0fa005;
 }
 
 .search-result-container {
@@ -223,10 +225,6 @@ width: 10rem; */
   left: 220px;
   width: 40%;
   height: 200px;
-  /* background-image: url("../../media/shapes.gif");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center; */
   border-radius: 10px;
   box-shadow: 0 0 10px #0fa005;
   object-fit: cover;
@@ -308,8 +306,8 @@ width: 10rem; */
   display: flex;
   flex-direction: column;
   position: absolute;
-  height: 375px;
-  width: 500px;
+  height: 400px;
+  width: 610px;
   background-image: url("../../media/redGrid.gif");
   background-size: cover;
   background-repeat: no-repeat;
@@ -317,17 +315,36 @@ width: 10rem; */
   padding-left: 10px;
   border-radius: 10px;
   box-shadow: 0 0 20px #faafaf;
+  margin: 0 auto;
+}
+
+.left-signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: absolute;
+  width: 60%;
+  right: 45%;
+  bottom: 25%;
 }
 
 .optional-signup-container {
   position: absolute;
-  left: 65%;
-  bottom: 22%;
+  width: 50%;
+  left: 50%;
+  bottom: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
 .signup-modal-title {
+  display: flex;
+  justify-content: center;
   position: relative;
-  left: 35%;
+  bottom: 5px;
 }
 
 .sign-up-submit {
@@ -336,9 +353,11 @@ width: 10rem; */
   border: none;
   color: rgb(0, 255, 247);
   font-size: 20px;
-  position: absolute;
-  left: 41%;
-  top: 85%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 240px;
+  margin: 0 auto;
 }
 
 .sign-up-submit:hover {
@@ -347,6 +366,6 @@ width: 10rem; */
 
 .error-text-signup {
   color: red;
-  position: absolute;
-  top: 10px;
+  position: relative;
+  bottom: 35px;
 }

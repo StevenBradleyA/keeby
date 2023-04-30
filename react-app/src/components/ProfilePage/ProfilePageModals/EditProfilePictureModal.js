@@ -8,7 +8,7 @@ import { refreshUser } from "../../../store/session";
 function EditProfilePictureModal({ sessionUser }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [profilePicture, setProfilePicture] = useState("");
+  const [profilePicture, setProfilePicture] = useState(sessionUser.profile_picture);
   const [errors, setErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const { closeModal } = useModal();

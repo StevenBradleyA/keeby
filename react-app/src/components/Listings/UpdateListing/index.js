@@ -18,14 +18,19 @@ function EditListingPage() {
   const [imageFiles, setImageFiles] = useState([]);
   const [deleteImages, setDeleteImages] = useState([]);
   const [previewImage, setPreviewImage] = useState("");
+  const [text, setText] = useState("");
   const [imageLoading, setImageLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const transitionId = 3;
 
   const handleInputErrors = () => {
     const errorsObj = {};
     if (name.length === 0) {
       errorsObj.name = "Name is required";
+    }
+    if (name.split(" ").length <= 1) {
+      errorsObj.nameTwoWord = "Name must be at least two words";
     }
     if (price.toString().length === 0) {
       errorsObj.price = "Price is required";
@@ -83,12 +88,29 @@ function EditListingPage() {
 
     if (!Object.values(errors).length) {
       await dispatch(updateListingThunk(formData, listing.id));
+      history.push(`/hackTime/${transitionId}`, { updateId: listing.id });
 
-      history.push(`/listing/${listing.id}`);
+      // history.push(`/listing/${listing.id}`);
       setImageLoading(false);
     }
     setHasSubmitted(true);
   };
+
+  useEffect(() => {
+    const phrases = [
+      "Please Stand By",
+      "Scanning for Thock",
+      "ಠ_ಠ none found",
+      "Edit Your Listing",
+    ];
+    const delay = [0, 2000, 4000, 6000];
+
+    phrases.forEach((phrase, i) =>
+      setTimeout(() => {
+        setText(phrase);
+      }, delay[i])
+    );
+  }, []);
 
   const handleDeletePreviousImage = () => {
     // keep track of things they want to delete
@@ -105,93 +127,124 @@ function EditListingPage() {
       {sessionUser && (
         <>
           <div>
-            <h1>Update Your Listing</h1>
-            <form onSubmit={handleFormSubmit} encType="multipart/form-data">
+            <h1 className="update-listing-title">{text}</h1>
+            <form
+              onSubmit={handleFormSubmit}
+              encType="multipart/form-data"
+              className="update-listing-form-container"
+            >
               <label>
-                Name of Listing:
+                Name of Listing   
                 <input
+                  className="update-listing-input"
+                  id="update-listing-name"
                   type="text"
                   placeholder={listing.name}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
               </label>
-              <p></p>
               {hasSubmitted && errors.name && (
-                <p className="errors">{errors.name}</p>
+                <p className="update-listing-errors">{errors.name}</p>
+              )}
+              {hasSubmitted && errors.nameTwoWord && (
+                <p className="create-listing-errors">{errors.nameTwoWord}</p>
               )}
               <label>
-                Price:
+                Price   
                 <input
+                  className="update-listing-input"
                   type="text"
                   placeholder={listing.price}
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
                 />
               </label>
-              <p></p>
               {hasSubmitted && errors.price && (
-                <p className="errors">{errors.price}</p>
+                <p className="update-listing-errors">{errors.price}</p>
               )}
               <p>
                 Write a detailed description about your Product. The longer the
                 better! What your build consists of? What is it like to type on?
                 How is the sound profile? What do you like about it?
               </p>
-              <label>
-                Description:
-                <textarea
-                  placeholder={listing.description}
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                />
-              </label>
-              <p></p>
+              <textarea
+                className="update-listing-input"
+                id="update-listing-description-input"
+                placeholder={listing.description}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
               {hasSubmitted && errors.description && (
-                <p className="errors">{errors.description}</p>
+                <p className="update-listing-errors">{errors.description}</p>
               )}
-              <div>{`Current Listing Images`}</div>
-              <div>{`[ Choose a preview image by clicking an image ]      [ must have a total of 4 images]`}</div>
-
-              {listing.listing_images.map((e) => {
-                return (
-                  <>
-                    <img
-                      src={e.image}
-                      alt="current"
-                      className="current-listing-images"
-                      style={
-                        deleteImages.includes(e.id)
-                          ? { border: "5px solid red" }
-                          : previewImage === e.id
-                          ? { border: "5px solid green" }
-                          : null
-                      }
-                      onClick={() => {
-                        return deleteImages.includes(e.id)
-                          ? null
-                          : setPreviewImage(e.id);
-                      }}
-                    />
-                    <FontAwesomeIcon
-                      icon={faSquareXmark}
-                      onClick={() => {
-                        if (deleteImages.includes(e.id)) {
-                          const selected = deleteImages.filter(
-                            (eachImage) => eachImage !== e.id
-                          );
-                          setDeleteImages(selected);
-                        } else {
-                          setDeleteImages([...deleteImages, e.id]);
+              <div className="update-listing-upload-title">
+                Current Images of your keyboard!
+              </div>
+              <div className="update-listing-upload-tips">
+                <div className="update-listing-upload-tips-color">
+                  {" "}
+                  {`[ Maintain a total of least 4 images ]`}{" "}
+                </div>
+                <div className="update-listing-upload-tips-color">{`[ Click an image to set as display image ]`}</div>
+              </div>
+              {hasSubmitted && errors.image && (
+                <p className="update-listing-errors">{errors.image}</p>
+              )}
+              {hasSubmitted && errors.imageExcess && (
+                <p className="update-listing-errors">{errors.imageExcess}</p>
+              )}
+              {hasSubmitted && errors.previewImage && (
+                <p className="update-listing-errors">{errors.previewImage}</p>
+              )}
+              {hasSubmitted && errors.imageLow && (
+                <p className="update-listing-errors">{errors.imageLow}</p>
+              )}
+              <div className="update-listing-image-upload-container">
+                {listing.listing_images.map((e) => {
+                  return (
+                    <>
+                      <img
+                        src={e.image}
+                        alt="current"
+                        className="each-uploaded-image"
+                        style={
+                          deleteImages.includes(e.id)
+                            ? { border: "5px solid red" }
+                            : previewImage === e.id
+                            ? { border: "5px solid green" }
+                            : null
                         }
-                      }}
-                    />
-                  </>
-                );
-              })}
-              <p>Add more Images to your listing!</p>
+                        onClick={() => {
+                          return deleteImages.includes(e.id)
+                            ? null
+                            : setPreviewImage(e.id);
+                        }}
+                      />
+                      <FontAwesomeIcon
+                        icon={faSquareXmark}
+                        className="x-marks-the-spot"
+                        onClick={() => {
+                          if (deleteImages.includes(e.id)) {
+                            const selected = deleteImages.filter(
+                              (eachImage) => eachImage !== e.id
+                            );
+                            setDeleteImages(selected);
+                          } else {
+                            setDeleteImages([...deleteImages, e.id]);
+                          }
+                        }}
+                      />
+                    </>
+                  );
+                })}
+              </div>
+              <div className="update-listing-upload-title">
+                Upload More Images of your keyboard!
+              </div>
 
               <input
+                className="update-listing-choose-files-input"
                 type="file"
                 multiple
                 accept="image/*"
@@ -200,38 +253,29 @@ function EditListingPage() {
                 }}
               />
               {/* {imageLoading && <p>Loading...</p>} */}
-              {imageFiles.map((e, i) => {
-                return (
-                  <>
-                    <img
-                      onClick={() => setPreviewImage(e.name)}
-                      style={
-                        previewImage === e.name
-                          ? { border: "5px solid green" }
-                          : null
-                      }
-                      className="view-uploaded-image"
-                      alt={`listing-${i}`}
-                      src={URL.createObjectURL(e)}
-                      key={i}
-                    />
-                  </>
-                );
-              })}
-              <p></p>
-              {hasSubmitted && errors.image && (
-                <p className="errors">{errors.image}</p>
-              )}
-              {hasSubmitted && errors.imageExcess && (
-                <p className="errors">{errors.imageExcess}</p>
-              )}
-              {hasSubmitted && errors.previewImage && (
-                <p className="errors">{errors.previewImage}</p>
-              )}
-              {hasSubmitted && errors.imageLow && (
-                <p className="errors">{errors.imageLow}</p>
-              )}
+              <div className="update-listing-image-upload-container">
+                {imageFiles.map((e, i) => {
+                  return (
+                    <>
+                      <img
+                        onClick={() => setPreviewImage(e.name)}
+                        style={
+                          previewImage === e.name
+                            ? { border: "5px solid green" }
+                            : null
+                        }
+                        className="each-uploaded-image"
+                        alt={`listing-${i}`}
+                        src={URL.createObjectURL(e)}
+                        key={i}
+                      />
+                    </>
+                  );
+                })}
+              </div>
+
               <input
+                className="update-listing-submit-input"
                 type="submit"
                 value={"Update Listing"}
                 disabled={hasSubmitted && Object.values(errors).length > 0}

@@ -1,8 +1,5 @@
 /* ------------      Hacking Time       --------------- */
 
-
-
-
 .profile-page-container {
   margin-top: 50px;
   display: flex;
@@ -97,13 +94,8 @@
   font-size: 20px;
 }
 
-
-
-
-
 /* -------------         Moving Title           ----------------- */
 .profile-title-text {
-  z-index: 3;
   position: relative;
   /* color: #1fff66; */
   color: #00dd00;

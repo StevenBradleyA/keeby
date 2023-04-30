@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useModal } from "../../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCommentThunk } from "../../../store/comment";
-
+import "./UpdateComment.css";
 function EditCommentModal({ comment, currentListing }) {
   const dispatch = useDispatch();
   const [content, setContent] = useState(comment.content);
@@ -42,17 +42,17 @@ function EditCommentModal({ comment, currentListing }) {
   };
 
   return (
-    <div>
-      <form onSubmit={handleFormSubmit}>
-        <input
-          className="comment-input-box"
+    <div className="edit-comment-container">
+      <form onSubmit={handleFormSubmit} className="edit-comment-form-container">
+        <textarea
+          className="edit-comment-input-box"
           type="text"
           value={content}
           onChange={(e) => setContent(e.target.value)}
           placeholder="Write a comment..."
         />
         <input
-          className="profile-edit-submit-button"
+          className="edit-comment-submit-button"
           type="submit"
           value={"Update Comment"}
           disabled={hasSubmitted && Object.values(errors).length > 0}

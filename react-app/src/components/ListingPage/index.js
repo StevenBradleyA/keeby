@@ -48,6 +48,12 @@ const ListingPage = () => {
     };
   };
 
+  // currently this would not catch exclamation marks or question marks...
+
+  const sentenceArr = currentListing.description.split(". ");
+  const endSentence = sentenceArr.slice(6);
+  const finalSentenceStr = endSentence.join(". ").replace(/\.$/, "") + ".";
+
   const currentListingNameArr = currentListing.name.split(" ");
   const smallTitle = currentListingNameArr.pop();
   const bigTitle = currentListingNameArr.join(" ");
@@ -70,39 +76,28 @@ const ListingPage = () => {
         alt="display"
         src={displayImageArr[0].image}
       />
-      <div className="listing-page-description">{`${currentListing.description.slice(
-        0,
-        250
-      )}...`}</div>
+      <div className="listing-page-description">{`${sentenceArr[0]}. ${sentenceArr[1]}.`}</div>
       <img
         className="listing-page-additional-image"
         alt="listing"
         src={currentListing.listing_images[1].image}
       />
 
-      <div className="listing-page-description">{`${currentListing.description.slice(
-        250,
-        500
-      )}...`}</div>
+      <div className="listing-page-description">{`${sentenceArr[2]}. ${sentenceArr[3]}.`}</div>
       <img
         className="listing-page-additional-image"
         alt="listing"
         src={currentListing.listing_images[2].image}
       />
 
-      <div className="listing-page-description">{`${currentListing.description.slice(
-        500,
-        750
-      )}...`}</div>
+      <div className="listing-page-description">{`${sentenceArr[4]}. ${sentenceArr[5]}.`}</div>
       <img
         className="listing-page-additional-image"
         alt="listing"
         src={currentListing.listing_images[3].image}
       />
 
-      <div className="listing-page-description">{`${currentListing.description.slice(
-        750
-      )}`}</div>
+      <div className="listing-page-description">{finalSentenceStr}</div>
 
       <h2 className="listing-page-photo-gallery-title">{`PHOTO GALLERY`}</h2>
       <div className="listing-page-photo-gallery-container">

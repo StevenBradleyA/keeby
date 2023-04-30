@@ -1,19 +1,11 @@
-/*               main  containers  */
+/*     -----------       main  containers        ------------     */
 
 .comment-card-container {
-  /* background-color: green; */
   display: flex;
-  /* border-color: blueviolet; */
   margin-top: 5px;
   margin-bottom: 10px;
   word-wrap: break-word;
 }
-
-/* .comment-container-left { */
-/* background-color: red; */
-/* height: 60px;
-width: 50px; */
-/* } */
 
 .comment-container-right {
   display: flex;
