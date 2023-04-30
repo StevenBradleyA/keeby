@@ -16,8 +16,8 @@ function TransitionPage() {
   let updateId;
   let listingId;
   if (transitionId !== "1") {
-    const listingId = location.state.listingId;
-    const updateId = location.state.updateId;
+    listingId = location.state.listingId;
+    updateId = location.state.updateId;
   }
 
   useEffect(() => {
