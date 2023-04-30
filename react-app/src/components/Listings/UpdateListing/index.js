@@ -88,9 +88,9 @@ function EditListingPage() {
 
     if (!Object.values(errors).length) {
       await dispatch(updateListingThunk(formData, listing.id));
-      history.push(`/hackTime/${transitionId}`, { updateId: listing.id });
+      // history.push(`/hackTime/${transitionId}`, { updateId: listing.id });
 
-      // history.push(`/listing/${listing.id}`);
+      history.push(`/listing/${listing.id}`);
       setImageLoading(false);
     }
     setHasSubmitted(true);
