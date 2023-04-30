@@ -2,6 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation, useParams } from "react-router-dom";
 import hackTime from "../../media/hackTime.mov";
+import update from "../../media/update.mov"
+import create from "../../media/create.mov"
+
 import "./TransitionPage.css";
 function TransitionPage() {
   const history = useHistory();
@@ -47,7 +50,16 @@ function TransitionPage() {
         <video
           className="error-hacking-too-much"
           ref={videoRef}
-          src={hackTime}
+          src={create}
+          autoPlay
+          muted
+        />
+      )}
+      {play && transitionId === "3" && (
+        <video
+          className="error-hacking-too-much"
+          ref={videoRef}
+          src={update}
           autoPlay
           muted
         />
