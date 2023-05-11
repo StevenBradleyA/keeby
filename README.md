@@ -5,14 +5,10 @@
 </div> </h1>
 
 <p align="center"> 
-  <img src="https://skillicons.dev/icons?i=react,redux,aws,js,py,flask,webpack,github,sqlite,babel,vscode,git,html,postman&perline=7"/>
+  <img src="https://skillicons.dev/icons?i=react,redux,aws,js,py,flask,webpack,github,sqlite,babel,postgres,git,html,postman&perline=7"/>
 </p>
 
 ![keebygif](./react-app/src/media/keebyReadMe.gif)
-
-<!-- <div align="center">
-  <h2><a href="https://keeby.onrender.com">keeby live site</a></h2>
-</div> -->
 
 - Welcome to keeby, where you can list your mechanical keyboard for sale, engage with others in the comments, and browse the best mechanical keyboards on the market. This site is built using the latest technologies, including React, Redux, and Flask, to ensure a seamless user experience.
 </h3>
@@ -23,11 +19,84 @@
 
 <!-- The leading mechanical keyboard auction house specializing in all things thock.  -->
 
-<!-- mvp core features -->
+<!-- I kinda want some high quality screen shots supplemented with smaller gifs -->
+<!-- having too many gifs is very laggy -->
+<!-- really only want two gifs on a scroll other wise it is slow -->
 
-<!-- screenshots, at least 1-2 to highlight the app -->
+<!-- <h2 align="center">Listings</h2> -->
 
-<!-- Future Implementation Goals -->
+<br></br>
+
+<div align="center">
+<img src="./react-app/src/media/readme11.png" width="70%">
+</div>
+
+<div style="display:flex">
+  <img src="./react-app/src/media/readme1.gif" align="right" alt="binarygif" height="180" width="320" style="object-fit: cover"/>
+
+- The Home page displays all listings
+
+- The User is able to select the preview image
+
+- For an Individual listing
+
+- Placeholder
+
+- Placeholder
+
+</div>
+
+<br></br>
+
+<div align="center">
+<img src="./react-app/src/media/readme6.png" width="70%">
+</div>
+
+<br></br>
+
+<img src="./react-app/src/media/readme2.gif" align="left" alt="binarygif" height="180" width="320" />
+
+<p align="right">
+
+- Placeholder
+
+- Placeholder
+
+- Placeholder
+
+- Placeholder
+
+- Placeholder
+
+</p>
+<br></br>
+
+<div align="center">
+<img src="./react-app/src/media/readme9.png" width="70%">
+</div>
+
+<div align="center">
+<img src="./react-app/src/media/readme3.gif" width="35%">
+<img src="./react-app/src/media/readme4.gif" width="35%">
+<div align="center">
+<br></br>
+
+<div style="display:flex">
+  <img src="./react-app/src/media/readme5.gif" align="right" alt="binarygif" height="180" width="320" style="object-fit: cover"/>
+
+- Placeholder
+
+- Placeholder
+
+- Placeholder
+
+- Placeholder
+
+- Placeholder
+
+</div>
+
+<br></br>
 
 <h2 align="center">Keeby Core <a href="https://github.com/StevenBradleyA/keeby/wiki/Feature-List">Features</a></h2>
 
