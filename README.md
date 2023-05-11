@@ -1,5 +1,3 @@
-<!-- <h1 align="center" > ARE YOU SURE YOU WANT TO ENTER KEEBY? <br> < [YES]                [NO] </h1> -->
-
 <h1 align="center" > ARE YOU SURE YOU WANT TO ENTER KEEBY? <br> <div align="center">
   <h3><a href="https://keeby.onrender.com">< [YES]</a>          [NO]</h3>
 </div> </h1>
@@ -17,18 +15,10 @@
 
 - I designed this site in a retro aesthetic, which is designed to evoke the nostalgia of classic keyboard designs while maintaining a modern, sleek appearance. So come explore keeby, the innovative platform that brings together keyboard enthusiasts from around the world to buy and sell their favorite mechanical keyboards!
 
-<!-- The leading mechanical keyboard auction house specializing in all things thock.  -->
-
-<!-- I kinda want some high quality screen shots supplemented with smaller gifs -->
-<!-- having too many gifs is very laggy -->
-<!-- really only want two gifs on a scroll other wise it is slow -->
-
-<!-- <h2 align="center">Listings</h2> -->
-
 <br></br>
 
 <div align="center">
-<img src="./react-app/src/media/readme11.png" width="70%">
+<img src="./react-app/src/media/readme11.png" width="70%" />
 </div>
 
 <div style="display:flex">
@@ -49,12 +39,41 @@
 <br></br>
 
 <div align="center">
-<img src="./react-app/src/media/readme6.png" width="70%">
+<img src="./react-app/src/media/readme6.png" width="70%" />
 </div>
 
 <br></br>
 
-<img src="./react-app/src/media/readme2.gif" align="left" alt="binarygif" height="180" width="320" />
+<div style="display:flex">
+  <img src="./react-app/src/media/readme2.gif" align="right" alt="binarygif" height="180" width="320" style="object-fit: cover"/>
+
+- The Home page displays all listings
+
+- The User is able to select the preview image
+
+- For an Individual listing
+
+- Placeholder
+
+- Placeholder
+
+</div>
+
+<br></br>
+
+<div align="center">
+<img src="./react-app/src/media/readme9.png" width="70%" />
+</div>
+
+<div align="center">
+<img src="./react-app/src/media/readme3.gif" width="35%" />
+<img src="./react-app/src/media/readme4.gif" width="35%" />
+</div>
+
+<br></br>
+
+<div style="display:flex">
+<img src="./react-app/src/media/readme5.gif" alt="binarygif" height="180" width="320" />
 
 <p align="right">
 
@@ -69,26 +88,18 @@
 - Placeholder
 
 </p>
-<br></br>
-
-<div align="center">
-<img src="./react-app/src/media/readme9.png" width="70%">
 </div>
 
-<div align="center">
-<img src="./react-app/src/media/readme3.gif" width="35%">
-<img src="./react-app/src/media/readme4.gif" width="35%">
-<div align="center">
 <br></br>
 
 <div style="display:flex">
   <img src="./react-app/src/media/readme5.gif" align="right" alt="binarygif" height="180" width="320" style="object-fit: cover"/>
 
-- Placeholder
+- The Home page displays all listings
 
-- Placeholder
+- The User is able to select the preview image
 
-- Placeholder
+- For an Individual listing
 
 - Placeholder
 
@@ -98,7 +109,10 @@
 
 <br></br>
 
+
 <h2 align="center">Keeby Core <a href="https://github.com/StevenBradleyA/keeby/wiki/Feature-List">Features</a></h2>
+
+<p align="left">
 
 - Full CRUD Listings
 - Full CRUD Comments
@@ -106,6 +120,8 @@
 - Partial CRD Comment Likes
 - Search listing feature
 - AWS S3 File storage
+
+</p>
 
 <h2 align="center">Future Implementation Goals</h2>
 
