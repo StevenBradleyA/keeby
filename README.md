@@ -21,6 +21,8 @@
 <img src="./react-app/src/media/readme11.png" width="70%" />
 </div>
 
+<br>
+</br>
 <div style="display:flex">
   <img src="./react-app/src/media/readme1.gif" align="right" alt="binarygif" height="180" width="320" style="object-fit: cover"/>
 
@@ -36,7 +38,7 @@
 
 </div>
 
-<br></br>
+<br>
 
 <div align="center">
 <img src="./react-app/src/media/readme6.png" width="70%" />
@@ -59,35 +61,23 @@
 
 </div>
 
-<br></br>
+<br>
 
 <div align="center">
 <img src="./react-app/src/media/readme9.png" width="70%" />
 </div>
 
+<br>
+<p align="center">
+
+Manage listings select a preview image or even delete existing images for your listings. Placeholder
+
+</p>
+
+<br>
 <div align="center">
 <img src="./react-app/src/media/readme3.gif" width="35%" />
 <img src="./react-app/src/media/readme4.gif" width="35%" />
-</div>
-
-<br></br>
-
-<div style="display:flex">
-<img src="./react-app/src/media/readme5.gif" alt="binarygif" height="180" width="320" />
-
-<p align="right">
-
-- Placeholder
-
-- Placeholder
-
-- Placeholder
-
-- Placeholder
-
-- Placeholder
-
-</p>
 </div>
 
 <br></br>
@@ -103,12 +93,10 @@
 
 - Placeholder
 
-- Placeholder
 
 </div>
 
 <br></br>
-
 
 <h2 align="center">Keeby Core <a href="https://github.com/StevenBradleyA/keeby/wiki/Feature-List">Features</a></h2>
 
