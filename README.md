@@ -26,15 +26,13 @@
 <div style="display:flex">
   <img src="./react-app/src/media/readme1.gif" align="right" alt="binarygif" height="180" width="320" style="object-fit: cover"/>
 
-- The Home page displays all listings
+- The Home page serves as a hub for all available listings on the site.
 
-- The User is able to select the preview image
+- Each listing card features a preview image and brief description of the listing.
 
-- For an Individual listing
+- The layout is designed to make it easy for users to browse available listings quickly and efficiently.
 
-- Placeholder
-
-- Placeholder
+- Clicking a listing card will take the user to the full listing details page.
 
 </div>
 
@@ -49,15 +47,15 @@
 <div style="display:flex">
   <img src="./react-app/src/media/readme2.gif" align="right" alt="binarygif" height="180" width="320" style="object-fit: cover"/>
 
-- The Home page displays all listings
+- The listing page presents comprehensive information regarding each keyboard.
 
-- The User is able to select the preview image
+- A listing comprises multiple images, an extensive description, and a pricing section.
 
-- For an Individual listing
+- Each listing features a photo gallery that showcases all images related to the item.
 
-- Placeholder
+- Every listing includes a dedicated comments section, enabling users to share their feedback and opinions.
 
-- Placeholder
+- Users have the ability to like comments or edit/delete their comments.
 
 </div>
 
@@ -70,7 +68,7 @@
 <br>
 <p align="center">
 
-Manage listings select a preview image or even delete existing images for your listings. Placeholder
+The Manage Listings page provides users with an overview of all their listings and allows them to efficiently update or delete their listings as needed. This page incorporates a retro matrix hover effect and allows users to conveniently manage and maintain their listings with ease.
 
 </p>
 
@@ -85,14 +83,13 @@ Manage listings select a preview image or even delete existing images for your l
 <div style="display:flex">
   <img src="./react-app/src/media/readme5.gif" align="right" alt="binarygif" height="180" width="320" style="object-fit: cover"/>
 
-- The Home page displays all listings
+- The profile page showcases all user information.
 
-- The User is able to select the preview image
+- Allows users to modify individual details, without the need for a lengthy form.
 
-- For an Individual listing
+- Features a unique retro computing aesthetic, complete with keyframed CSS scanlines and flicker effects.
 
-- Placeholder
-
+- This page provides users with full control over their account and data, by allowing a user to delete their profile.
 
 </div>
 
