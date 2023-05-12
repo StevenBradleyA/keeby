@@ -18,7 +18,7 @@
 <br></br>
 
 <div align="center">
-<img src="./react-app/src/media/readme11.png" width="70%" />
+<img src="./react-app/src/media/readme11.png" width="80%" />
 </div>
 
 <br>
@@ -26,20 +26,20 @@
 <div style="display:flex">
   <img src="./react-app/src/media/readme1.gif" align="right" alt="binarygif" height="180" width="320" style="object-fit: cover"/>
 
-- The Home page serves as a hub for all available listings on the site.
+- The Home page serves as a hub for all available listings.
 
-- Each listing card features a preview image and brief description of the listing.
+- Each listing card features a preview image and brief description.
 
 - The layout is designed to make it easy for users to browse available listings quickly and efficiently.
 
-- Clicking a listing card will take the user to the full listing details page.
+- Clicking a listing card directs to the full listing details page.
 
 </div>
 
 <br>
 
 <div align="center">
-<img src="./react-app/src/media/readme6.png" width="70%" />
+<img src="./react-app/src/media/readme6.png" width="80%" />
 </div>
 
 <br></br>
@@ -47,22 +47,20 @@
 <div style="display:flex">
   <img src="./react-app/src/media/readme2.gif" align="right" alt="binarygif" height="180" width="320" style="object-fit: cover"/>
 
-- The listing page presents comprehensive information regarding each keyboard.
+- This page presents comprehensive information about a keeb.
 
-- A listing comprises multiple images, an extensive description, and a pricing section.
-
-- Each listing features a photo gallery that showcases all images related to the item.
+- Each listing showcases all related images. 
 
 - Every listing includes a dedicated comments section, enabling users to share their feedback and opinions.
 
-- Users have the ability to like comments or edit/delete their comments.
+- Users can like, edit, or delete comments.
 
 </div>
 
 <br>
 
 <div align="center">
-<img src="./react-app/src/media/readme9.png" width="70%" />
+<img src="./react-app/src/media/readme9.png" width="80%" />
 </div>
 
 <br>
@@ -88,8 +86,6 @@ The Manage Listings page provides users with an overview of all their listings a
 - Allows users to modify individual details, without the need for a lengthy form.
 
 - Features a unique retro computing aesthetic, complete with keyframed CSS scanlines and flicker effects.
-
-- This page provides users with full control over their account and data, by allowing a user to delete their profile.
 
 </div>
 
