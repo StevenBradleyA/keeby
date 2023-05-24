@@ -18,6 +18,7 @@ function Navigation() {
   const { setModalContent } = useModal();
   const [name, setName] = useState("");
   const [searchResult, setSearchResult] = useState([]);
+  const [isSearchInputFocused, setIsSearchInputFocused] = useState(false);
 
   const sessionUser = useSelector((state) => state.session.user);
   // const [listingName, setListingName] = useState('')
@@ -40,6 +41,13 @@ function Navigation() {
   const handleListYourKeeb = () => {
     history.push(`/listings/create`);
   };
+  const handleSearchInputFocus = () => {
+    setIsSearchInputFocused(true);
+  };
+
+  const handleSearchInputBlur = () => {
+    setIsSearchInputFocused(false);
+  };
 
   useEffect(async () => {
     if (name.length) {
@@ -50,7 +58,6 @@ function Navigation() {
       setSearchResult("");
     }
   }, [name]);
-
 
   // I want to make list your keeb redirect to log in if not session User
   return (
@@ -68,9 +75,12 @@ function Navigation() {
         type="search"
         placeholder="Search for a Keyboard name ..."
         value={name}
+        // onChange={(e) => setName(e.target.value)}
         onChange={(e) => setName(e.target.value)}
+        onFocus={handleSearchInputFocus}
+        onBlur={handleSearchInputBlur}
       />
-      {searchResult.length > 0 && (
+      { isSearchInputFocused && searchResult.length > 0 && (
         <div className="search-result-container">
           {searchResult.map((listing) => (
             <ListingSearchResults
