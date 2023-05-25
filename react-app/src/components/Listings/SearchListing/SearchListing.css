@@ -1,20 +1,41 @@
 .search-result-listing-card-container{
+    /* margin-top: 10px; */
     display: flex;
     padding: 5px;
     gap: 5px;
-    /* justify-content: center; */
+    width: 98%;
 
 }
 
+
+
+.search-result-image-container{
+    display: flex;
+    width: 10%;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.search-result-text-container{
+    display: flex;
+    width: 85%;
+
+}
+
+
+
 .search-result-listing-image{
-    height: 20px;
-    width: 25px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    width: 35px;
     object-fit: cover;
 }
 
 .search-result-listing-name{
-    font-size: 15px;
+    width: 100%;
+    font-size: 20px;
     color: #00dd00;
 }
-
-
