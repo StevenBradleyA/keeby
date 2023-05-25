@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import LoginFormModal from "./LoginModal";
 import SignupFormModal from "./SignUpModal";
@@ -19,6 +19,8 @@ function Navigation() {
   const [name, setName] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [isSearchInputFocused, setIsSearchInputFocused] = useState(false);
+  const [isResultsClicked, setIsResultsClicked] = useState(false);
+  const searchContainerRef = useRef(null);
 
   const sessionUser = useSelector((state) => state.session.user);
   // const [listingName, setListingName] = useState('')
@@ -49,6 +51,27 @@ function Navigation() {
     setIsSearchInputFocused(false);
   };
 
+  const handleDocumentClick = (e) => {
+    if (
+      !searchContainerRef.current?.contains(e.target) &&
+      e.target.id !== "search-input"
+    ) {
+      setSearchResult([]);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleDocumentClick);
+
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, []);
+
+
+
+
+
   useEffect(async () => {
     if (name.length) {
       const results = await fetch(`/api/listings/${name}`);
@@ -75,23 +98,22 @@ function Navigation() {
         type="search"
         placeholder="Search for a Keyboard name ..."
         value={name}
-        // onChange={(e) => setName(e.target.value)}
         onChange={(e) => setName(e.target.value)}
         onFocus={handleSearchInputFocus}
         onBlur={handleSearchInputBlur}
-      />
-      { isSearchInputFocused && searchResult.length > 0 && (
-        <div className="search-result-container">
-          {searchResult.map((listing) => (
-            <ListingSearchResults
-              key={listing.id}
-              listing={listing}
-              setSearchResult={setSearchResult}
-              setName={setName}
-            />
-          ))}
-        </div>
-      )}
+        />
+        {searchResult.length > 0 && (
+          <div className="search-result-container" ref={searchContainerRef}>
+            {searchResult.map((listing) => (
+              <ListingSearchResults
+                key={listing.id}
+                listing={listing}
+                setSearchResult={setSearchResult}
+                setName={setName}
+              />
+            ))}
+          </div>
+        )}
 
       {sessionUser && (
         <>

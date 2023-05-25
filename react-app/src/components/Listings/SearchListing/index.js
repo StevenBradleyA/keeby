@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./SearchListing.css"
-import Navigation from "../../Navigation";
 
 function ListingSearchResults({listing, setSearchResult, setName}) {
 const dispatch = useDispatch()
