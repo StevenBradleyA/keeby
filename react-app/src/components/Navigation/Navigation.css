@@ -13,27 +13,140 @@
   text-shadow: none;
 }
 
-.nav-bar-container {
+
+
+/*  ------------        containers         ------------ */
+
+.nav-container {
   position: fixed;
   top: 0px;
   left: 0px;
-  width: 100%;
-  height: 40px;
-  background-color: #222;
+  height: 60px;
+  /* background-color: #222; */
+  background-color: #6f6f6f;
+  
   z-index: 2;
+  
+  
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
-.home-button {
-  color: rgb(95, 92, 92);
-  position: absolute;
-  left: 5%;
-  top: 0.7rem;
+
+
+
+.keeby-title-container{
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+.nav-search-container{
+
+width: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.nav-buttons-container{
+
+width: 25%;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 15%;
+
+}
+
+/*  ---------     contents        --------- */
+
+/*  ---------     title       --------- */
+.keeby-title {
+  height: 30px;
+  width: 169px;
+}
+
+
+/*  ---------     search        --------- */
+
+
+.search-input-login {
+  width: 90%;
+  height: 28px;
+
+
+  background-color: #222;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 3px;
+  box-shadow: 2.5px 2px 3px rgba(248, 105, 210, 0.85),
+    -2px 2px 3px rgba(255, 255, 255, 0.65),
+    2.5px -2px 3px rgba(255, 255, 255, 0.65),
+    -2.5px -2px 3px rgba(255, 255, 255, 0.85);
+  padding: none;
+  font-size: 12px;
+  padding: 0.1rem;
+
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.search-input-login:focus {
+  outline: none;
+  box-shadow: 0px 0 10px #0fa005;
+}
+
+
+/*  ---------     search results       --------- */
+
+.search-result-container {
+  position: absolute;
+  top: 55px;
+  width: 45%;
+  height: 300px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #0fa005;
+  object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+/* this psuedo element is for that sweet sweet opacity on background */
+
+.search-result-container::after {
+  content: "";
+  background: url("../../media/matrix.gif");
+  background-size: cover;
+  opacity: 0.7;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+
+
+
+/*  ---------     buttons        --------- */
+/*  ---------     usericon        --------- */
+
+
+
+
+
+
+
+
+
+
 
 .log-in-button {
-  position: absolute;
+  /* position: absolute;
   left: 81%;
-  top: 0.78rem;
+  top: 0.78rem; */
   padding: 0;
   border: none;
   background: none;
@@ -50,9 +163,9 @@
 }
 
 .sign-up-button {
-  position: absolute;
+  /* position: absolute;
   left: 89%;
-  top: 0.78rem;
+  top: 0.78rem; */
   padding: 0;
   border: none;
   background: none;
@@ -69,9 +182,9 @@
 }
 
 .demo-log-in-button {
-  position: absolute;
+  /* position: absolute;
   left: 73%;
-  top: 0.78rem;
+  top: 0.78rem; */
   padding: 0;
   border: none;
   background: none;
@@ -88,10 +201,10 @@
 }
 
 .list-a-keeb-button {
-  position: absolute;
+  /* position: absolute;
   left: 75%;
   font-size: 12px;
-  top: 0.78rem;
+  top: 0.78rem; */
   text-shadow: 0.5px -0.5px 0 rgba(255, 255, 255, 0.5),
     2.5px 1px 2.5px rgba(255, 0, 255, 0.85),
     -2.5px -2px 2.5px rgba(0, 0, 255, 0.85),
@@ -104,23 +217,15 @@
 }
 
 .profile-icon {
-  position: absolute;
+  /* position: absolute;
   top: 10px;
-  left: 95%;
+  left: 95%; */
   height: 20px;
   width: 20px;
   object-fit: cover;
   /* margin: 10px; */
 }
 
-.keeby-title {
-  height: 30px;
-  width: 169px;
-  /* height: 2rem;
-width: 10rem; */
-  margin-top: 5px;
-  margin-left: 5px;
-}
 
 /* ------------        User Icon Modal     ----------- */
 
@@ -193,59 +298,7 @@ width: 10rem; */
   margin: 10px;
 }
 
-/* ------------        Search Results     ----------- */
 
-.search-input-login {
-  position: absolute;
-  background-color: #222;
-  color: rgb(255, 255, 255);
-  border: none;
-  border-radius: 3px;
-  box-shadow: 2.5px 2px 3px rgba(248, 105, 210, 0.85),
-    -2px 2px 3px rgba(255, 255, 255, 0.65),
-    2.5px -2px 3px rgba(255, 255, 255, 0.65),
-    -2.5px -2px 3px rgba(255, 255, 255, 0.85);
-  padding: none;
-  left: 220px;
-  top: 0.7rem;
-  width: 40%;
-  font-size: 12px;
-  padding: 0.1rem;
-
-  transition: box-shadow 0.3s ease-in-out;
-}
-
-.search-input-login:focus {
-  outline: none;
-  box-shadow: 0px 0 10px #0fa005;
-}
-
-.search-result-container {
-  position: absolute;
-  left: 220px;
-  width: 40%;
-  height: 200px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #0fa005;
-  object-fit: cover;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-}
-/* this psuedo element is for that sweet sweet opacity on background */
-
-.search-result-container::after {
-  content: "";
-  background: url("../../media/matrix.gif");
-  background-size: cover;
-  opacity: 0.5;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
-}
 
 /* ------------        Log In Modal     ----------- */
 

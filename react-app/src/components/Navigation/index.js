@@ -83,16 +83,20 @@ function Navigation() {
   }, [name]);
 
   // I want to make list your keeb redirect to log in if not session User
+
   return (
-    <div className="nav-bar-container">
+    <div className="nav-container">
       <div className="keeby-title-container">
         <img
           className="keeby-title"
           src={keebyTitle}
           onClick={handleHomeClick}
         />
+
+
       </div>
-      {/* <FontAwesomeIcon icon={faKeyboard} onClick={handleHomeClick} className="home-button"/> */}
+    <div className="nav-search-container">
+
       <input
         className="search-input-login"
         type="search"
@@ -115,6 +119,9 @@ function Navigation() {
           </div>
         )}
 
+    </div>
+
+    <div className="nav-buttons-container">
       {sessionUser && (
         <>
           <div
@@ -151,6 +158,11 @@ function Navigation() {
           >{`[ Sign Up ]`}</button>
         </>
       )}
+
+
+
+    </div>
+
     </div>
   );
 }
