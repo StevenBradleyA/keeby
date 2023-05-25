@@ -51,7 +51,7 @@ function Navigation() {
     setIsSearchInputFocused(false);
   };
 
-  const handleDocumentClick = (e) => {
+  const handleSearchClick = (e) => {
     if (
       !searchContainerRef.current?.contains(e.target) &&
       e.target.id !== "search-input"
@@ -61,16 +61,12 @@ function Navigation() {
   };
 
   useEffect(() => {
-    document.addEventListener("click", handleDocumentClick);
+    document.addEventListener("click", handleSearchClick);
 
     return () => {
-      document.removeEventListener("click", handleDocumentClick);
+      document.removeEventListener("click", handleSearchClick);
     };
   }, []);
-
-
-
-
 
   useEffect(async () => {
     if (name.length) {
@@ -92,19 +88,16 @@ function Navigation() {
           src={keebyTitle}
           onClick={handleHomeClick}
         />
-
-
       </div>
-    <div className="nav-search-container">
-
-      <input
-        className="search-input-login"
-        type="search"
-        placeholder="Search for a Keyboard name ..."
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        onFocus={handleSearchInputFocus}
-        onBlur={handleSearchInputBlur}
+      <div className="nav-search-container">
+        <input
+          className="search-input-login"
+          type="search"
+          placeholder="Search for a Keyboard name ..."
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          onFocus={handleSearchInputFocus}
+          onBlur={handleSearchInputBlur}
         />
         {searchResult.length > 0 && (
           <div className="search-result-container" ref={searchContainerRef}>
@@ -118,55 +111,49 @@ function Navigation() {
             ))}
           </div>
         )}
+      </div>
 
-    </div>
+      <div className="nav-buttons-container">
+        {sessionUser && (
+          <>
+            <div
+              className="button-styling"
+              id="list-your-keeb-nav"
+              onClick={handleListYourKeeb}
+            >{`[ List your Keeb ]`}</div>
+            <img
+              alt="profile"
+              className={
+                sessionUser.profile_picture === null
+                  ? "profile-icon-letter"
+                  : "profile-icon"
+              }
+              src={
+                sessionUser.profile_picture === null
+                  ? sessionUser.name[0]
+                  : sessionUser.profile_picture
+              }
+              onClick={handleUserIconClick}
+            />
+          </>
+        )}
 
-    <div className="nav-buttons-container">
-      {sessionUser && (
-        <>
-          <div
-            className="button-styling"
-            id="list-your-keeb-nav"
-            onClick={handleListYourKeeb}
-          >{`[ List your Keeb ]`}</div>
-          <img
-            alt="profile"
-            className={
-              sessionUser.profile_picture === null
-                ? "profile-icon-letter"
-                : "profile-icon"
-            }
-            src={
-              sessionUser.profile_picture === null
-                ? sessionUser.name[0]
-                : sessionUser.profile_picture
-            }
-            onClick={handleUserIconClick}
-          />
-        </>
-      )}
-
-      {!sessionUser && (
-        <>
-          <DemoLogin />
-          <button
-            onClick={handleLogInClick}
-            id="logged-out-nav-buttons"
-            className="button-styling"
-
-          >{`[ Log In ]`}</button>
-          <button
-            onClick={handleSignUpClick}
-            id="logged-out-nav-buttons"
-            className="button-styling"
-          >{`[ Sign Up ]`}</button>
-        </>
-      )}
-
-
-
-    </div>
-
+        {!sessionUser && (
+          <>
+            <DemoLogin />
+            <button
+              onClick={handleLogInClick}
+              id="logged-out-nav-buttons"
+              className="button-styling"
+            >{`[ Log In ]`}</button>
+            <button
+              onClick={handleSignUpClick}
+              id="logged-out-nav-buttons"
+              className="button-styling"
+            >{`[ Sign Up ]`}</button>
+          </>
+        )}
+      </div>
     </div>
   );
 }
