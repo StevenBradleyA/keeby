@@ -65,12 +65,12 @@ const ProfilePage = () => {
   }, []);
 
   return (
-    <>
+    <div className="profile-page-main-container">
       <div className="retro-scanlines"></div>
 
-      <h1 className="profile-title-text">{text}</h1>
+      <div className="profile-title-text">{text}</div>
 
-      <div className="icon-user-info-container">
+      <div className="profile-page-icon-info-container">
         <div className="profile-picture-container">
           <img
             src={
@@ -88,11 +88,10 @@ const ProfilePage = () => {
           <FontAwesomeIcon
             icon={faUserPen}
             onClick={handleProfilePictureEdit}
-            className="edit-profile-picture"
+            className="edit-profile-picture-button"
           />
         </div>
-        <div className="profile-page-container">
-          {/* <div className="user-info-container"> */}
+        <div className="profile-info-container">
           <div>
             <div className="profile-page-text">{`[ Username ]     ${sessionUser.username}`}</div>
             <FontAwesomeIcon
@@ -134,28 +133,25 @@ const ProfilePage = () => {
               id="profile-page-edit-modal"
             />
           </div>
-          <p></p>
         </div>
-        <div>
+
+        {/* <div className="profile-page-daily-container">
           <div id="optional-keeb-info" className="profile-page-text">
-            
-          <p id="keyboard-main-text">{`[ What Keyboard do you main? ]`}</p>
-          {`[ board ] ${sessionUser.daily_driver}      [ keycaps ] ${sessionUser.keycaps}      [switches] ${sessionUser.switches}`}
+            <p id="keyboard-main-text">{`[ What Keyboard do you main? ]`}</p>
+            {`[ board ] ${sessionUser.daily_driver}      [ keycaps ] ${sessionUser.keycaps}      [switches] ${sessionUser.switches}`}
           </div>
           <FontAwesomeIcon
             icon={faUserPen}
             onClick={handleDailyDriverEdit}
             id="profile-page-edit-keeb-modal"
           />
-        </div>
-        {/* </div> */}
-        <p></p>
+        </div> */}
 
-        <button className="delete-yeet-profile" onClick={handleDeleteUser}>
+        {/* <button className="delete-yeet-profile" onClick={handleDeleteUser}>
           {`[ delete my profile ]`}
-        </button>
+        </button> */}
       </div>
-    </>
+    </div>
   );
 };
 

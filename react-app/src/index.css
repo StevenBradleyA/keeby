@@ -51,7 +51,11 @@ body {
 
 
 
-
+.profile-page-text {
+  color: #00dd00;
+  font-family: "VT323", Courier;
+  font-size: 20px;
+}
 
 
 /* --------      landing page title                  ---------------- */

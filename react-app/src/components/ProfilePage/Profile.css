@@ -1,106 +1,37 @@
-/* ------------      Hacking Time       --------------- */
+/* ------------      containers       ------------- */
 
-.profile-page-container {
-  margin-top: 50px;
+.profile-page-main-container {
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
-  align-items: start;
-  position: absolute;
-  width: 60%;
-  /* bottom: 160px; */
-  top: 65px;
-  left: 240px;
 }
 
-/* ------------- Universal text for this page ------------- */
+/* ------------      sub containers       ------------- */
 
-.profile-page-text {
-  color: #00dd00;
-  font-family: "VT323", Courier;
-  font-size: 20px;
+.profile-page-icon-info-container {
+  display: flex;
+  margin-top: 20px;
+  width: 100%;
 }
 
-/*  --------------      Individual          --------------              */
-
-.profile-page-icon {
-  position: relative;
-  bottom: 20px;
-  left: 10px;
-  height: 200px;
-  width: 200px;
-  object-fit: cover;
-  z-index: -1;
+.profile-page-daily-container {
 }
 
-.profile-page-icon-letter {
-  position: relative;
-  bottom: 20px;
-  left: 10px;
-  height: 200px;
-  width: 200px;
-  z-index: -1;
-}
-
-.edit-profile-picture {
-  position: relative;
-  bottom: 22px;
-  height: 20px;
-  left: 0px;
-  color: #da0000;
-}
-
-.profile-page-username {
-  position: relative;
-  bottom: 52px;
-  height: 20px;
-}
-
-#profile-page-edit-modal {
-  position: relative;
-  left: 500px;
-  bottom: 18px;
-  color: #da0000;
-}
-
-#profile-page-edit-keeb-modal {
-  position: relative;
-  left: 732px;
-  bottom: 82px;
-  color: #da0000;
-}
-
-
-
-#optional-keeb-info {
+.profile-info-container {
+  width: 70%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  /* align-content: center; */
-}
-#keyboard-main-text{
-  position: relative;
-  bottom: 25px;
-  right: 52px;
+  justify-content: center;
+  gap: 20px;
 }
 
-.delete-yeet-profile{
-  position: relative;
-  left:38%;
-  color: red;
-  border: none;
-  padding: none;
-  background: none;
-  font-family: "VT323", Courier;
-  font-size: 20px;
-}
+/* ------------      title       ------------- */
 
-/* -------------         Moving Title           ----------------- */
 .profile-title-text {
-  position: relative;
-  /* color: #1fff66; */
+  /* position: relative; */
   color: #00dd00;
   font-family: "VT323", Courier;
-  font-size: 50px;
+  font-size: 60px;
   text-align: center;
   z-index: 1;
 }
@@ -124,6 +55,83 @@
     content: "...";
   }
 }
+
+/* ------------      profile picture       ------------- */
+
+.profile-picture-container {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px  ;
+}
+
+.profile-page-icon {
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.profile-page-icon-letter {
+  height: 200px;
+  width: 200px;
+  z-index: -1;
+}
+
+.edit-profile-picture-button {
+  color: #da0000;
+  font-size: 30px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+/* ------------      profile info       ------------- */
+
+.profile-page-username {
+  position: relative;
+  bottom: 52px;
+  height: 20px;
+}
+
+#profile-page-edit-modal {
+  position: relative;
+  left: 500px;
+  bottom: 18px;
+  color: #da0000;
+}
+
+#profile-page-edit-keeb-modal {
+  position: relative;
+  left: 732px;
+  bottom: 82px;
+  color: #da0000;
+}
+
+#optional-keeb-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* align-content: center; */
+}
+#keyboard-main-text {
+  position: relative;
+  bottom: 25px;
+  right: 52px;
+}
+
+.delete-yeet-profile {
+  position: relative;
+  left: 38%;
+  color: red;
+  border: none;
+  padding: none;
+  background: none;
+  font-family: "VT323", Courier;
+  font-size: 20px;
+}
+
+/* -------------         Moving Title           ----------------- */
 
 /* -------------         Scanlines && Flicker           ----------------- */
 
