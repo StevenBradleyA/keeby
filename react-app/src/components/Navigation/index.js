@@ -125,7 +125,8 @@ function Navigation() {
       {sessionUser && (
         <>
           <div
-            className="list-a-keeb-button"
+            className="button-styling"
+            id="list-your-keeb-nav"
             onClick={handleListYourKeeb}
           >{`[ List your Keeb ]`}</div>
           <img
@@ -150,11 +151,14 @@ function Navigation() {
           <DemoLogin />
           <button
             onClick={handleLogInClick}
-            className="log-in-button"
+            id="logged-out-nav-buttons"
+            className="button-styling"
+
           >{`[ Log In ]`}</button>
           <button
             onClick={handleSignUpClick}
-            className="sign-up-button"
+            id="logged-out-nav-buttons"
+            className="button-styling"
           >{`[ Sign Up ]`}</button>
         </>
       )}

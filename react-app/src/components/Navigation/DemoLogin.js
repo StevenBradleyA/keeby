@@ -9,7 +9,13 @@ const DemoLogin = () => {
     history.push("/");
   };
 
-  return <button onClick={onClick} className="demo-log-in-button">{`[ Demo ]`}</button>;
+  return (
+    <button
+      onClick={onClick}
+      id="logged-out-nav-buttons"
+      className="button-styling"
+    >{`[ Demo ]`}</button>
+  );
 };
 
 export default DemoLogin;

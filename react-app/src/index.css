@@ -35,6 +35,25 @@ body {
   /* text-fill-color: transparent; */
 }
 
+
+.button-styling {
+  color: rgb(255, 255, 255);
+  text-shadow: 0.5px -0.5px 0 rgba(255, 255, 255, 0.5),
+    2.5px 1px 2.5px rgba(255, 0, 255, 0.85),
+    -2.5px -2px 2.5px rgba(0, 0, 255, 0.85),
+    0.5px -1.5px 0 rgba(255, 255, 255, 0.8);
+}
+
+.button-styling:hover {
+  color: red;
+  text-shadow: none;
+}
+
+
+
+
+
+
 /* --------      landing page title                  ---------------- */
 
 .listing-page-title-big {
