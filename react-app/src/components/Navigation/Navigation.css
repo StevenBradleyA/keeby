@@ -5,8 +5,7 @@
   top: 0px;
   left: 0px;
   height: 60px;
-  /* background-color: #222; */
-  background-color: #6f6f6f;
+  background-color: #222;
 
   z-index: 2;
 
@@ -153,7 +152,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .user-image-container-modal {
@@ -165,39 +163,38 @@
   justify-content: center;
 }
 
-.user-icon-modal-buttons-container{
+.user-icon-modal-buttons-container {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-
-
-
 .profile-icon-modal {
   width: 120px;
   height: 110px;
   object-fit: cover;
+  transition: transform 0.3s ease-in-out;
 }
+.profile-icon-modal:hover {
+  box-shadow: 0 0 10px #325aab;
+}
+
 .profile-icon-letter-modal {
   width: 120px;
   height: 110px;
 }
 
-
-#icon-modal-buttons{
+#icon-modal-buttons {
   font-size: 16px;
   background: none;
   border: none;
   padding: 0;
-
   transition: transform 0.3s ease-in-out;
 }
 
 #icon-modal-buttons:hover {
   transform: scale(1.15);
 }
-
 
 /* ------------        Log In Modal     ----------- */
 
