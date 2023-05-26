@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { getListingByIdThunk } from "../../store/listing";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,13 +8,16 @@ import PhotoGalleryModal from "./PhotoGalleryModal";
 import { getAllCommentsPerListingThunk } from "../../store/comment";
 import CommentCard from "../Comments/CommentsIndex";
 import CreateComment from "../Comments/CreateComment";
+import githubIcon from "../../media/square-github.svg"
+import linkedIn from "../../media/linkedin.svg"
+
+
 
 const ListingPage = () => {
   const dispatch = useDispatch();
   const { listingId } = useParams();
   const currentListingId = Number(listingId);
   const { setModalContent } = useModal();
-
   useEffect(() => {
     dispatch(getListingByIdThunk(listingId));
   }, [dispatch, listingId]);
@@ -26,18 +29,21 @@ const ListingPage = () => {
   const currentListing = useSelector((state) => state.listings)[listingId];
 
   const allComments = useSelector((state) =>
-    Object.values(state.comments).filter(
-      (e) => e.listing_id === currentListingId
+  Object.values(state.comments).filter(
+    (e) => e.listing_id === currentListingId
     )
-  );
+    );
 
-  if (!currentListing) {
-    return <h1>LOADING...</h1>;
-  }
 
-  if (!currentListing.listing_images) {
-    return <h1>LOADING...</h1>;
-  }
+    
+    if (!currentListing) {
+      return <h1>LOADING...</h1>;
+    }
+    
+    if (!currentListing.listing_images) {
+      return <h1>LOADING...</h1>;
+    }
+    
   const displayImageArr = currentListing.listing_images.filter(
     (e) => e.is_display_image === true
   );
@@ -47,6 +53,7 @@ const ListingPage = () => {
       setModalContent(<PhotoGalleryModal image={image} />);
     };
   };
+
 
   // currently this would not catch exclamation marks or question marks...
 
@@ -132,6 +139,33 @@ const ListingPage = () => {
           />
         ))}
       </div>
+      <div className="footer-container">
+        <div className="footer-sticky-container">
+          <div className="footer-text">@ 2023 Steven Anderson</div>
+          {`·`}
+          <img
+            alt="github"
+            src={githubIcon}
+            className="footer-icons"
+            onClick={() =>
+              window.open("https://github.com/StevenBradleyA", "_blank")
+            }
+          />
+          {`·`}
+          <img
+            alt="linkedIn"
+            src={linkedIn}
+            className="footer-icons"
+            onClick={() =>
+              window.open(
+                "https://www.linkedin.com/in/stevenanderson-dev/",
+                "_blank"
+              )
+            }
+          />
+        </div>
+      </div>
+
     </div>
   );
 };

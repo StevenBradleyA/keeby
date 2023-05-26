@@ -1,5 +1,5 @@
 .single-listing-page-container {
-  margin-top: 50px;
+  margin-top: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,36 +16,31 @@
   display: flex;
 }
 
-.listing-page-title {
-  font-size: 2rem;
-  color: #ffffff;
-  text-shadow: 2px 2px 0 #000;
-}
-
 #comment-count-header {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 #price-header {
-  font-size: 14px;
+  font-size: 16px;
   color: #676767;
 }
 
 .listing-page-display-image {
-  height: 250px;
+  height: 400px;
   width: 60%;
   object-fit: cover;
   margin-bottom: 10px;
 }
 
 .listing-page-additional-image {
-  height: 250px;
+  height: 400px;
   width: 60%;
   object-fit: cover;
   margin-bottom: 10px;
 }
 
 .listing-page-description {
+  font-size: 20px;
   width: 60%;
   margin-bottom: 10px;
   word-wrap: break-word;
@@ -101,7 +96,7 @@
 /*  ------------          Comments        ------------- */
 
 .comments-container {
-  width: 70%;
+  width: 60%;
 }
 
 .create-comment-container {
@@ -114,4 +109,37 @@
   background: none;
   padding: none;
   border: none;
+}
+
+
+/*  ------------          footer        ------------- */
+
+.footer-container {
+  border-top: 1.5px solid #2d2d2d;
+
+
+  margin-top: 150px;
+  /* background-color: rgb(212, 212, 212); */
+  height: 80px;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer-sticky-container {
+  position: sticky;
+  bottom: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.footer-text {
+  font-size: 15px;
+  opacity: 0.3;
+}
+
+.footer-icons {
+  width: 20px;
+  opacity: 0.2;
+  cursor: pointer;
 }

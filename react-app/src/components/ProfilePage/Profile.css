@@ -15,11 +15,9 @@
 }
 
 .profile-page-daily-container {
-
-display: flex;
-flex-direction: column;
-width: 100%;
-
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .profile-info-container {
@@ -27,7 +25,6 @@ width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-
 }
 
 /* ------------      title       ------------- */
@@ -68,7 +65,7 @@ width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px  ;
+  gap: 5px;
 }
 
 .profile-page-icon {
@@ -76,6 +73,7 @@ width: 100%;
   width: 300px;
   object-fit: cover;
   z-index: -1;
+  transition: box-shadow 0.3s ease;
 }
 
 .profile-page-icon-letter {
@@ -93,51 +91,39 @@ width: 100%;
 
 /* ------------      profile info       ------------- */
 
-.profile-info-modal-container{
+.profile-info-modal-container {
   display: flex;
   justify-content: space-between;
 }
 
 #profile-page-text {
- font-size: 30px;
+  font-size: 30px;
 }
 
 #profile-page-edit-modal {
   color: #da0000;
- font-size: 25px;
+  font-size: 25px;
 }
 
 /* ------------      keeb info       ------------- */
 
-.daily-heading-container{
+.daily-heading-container {
   margin-top: 20px;
   margin-bottom: 40px;
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 10px;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
-
-
-.daily-driver-container{
-
-display: flex;
-justify-content: space-evenly;
-
+.daily-driver-container {
+  display: flex;
+  justify-content: space-evenly;
 }
 
-#profile-page-keeb-text{
-font-size: 40px;
-
-
+#profile-page-keeb-text {
+  font-size: 40px;
 }
-
-
-
-
-
 
 .delete-yeet-profile {
   margin-top: 40px;
