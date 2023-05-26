@@ -103,6 +103,7 @@
 #profile-page-edit-modal {
   color: #da0000;
   font-size: 25px;
+  cursor: pointer;
 }
 
 /* ------------      keeb info       ------------- */
@@ -133,9 +134,9 @@
   background: none;
   font-family: "VT323", Courier;
   font-size: 30px;
+  cursor: pointer;
 }
 
-/* -------------         Moving Title           ----------------- */
 
 /* -------------         Scanlines && Flicker           ----------------- */
 

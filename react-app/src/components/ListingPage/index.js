@@ -46,7 +46,7 @@ const ListingPage = () => {
 
   const handlePhotoGalleryClick = (image) => {
     return () => {
-      setModalContent(<PhotoGalleryModal image={image} />);
+      setModalContent(<PhotoGalleryModal image={image} images={currentListing.listing_images}/>);
     };
   };
 
@@ -119,6 +119,7 @@ const ListingPage = () => {
             onClick={handlePhotoGalleryClick(image)}
           />
         ))}
+
       </div>
       <div className="comments-container">
         <div className="create-comment-container">
