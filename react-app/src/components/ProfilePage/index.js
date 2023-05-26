@@ -93,7 +93,10 @@ const ProfilePage = () => {
         </div>
         <div className="profile-info-container">
           <div className="profile-info-modal-container">
-            <div className="retro-text" id="profile-page-text" >{`[ Username ]     ${sessionUser.username}`}</div>
+            <div
+              className="retro-text"
+              id="profile-page-text"
+            >{`[ Username ]     ${sessionUser.username}`}</div>
             <FontAwesomeIcon
               icon={faUserPen}
               onClick={handleUserNameEdit}
@@ -103,7 +106,8 @@ const ProfilePage = () => {
 
           <div className="profile-info-modal-container">
             <div
-            className="retro-text" id="profile-page-text"
+              className="retro-text"
+              id="profile-page-text"
             >{`[ Email ]    ${sessionUser.email}`}</div>
             <FontAwesomeIcon
               icon={faUserPen}
@@ -112,8 +116,7 @@ const ProfilePage = () => {
             />
           </div>
           <div className="profile-info-modal-container">
-
-          <div className="retro-text" id="profile-page-text" >
+            <div className="retro-text" id="profile-page-text">
               {`[ First name ]  ${sessionUser.first_name}     [ Last name ]  ${sessionUser.last_name}`}
             </div>
             <FontAwesomeIcon
@@ -133,23 +136,30 @@ const ProfilePage = () => {
             />
           </div>
         </div>
+      </div>
 
-        {/* <div className="profile-page-daily-container">
-          <div id="optional-keeb-info" className="profile-page-text">
-            <p id="keyboard-main-text">{`[ What Keyboard do you main? ]`}</p>
+      <div className="profile-page-daily-container">
+        <div className="daily-heading-container">
+          <div className="retro-text" id="profile-page-keeb-text">
+            {`What Keyboard do you main?`}
+          </div>
+        <FontAwesomeIcon
+          icon={faUserPen}
+          onClick={handleDailyDriverEdit}
+          id="profile-page-edit-modal"
+        />
+        </div>
+        <div className="daily-driver-container">
+          <div className="retro-text" id="profile-page-text">
             {`[ board ] ${sessionUser.daily_driver}      [ keycaps ] ${sessionUser.keycaps}      [switches] ${sessionUser.switches}`}
           </div>
-          <FontAwesomeIcon
-            icon={faUserPen}
-            onClick={handleDailyDriverEdit}
-            id="profile-page-edit-keeb-modal"
-          />
-        </div> */}
+        </div>
 
-        {/* <button className="delete-yeet-profile" onClick={handleDeleteUser}>
-          {`[ delete my profile ]`}
-        </button> */}
       </div>
+
+      <button className="delete-yeet-profile" onClick={handleDeleteUser}>
+        {`[ delete my profile ]`}
+      </button>
     </div>
   );
 };

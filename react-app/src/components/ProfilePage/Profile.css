@@ -15,6 +15,11 @@
 }
 
 .profile-page-daily-container {
+
+display: flex;
+flex-direction: column;
+width: 100%;
+
 }
 
 .profile-info-container {
@@ -93,9 +98,6 @@
   justify-content: space-between;
 }
 
-
-
-
 #profile-page-text {
  font-size: 30px;
 }
@@ -103,37 +105,48 @@
 #profile-page-edit-modal {
   color: #da0000;
  font-size: 25px;
+}
+
+/* ------------      keeb info       ------------- */
+
+.daily-heading-container{
+  margin-top: 20px;
+  margin-bottom: 40px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 10px;
 
 }
 
-#profile-page-edit-keeb-modal {
-  position: relative;
-  left: 732px;
-  bottom: 82px;
-  color: #da0000;
+
+
+.daily-driver-container{
+
+display: flex;
+justify-content: space-evenly;
+
 }
 
-#optional-keeb-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* align-content: center; */
+#profile-page-keeb-text{
+font-size: 40px;
+
+
 }
-#keyboard-main-text {
-  position: relative;
-  bottom: 25px;
-  right: 52px;
-}
+
+
+
+
+
 
 .delete-yeet-profile {
-  position: relative;
-  left: 38%;
+  margin-top: 40px;
   color: red;
   border: none;
   padding: none;
   background: none;
   font-family: "VT323", Courier;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 /* -------------         Moving Title           ----------------- */
