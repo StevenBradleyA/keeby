@@ -50,6 +50,7 @@ const ListingPage = () => {
     };
   };
 
+
   // currently this would not catch exclamation marks or question marks...
 
   const sentenceArr = currentListing.description.split(". ");
@@ -119,7 +120,6 @@ const ListingPage = () => {
             onClick={handlePhotoGalleryClick(image)}
           />
         ))}
-
       </div>
       <div className="comments-container">
         <div className="create-comment-container">

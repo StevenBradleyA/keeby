@@ -1,12 +1,12 @@
-import React, { useState }  from "react";
+import React, { useState } from "react";
 import { useModal } from "../../context/Modal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronRight,
+  faChevronLeft,
+} from "@fortawesome/free-solid-svg-icons";
 
-
-
-
-
-
-function PhotoGalleryModal({ image, images }) {
+function PhotoGalleryModal({ images }) {
   const { closeModal } = useModal();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -15,31 +15,53 @@ function PhotoGalleryModal({ image, images }) {
   };
 
   const handlePrevious = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setCurrentImageIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
   };
 
   const handleClose = () => {
-    closeModal()
+    closeModal();
   };
 
-
-
-
-
   return (
-  
-  <div>
+    <div className="preview-image-modal-container">
+      {/* <img className="gallery-preview-modal" alt="gallery-preview" src={image.image}/> */}
+      <span className="close" onClick={handleClose}>
+        &times;
+      </span>
+      <img
+        className="gallery-preview-modal"
+        alt="gallery-preview"
+        src={images[currentImageIndex].image}
+      />
 
-    {/* <img className="gallery-preview-modal" alt="gallery-preview" src={image.image}/> */}
+      {currentImageIndex !== 0 && (
+        <FontAwesomeIcon
+          icon={faChevronLeft}
+          onClick={handlePrevious}
+          className="left-arrow"
+        />
+      )}
+      {currentImageIndex === 0 && (
+        <FontAwesomeIcon icon={faChevronLeft} className="left-arrow-disabled" />
+      )}
 
-
-    <span className="close" onClick={handleClose}>&times;</span>
-        <img className="gallery-preview-modal" alt="gallery-preview" src={images[currentImageIndex].image} />
-
-    <button onClick={handlePrevious} disabled={currentImageIndex === 0}>Previous</button>
-        <button onClick={handleNext} disabled={currentImageIndex === images.length - 1}>Next</button>
-
-  </div>);
+      {currentImageIndex !== images.length - 1 && (
+        <FontAwesomeIcon
+          icon={faChevronRight}
+          onClick={handleNext}
+          className="right-arrow"
+        />
+      )}
+      {currentImageIndex === images.length - 1 && (
+        <FontAwesomeIcon
+          icon={faChevronRight}
+          className="right-arrow-disabled"
+        />
+      )}
+    </div>
+  );
 }
 
 export default PhotoGalleryModal;

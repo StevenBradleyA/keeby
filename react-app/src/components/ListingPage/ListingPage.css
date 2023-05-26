@@ -103,12 +103,33 @@
   transform: scale(1.05);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
+/*  ------------          preview modal        ------------- */
+
+
+.preview-image-modal-container{}
+
 
 .gallery-preview-modal {
   height: 600px;
   width: 1000px;
   object-fit: cover;
 }
+
+
+.left-arrow{}
+
+.left-arrow-disabled{
+  color: grey;
+}
+
+
+.right-arrow{}
+
+.right-arrow-disabled{
+  color: grey;
+}
+
+
 
 /*  ------------          Comments        ------------- */
 
