@@ -8,10 +8,8 @@ import PhotoGalleryModal from "./PhotoGalleryModal";
 import { getAllCommentsPerListingThunk } from "../../store/comment";
 import CommentCard from "../Comments/CommentsIndex";
 import CreateComment from "../Comments/CreateComment";
-import githubIcon from "../../media/square-github.svg"
-import linkedIn from "../../media/linkedin.svg"
-
-
+import githubIcon from "../../media/square-github.svg";
+import linkedIn from "../../media/linkedin.svg";
 
 const ListingPage = () => {
   const dispatch = useDispatch();
@@ -29,21 +27,19 @@ const ListingPage = () => {
   const currentListing = useSelector((state) => state.listings)[listingId];
 
   const allComments = useSelector((state) =>
-  Object.values(state.comments).filter(
-    (e) => e.listing_id === currentListingId
+    Object.values(state.comments).filter(
+      (e) => e.listing_id === currentListingId
     )
-    );
+  );
 
+  if (!currentListing) {
+    return <h1>LOADING...</h1>;
+  }
 
-    
-    if (!currentListing) {
-      return <h1>LOADING...</h1>;
-    }
-    
-    if (!currentListing.listing_images) {
-      return <h1>LOADING...</h1>;
-    }
-    
+  if (!currentListing.listing_images) {
+    return <h1>LOADING...</h1>;
+  }
+
   const displayImageArr = currentListing.listing_images.filter(
     (e) => e.is_display_image === true
   );
@@ -53,7 +49,6 @@ const ListingPage = () => {
       setModalContent(<PhotoGalleryModal image={image} />);
     };
   };
-
 
   // currently this would not catch exclamation marks or question marks...
 
@@ -113,7 +108,7 @@ const ListingPage = () => {
         .slice(splitOn * 3)
         .join(". ")}`}</div>
 
-      <h2 className="listing-page-photo-gallery-title">{`PHOTO GALLERY`}</h2>
+      <div className="listing-page-photo-gallery-title">{`PHOTO GALLERY`}</div>
       <div className="listing-page-photo-gallery-container">
         {currentListing.listing_images.map((image) => (
           <img
@@ -125,7 +120,6 @@ const ListingPage = () => {
           />
         ))}
       </div>
-      <p></p>
       <div className="comments-container">
         <div className="create-comment-container">
           <div className="comments-title">{`${allComments.length} COMMENTS`}</div>
@@ -165,7 +159,6 @@ const ListingPage = () => {
           />
         </div>
       </div>
-
     </div>
   );
 };
