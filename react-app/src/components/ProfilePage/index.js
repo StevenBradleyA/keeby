@@ -92,8 +92,8 @@ const ProfilePage = () => {
           />
         </div>
         <div className="profile-info-container">
-          <div>
-            <div className="profile-page-text">{`[ Username ]     ${sessionUser.username}`}</div>
+          <div className="profile-info-modal-container">
+            <div className="retro-text" id="profile-page-text" >{`[ Username ]     ${sessionUser.username}`}</div>
             <FontAwesomeIcon
               icon={faUserPen}
               onClick={handleUserNameEdit}
@@ -101,10 +101,9 @@ const ProfilePage = () => {
             />
           </div>
 
-          <div>
+          <div className="profile-info-modal-container">
             <div
-              id="profile-titles"
-              className="profile-page-text"
+            className="retro-text" id="profile-page-text"
             >{`[ Email ]    ${sessionUser.email}`}</div>
             <FontAwesomeIcon
               icon={faUserPen}
@@ -112,9 +111,9 @@ const ProfilePage = () => {
               id="profile-page-edit-modal"
             />
           </div>
+          <div className="profile-info-modal-container">
 
-          <div>
-            <div className="profile-page-text">
+          <div className="retro-text" id="profile-page-text" >
               {`[ First name ]  ${sessionUser.first_name}     [ Last name ]  ${sessionUser.last_name}`}
             </div>
             <FontAwesomeIcon
@@ -123,8 +122,8 @@ const ProfilePage = () => {
               id="profile-page-edit-modal"
             />
           </div>
-          <div>
-            <div id="profile-titles" className="profile-page-text">
+          <div className="profile-info-modal-container">
+            <div className="retro-text" id="profile-page-text">
               {" [ Change your password ]"}
             </div>
             <FontAwesomeIcon
