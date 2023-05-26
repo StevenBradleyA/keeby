@@ -3,7 +3,7 @@
 .comment-card-container {
   display: flex;
   margin-top: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   word-wrap: break-word;
   width: 100%;
   gap: 10px;

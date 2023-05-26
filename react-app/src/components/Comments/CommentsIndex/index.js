@@ -74,20 +74,6 @@ const CommentCard = ({ comment, currentListing }) => {
       <div className="comment-container-right">
         <div className="username-edit-delete-container">
         <div className="comment-username">{comment.comment_owner.username}</div>
-        {/* {sessionUser && sessionUser.id === comment.owner_id && (
-            <div className="edit-delete-comment-container">
-              <button
-                className="button-styling"
-                id="comment-edit-button"
-                onClick={handleEditComment}
-              >{`[ Edit ]`}</button>
-              <button
-                className="button-styling"
-                id="comment-delete-button"
-                onClick={handleDeleteComment}
-              >{`[ Delete ]`}</button>
-            </div>
-          )} */}
         {sessionUser && sessionUser.id === comment.owner_id && (
               <div className="edit-delete-comment-container">
                 <FontAwesomeIcon
