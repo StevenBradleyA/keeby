@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createLikeThunk,
@@ -8,11 +8,12 @@ import {
 import { useModal } from "../../../context/Modal";
 import EditCommentModal from "../UpdateComment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp, faPenToSquare, faDeleteLeft, faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import "./CommentsIndex.css";
 
 const CommentCard = ({ comment, currentListing }) => {
   const dispatch = useDispatch();
+  const [deleteClick, setDeleteClick] = useState(false);
 
   const { setModalContent } = useModal();
   const sessionUser = useSelector((state) => state.session.user);
@@ -71,10 +72,59 @@ const CommentCard = ({ comment, currentListing }) => {
         />
       </div>
       <div className="comment-container-right">
+        <div className="username-edit-delete-container">
         <div className="comment-username">{comment.comment_owner.username}</div>
+        {/* {sessionUser && sessionUser.id === comment.owner_id && (
+            <div className="edit-delete-comment-container">
+              <button
+                className="button-styling"
+                id="comment-edit-button"
+                onClick={handleEditComment}
+              >{`[ Edit ]`}</button>
+              <button
+                className="button-styling"
+                id="comment-delete-button"
+                onClick={handleDeleteComment}
+              >{`[ Delete ]`}</button>
+            </div>
+          )} */}
+        {sessionUser && sessionUser.id === comment.owner_id && (
+              <div className="edit-delete-comment-container">
+                <FontAwesomeIcon
+                  icon={faPenToSquare}
+                  onClick={handleEditComment}
+                  className="edit-comment-button-icon"
+                />
+                {!deleteClick && (
+                  <FontAwesomeIcon
+                    icon={faDeleteLeft}
+                    onClick={() => setDeleteClick(true)}
+                  className="delete-comment-button-icon"
+
+                  />
+                )}
+                {deleteClick && (
+                  <div className="delete-comment-buttons-container">
+                    <FontAwesomeIcon
+                      icon={faCheck}
+                      onClick={handleDeleteComment}
+                      className="confirm-delete-comment"
+                    />
+                    <FontAwesomeIcon
+                      icon={faXmark}
+                      onClick={() => setDeleteClick(false)}
+                      className="cancel-delete-comment"
+                    />
+                  </div>
+                )}
+              </div>
+            )}
+
+
+        </div>
 
         <div className="comment-content">
-          <p>{comment.content}</p>
+          <div>{comment.content}</div>
         </div>
 
         <div className="comment-like-edit-delete">
@@ -100,20 +150,7 @@ const CommentCard = ({ comment, currentListing }) => {
               <div className="comment-like-total">{comment.liked.length} </div>
             </div>
           )}
-          {sessionUser && sessionUser.id === comment.owner_id && (
-            <div>
-              <button
-                className="button-styling"
-                id="comment-edit-button"
-                onClick={handleEditComment}
-              >{`[ Edit ]`}</button>
-              <button
-                className="button-styling"
-                id="comment-delete-button"
-                onClick={handleDeleteComment}
-              >{`[ Delete ]`}</button>
-            </div>
-          )}
+          
         </div>
       </div>
     </div>

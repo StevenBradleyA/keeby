@@ -128,7 +128,7 @@ const ListingPage = () => {
       <p></p>
       <div className="comments-container">
         <div className="create-comment-container">
-          {`${allComments.length} COMMENTS`}
+          <div className="comments-title">{`${allComments.length} COMMENTS`}</div>
           <CreateComment listingId={listingId} />
         </div>
         {allComments.map((comment) => (
