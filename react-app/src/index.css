@@ -9,7 +9,9 @@
   background-color: #222;
   height: 50%;
   border-radius: 12px;
-  box-shadow: 0 0 20px #1e197a6b;
+  /* box-shadow: 0 0 20px #1e197a6b; */
+  box-shadow: 0 0 10px #0fa005;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
