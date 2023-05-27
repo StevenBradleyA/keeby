@@ -1,0 +1,76 @@
+
+
+.modal-container-template{
+    background-color: #222;
+    width: 600px;
+    height: 600px;
+    border-radius: 10px;
+  box-shadow: 0 0 10px #0fa005;
+
+
+}
+
+
+.modal-sub-container-template{
+    padding: 10px;
+    background-color: #2f2f2f;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    margin: 40px;
+    height: 310px
+
+}
+
+
+
+/* ---------       contents       ---------- */
+
+.modal-template-title{
+    color: #00dd00;
+    font-size: 35px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+.modal-template-sub-title{
+
+    opacity: .4;
+    margin-bottom: 60px;
+    font-size: 20px;
+
+}
+
+
+.modal-template-button-container{
+    display: flex;
+    gap: 60px;
+}
+
+
+
+.modal-template-yes{
+    font-size: 30px;
+    color: #dd0000;
+    opacity: .4;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.modal-template-no{
+    font-size: 30px;
+
+    color: #00dd00;
+    opacity: .4;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-template-yes:hover,
+.modal-template-no:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
