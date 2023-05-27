@@ -45,6 +45,15 @@
 
 }
 
+.modal-template-warning{
+
+    color: #00dd00;
+    opacity: .4;
+    position: relative;
+    bottom: 30px;
+}
+
+
 
 .modal-template-button-container{
     display: flex;
