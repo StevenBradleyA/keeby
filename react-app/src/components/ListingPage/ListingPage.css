@@ -72,13 +72,16 @@
 
 @keyframes neon-glow {
   from {
-    text-shadow: 0 0 0.07em #ff0000, 0 0 0.14em #ff0000, 0 0 0.21em #ff0000, 0 0 0.28em #ff0000, 0 0 0.49em #ff0000, 0 0 0.56em #ff0000, 0 0 0.7em #ff0000, 0 0 1.05em #ff0000;
-    color: rgb(227, 116, 116)
+    text-shadow: 0 0 0.07em #ff0000, 0 0 0.14em #ff0000, 0 0 0.21em #ff0000,
+      0 0 0.28em #ff0000, 0 0 0.49em #ff0000, 0 0 0.56em #ff0000,
+      0 0 0.7em #ff0000, 0 0 1.05em #ff0000;
+    color: rgb(227, 116, 116);
   }
   to {
-    text-shadow: 0 0 0.035em transparent, 0 0 0.07em transparent, 0 0 0.105em transparent, 0 0 0.14em transparent, 0 0 0.245em transparent, 0 0 0.28em transparent, 0 0 0.35em transparent, 0 0 0.525em transparent;
+    text-shadow: 0 0 0.035em transparent, 0 0 0.07em transparent,
+      0 0 0.105em transparent, 0 0 0.14em transparent, 0 0 0.245em transparent,
+      0 0 0.28em transparent, 0 0 0.35em transparent, 0 0 0.525em transparent;
     color: rgb(255, 255, 255);
-
   }
 }
 
@@ -105,31 +108,51 @@
 }
 /*  ------------          preview modal        ------------- */
 
-
-.preview-image-modal-container{}
-
+.preview-image-modal-container {
+}
 
 .gallery-preview-modal {
   height: 600px;
   width: 1000px;
   object-fit: cover;
+  position: relative;
 }
 
-
-.left-arrow{}
-
-.left-arrow-disabled{
-  color: grey;
+.left-arrow {
+  font-size: 30px;
+  position: absolute; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  cursor: pointer;
+  left: 30px;
 }
 
-
-.right-arrow{}
-
-.right-arrow-disabled{
-  color: grey;
+.left-arrow-disabled {
+  color: rgba(128, 128, 128, 0.411);
+  font-size: 30px;
+  position: absolute; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  left: 30px;
 }
 
+.right-arrow {
+  font-size: 30px;
+  position: absolute; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  cursor: pointer;
+  right: 30px; 
+}
 
+.right-arrow-disabled {
+  color: rgba(128, 128, 128, 0.411);
+  font-size: 30px;
+  position: absolute; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  right: 30px; 
+}
 
 /*  ------------          Comments        ------------- */
 
