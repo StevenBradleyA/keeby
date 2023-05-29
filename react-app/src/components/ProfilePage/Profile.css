@@ -136,7 +136,58 @@
   font-size: 30px;
   cursor: pointer;
 }
+/* -------------         Update Modals           ----------------- */
 
+.modal-template-form-container {
+  display: flex;
+  flex-direction: column;
+}
+.modal-template-form-sub-title {
+  opacity: 0.4;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.modal-template-input {
+  background-color: #838383;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 14px;
+  width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.modal-template-input {
+  outline: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.modal-template-update-button {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 200px;
+  font-size: 20px;
+  background-color: #2f2f2f;
+  color: rgba(255, 255, 255, 0.518);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-template-update-button:hover {
+  color: #00dd00;
+
+  box-shadow: 0 0 10px rgba(55, 176, 21, 0.2);
+  transform: translateY(2px);
+}
 
 /* -------------         Scanlines && Flicker           ----------------- */
 

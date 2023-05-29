@@ -8,7 +8,9 @@ import { refreshUser } from "../../../store/session";
 function EditProfilePictureModal({ sessionUser }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [profilePicture, setProfilePicture] = useState(sessionUser.profile_picture);
+  const [profilePicture, setProfilePicture] = useState(
+    sessionUser.profile_picture
+  );
   const [errors, setErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const { closeModal } = useModal();
@@ -40,30 +42,32 @@ function EditProfilePictureModal({ sessionUser }) {
   };
 
   return (
-    <>
-      <h1 className="title-text">Update Your Profile Picture</h1>
-      <form className="profile-edit-container" onSubmit={handleFormSubmit}>
-        <div className="profile-picture-label">
-          <label className="title-text">
-            Profile Picture:{" "}
-            <input
-              className="text-input-login"
-              type="url"
-              value={profilePicture}
-              placeholder="image url here"
-              onChange={(e) => setProfilePicture(e.target.value)}
-            />
-          </label>
-        </div>
-        <p></p>
-        <input
-          className="profile-edit-submit-button"
-          type="submit"
-          value={"Save Changes"}
-          disabled={hasSubmitted && Object.values(errors).length > 0}
-        />
-      </form>
-    </>
+    <div className="modal-container-template">
+      <div className="modal-sub-container-template">
+        <div className="modal-template-title">Update Your Profile Picture</div>
+        <form
+          className="modal-template-form-container"
+          onSubmit={handleFormSubmit}
+        >
+          <div className="modal-template-form-sub-title">
+            Add a new image url to modify your profile picture
+          </div>
+          <input
+            className="modal-template-input"
+            type="url"
+            value={profilePicture}
+            placeholder="image url here"
+            onChange={(e) => setProfilePicture(e.target.value)}
+          />
+          <input
+            className="modal-template-update-button"
+            type="submit"
+            value={"Save Changes"}
+            disabled={hasSubmitted && Object.values(errors).length > 0}
+          />
+        </form>
+      </div>
+    </div>
   );
 }
 
