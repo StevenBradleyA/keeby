@@ -146,6 +146,8 @@
   opacity: 0.4;
   margin-bottom: 20px;
   font-size: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .modal-template-input {
