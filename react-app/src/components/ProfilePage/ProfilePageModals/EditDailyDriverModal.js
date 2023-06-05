@@ -63,56 +63,58 @@ function EditDailyDriverModal({ sessionUser }) {
   };
 
   return (
-    <div className="profile-edit-container">
-      <h1 className="title-text">Update Your Daily Driver </h1>
-      <form className="profile-edit-container" onSubmit={handleFormSubmit}>
-        <label className="title-text">
-          Daily Driver:
+    <div className="modal-container-template-xl">
+      <div className="modal-sub-container-template-xl">
+        <div className="modal-template-title">Update Your Daily Driver </div>
+        <form
+          className="modal-template-form-container"
+          onSubmit={handleFormSubmit}
+        >
+          <div className="modal-template-form-sub-title">Daily Driver:</div>
           <input
-            className="text-input-login"
+            className="modal-template-input"
             type="text"
             value={dailyDriver}
             placeholder={sessionUser.daily_driver}
             onChange={(e) => setDailyDriver(e.target.value)}
           />
-        </label>
-        {hasSubmitted && errors.dailyDriver && (
-          <p className="errors">{errors.dailyDriver}</p>
-        )}
-        <label className="title-text">
-          Keycaps:
+          {hasSubmitted && errors.dailyDriver && (
+            <p className="errors">{errors.dailyDriver}</p>
+          )}
+          <div className="modal-template-form-sub-title">
+            Keycaps:
+            </div>
+            <input
+              className="modal-template-input"
+              type="text"
+              value={keycaps}
+              placeholder={sessionUser.keycaps}
+              onChange={(e) => setKeycaps(e.target.value)}
+            />
+          {hasSubmitted && errors.keycaps && (
+            <p className="errors">{errors.keycaps}</p>
+          )}
+          <div className="modal-template-form-sub-title">
+            Switches:
+            </div>
+            <input
+              className="modal-template-input"
+              type="text"
+              value={switches}
+              placeholder={sessionUser.switches}
+              onChange={(e) => setSwitches(e.target.value)}
+            />
+          {hasSubmitted && errors.switches && (
+            <p className="errors">{errors.switches}</p>
+          )}
           <input
-            className="text-input-login"
-            type="text"
-            value={keycaps}
-            placeholder={sessionUser.keycaps}
-            onChange={(e) => setKeycaps(e.target.value)}
+            className="modal-template-update-button"
+            type="submit"
+            value={"Save Changes"}
+            disabled={hasSubmitted && Object.values(errors).length > 0}
           />
-        </label>
-        {hasSubmitted && errors.keycaps && (
-          <p className="errors">{errors.keycaps}</p>
-        )}
-        <label className="title-text">
-          Switches:
-          <input
-            className="text-input-login"
-            type="text"
-            value={switches}
-            placeholder={sessionUser.switches}
-            onChange={(e) => setSwitches(e.target.value)}
-          />
-        </label>
-        {hasSubmitted && errors.switches && (
-          <p className="errors">{errors.switches}</p>
-        )}
-        <p></p>
-        <input
-          className="profile-edit-submit-button"
-          type="submit"
-          value={"Save Changes"}
-          disabled={hasSubmitted && Object.values(errors).length > 0}
-        />
-      </form>
+        </form>
+      </div>
     </div>
   );
 }
