@@ -42,7 +42,6 @@ function EditUsernameModal({ sessionUser }) {
         daily_driver: sessionUser.daily_driver,
         keycaps: sessionUser.keycaps,
         switches: sessionUser.switches,
-
       };
 
       let updatedUser = await dispatch(
@@ -56,33 +55,33 @@ function EditUsernameModal({ sessionUser }) {
   };
 
   return (
-    <>
-      <h1 className="title-text">Update Your Username</h1>
-      <form className="profile-edit-container" onSubmit={handleFormSubmit}>
-        <div className="profile-picture-label">
-          <label className="title-text">
-            Username:{" "}
-            <input
-              className="text-input-login"
-              type="text"
-              value={username}
-              placeholder={sessionUser.username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </label>
-        </div>
-        {hasSubmitted && errors.username && (
-          <p className="errors">{errors.username}</p>
-        )}
-        <p></p>
-        <input
-          className="profile-edit-submit-button"
-          type="submit"
-          value={"Save Changes"}
-          disabled={hasSubmitted && Object.values(errors).length > 0}
-        />
-      </form>
-    </>
+    <div className="modal-container-template">
+      <div className="modal-sub-container-template">
+        <div className="modal-template-title">Update Your Username</div>
+        <form
+          className="modal-template-form-container"
+          onSubmit={handleFormSubmit}
+        >
+          <div className="modal-template-form-sub-title">Username:</div>
+          <input
+            className="modal-template-input"
+            type="text"
+            value={username}
+            placeholder={sessionUser.username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          {hasSubmitted && errors.username && (
+            <p className="errors">{errors.username}</p>
+          )}
+          <input
+            className="modal-template-update-button"
+            type="submit"
+            value={"Save Changes"}
+            disabled={hasSubmitted && Object.values(errors).length > 0}
+          />
+        </form>
+      </div>
+    </div>
   );
 }
 

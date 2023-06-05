@@ -50,9 +50,9 @@ function CreateComment({ listingId }) {
   };
 
   return (
-    <div>
+    <div className="create-comment-container">
       {sessionUser && (
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit} className="create-comment-form-container">
           <input
             className="comment-input-box"
             type="text"

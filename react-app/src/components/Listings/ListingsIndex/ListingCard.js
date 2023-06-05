@@ -2,7 +2,10 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getListingByIdThunk } from "../../../store/listing";
-import {clearComment, getAllCommentsPerListingThunk} from "../../../store/comment"
+import {
+  clearComment,
+  getAllCommentsPerListingThunk,
+} from "../../../store/comment";
 import "./ListingIndex.css";
 
 const ListingCard = ({ listing }) => {
@@ -27,13 +30,16 @@ const ListingCard = ({ listing }) => {
         alt="display"
         src={displayImageArr[0].image}
       />
-      {/* <div>{listing.price}</div> */}
       <div className="home-page-description">{`${listing.description.slice(
         0,
         350
       )}...`}</div>
-      <button id="read-more-button" className="button-styling">{`[ Read More ]`}</button>
-      <p></p>
+      <div className="read-more-button-container">
+        <button
+          id="read-more-button"
+          className="button-styling"
+        >{`[ Read More ]`}</button>
+      </div>
     </div>
   );
 };

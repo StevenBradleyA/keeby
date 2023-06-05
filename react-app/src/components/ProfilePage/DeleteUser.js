@@ -23,23 +23,31 @@ function DeleteUserModal({ sessionUser }) {
   };
 
   return (
-    <div>
-      <h1 className="title-text">Confirm Delete 😟</h1>
-      <h2 className="title-text">Are you sure you want to delete yourself? </h2>
-      {sessionUser && sessionUser.id === 1 && (
-        <button
-          className="yes-delete-yeet"
-          onClick={handleKeepUser}
-        >{`Can't delete Demo user :/`}</button>
-      )}
-      {sessionUser && sessionUser.id !== 1 && (
-        <button
-          className="yes-delete-yeet"
-          onClick={handleDeleteUser}
-        >{`Yes 👌`}</button>
-      )}
+    <div className="modal-container-template-delete">
+      <div className="modal-sub-container-template-delete">
+      <div className="modal-template-title">Engage deletion sequence?</div>
+      <div className="modal-template-sub-title">Are you sure you want to delete your account? </div>
+      <div className="modal-template-warning">
+          [ can't delete demo user] 
+        </div>
+      <div className="modal-template-button-container">
 
-      <button className="no-delete" onClick={handleKeepUser}>{`No ❌`}</button>
+      {sessionUser && sessionUser.id === 1 && (
+        <div
+        className="modal-template-yes"
+        onClick={handleKeepUser}
+        >{`[ Yes ]`}</div>
+        )}
+      {sessionUser && sessionUser.id !== 1 && (
+        <div
+        className="modal-template-yes"
+        onClick={handleDeleteUser}
+        >{`[ Yes ]`}</div>
+        )}
+
+      <div className="modal-template-no" onClick={handleKeepUser}>{`[ No ]`}</div>
+        </div>
+    </div>
     </div>
   );
 }

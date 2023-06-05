@@ -1,5 +1,5 @@
 .single-listing-page-container {
-  margin-top: 50px;
+  margin-top: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,51 +16,49 @@
   display: flex;
 }
 
-.listing-page-title {
-  font-size: 2rem;
-  color: #ffffff;
-  text-shadow: 2px 2px 0 #000;
-}
-
 #comment-count-header {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 #price-header {
-  font-size: 14px;
+  font-size: 16px;
   color: #676767;
 }
 
 .listing-page-display-image {
-  height: 250px;
+  height: 400px;
   width: 60%;
   object-fit: cover;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .listing-page-additional-image {
-  height: 250px;
+  height: 400px;
   width: 60%;
   object-fit: cover;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .listing-page-description {
+  font-size: 20px;
   width: 60%;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   word-wrap: break-word;
   flex-wrap: wrap;
-
 }
 
 /*  ------------          Photo Gallery        ------------- */
 
 .listing-page-photo-gallery-title {
   letter-spacing: 10px;
-  font-size: 1.5rem;
+  font-size: 30px;
+  /* font-size: 1.5rem; */
   text-transform: uppercase;
   color: #ffffff;
-  animation: red-flash 1s ease-in infinite alternate;
+  /* animation: red-flash 1s ease-in infinite alternate; */
+  animation: neon-glow 1.5s ease-out infinite alternate;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 @keyframes red-flash {
@@ -72,36 +70,94 @@
   }
 }
 
+@keyframes neon-glow {
+  from {
+    text-shadow: 0 0 0.07em #ff0000, 0 0 0.14em #ff0000, 0 0 0.21em #ff0000,
+      0 0 0.28em #ff0000, 0 0 0.49em #ff0000, 0 0 0.56em #ff0000,
+      0 0 0.7em #ff0000, 0 0 1.05em #ff0000;
+    color: rgb(227, 116, 116);
+  }
+  to {
+    text-shadow: 0 0 0.035em transparent, 0 0 0.07em transparent,
+      0 0 0.105em transparent, 0 0 0.14em transparent, 0 0 0.245em transparent,
+      0 0 0.28em transparent, 0 0 0.35em transparent, 0 0 0.525em transparent;
+    color: rgb(255, 255, 255);
+  }
+}
+
 .listing-page-photo-gallery-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   width: 60%;
-  gap: 10px;
+  gap: 15px;
+  margin-bottom: 40px;
 }
 
 .listing-page-photo-gallery-each {
-  height: 100px;
+  height: 130px;
   object-fit: cover;
   border-radius: 5px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .listing-page-photo-gallery-each:hover {
   transform: scale(1.05);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
+/*  ------------          preview modal        ------------- */
+
+.preview-image-modal-container {
+}
 
 .gallery-preview-modal {
-  height: 300px;
-  width: 500px;
+  height: 600px;
+  width: 1000px;
   object-fit: cover;
+  position: relative;
+}
+
+.left-arrow {
+  font-size: 30px;
+  position: absolute; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  cursor: pointer;
+  left: 30px;
+}
+
+.left-arrow-disabled {
+  color: rgba(128, 128, 128, 0.411);
+  font-size: 30px;
+  position: absolute; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  left: 30px;
+}
+
+.right-arrow {
+  font-size: 30px;
+  position: absolute; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  cursor: pointer;
+  right: 30px; 
+}
+
+.right-arrow-disabled {
+  color: rgba(128, 128, 128, 0.411);
+  font-size: 30px;
+  position: absolute; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  right: 30px; 
 }
 
 /*  ------------          Comments        ------------- */
 
 .comments-container {
-  width: 70%;
+  width: 60%;
 }
 
 .create-comment-container {
@@ -114,4 +170,38 @@
   background: none;
   padding: none;
   border: none;
+}
+
+.comments-title {
+  font-size: 20px;
+}
+/*  ------------          footer        ------------- */
+
+.footer-container {
+  border-top: 1.5px solid #2d2d2d;
+
+  margin-top: 150px;
+  /* background-color: rgb(212, 212, 212); */
+  height: 80px;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer-sticky-container {
+  position: sticky;
+  bottom: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.footer-text {
+  font-size: 15px;
+  opacity: 0.3;
+}
+
+.footer-icons {
+  width: 20px;
+  opacity: 0.2;
+  cursor: pointer;
 }

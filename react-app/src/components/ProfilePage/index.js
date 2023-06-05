@@ -65,12 +65,12 @@ const ProfilePage = () => {
   }, []);
 
   return (
-    <>
+    <div className="profile-page-main-container">
       <div className="retro-scanlines"></div>
 
-      <h1 className="profile-title-text">{text}</h1>
+      <div className="profile-title-text">{text}</div>
 
-      <div className="icon-user-info-container">
+      <div className="profile-page-icon-info-container">
         <div className="profile-picture-container">
           <img
             src={
@@ -88,13 +88,15 @@ const ProfilePage = () => {
           <FontAwesomeIcon
             icon={faUserPen}
             onClick={handleProfilePictureEdit}
-            className="edit-profile-picture"
+            className="edit-profile-picture-button"
           />
         </div>
-        <div className="profile-page-container">
-          {/* <div className="user-info-container"> */}
-          <div>
-            <div className="profile-page-text">{`[ Username ]     ${sessionUser.username}`}</div>
+        <div className="profile-info-container">
+          <div className="profile-info-modal-container">
+            <div
+              className="retro-text"
+              id="profile-page-text"
+            >{`[ Username ]     ${sessionUser.username}`}</div>
             <FontAwesomeIcon
               icon={faUserPen}
               onClick={handleUserNameEdit}
@@ -102,10 +104,10 @@ const ProfilePage = () => {
             />
           </div>
 
-          <div>
+          <div className="profile-info-modal-container">
             <div
-              id="profile-titles"
-              className="profile-page-text"
+              className="retro-text"
+              id="profile-page-text"
             >{`[ Email ]    ${sessionUser.email}`}</div>
             <FontAwesomeIcon
               icon={faUserPen}
@@ -113,9 +115,8 @@ const ProfilePage = () => {
               id="profile-page-edit-modal"
             />
           </div>
-
-          <div>
-            <div className="profile-page-text">
+          <div className="profile-info-modal-container">
+            <div className="retro-text" id="profile-page-text">
               {`[ First name ]  ${sessionUser.first_name}     [ Last name ]  ${sessionUser.last_name}`}
             </div>
             <FontAwesomeIcon
@@ -124,8 +125,8 @@ const ProfilePage = () => {
               id="profile-page-edit-modal"
             />
           </div>
-          <div>
-            <div id="profile-titles" className="profile-page-text">
+          <div className="profile-info-modal-container">
+            <div className="retro-text" id="profile-page-text">
               {" [ Change your password ]"}
             </div>
             <FontAwesomeIcon
@@ -134,28 +135,32 @@ const ProfilePage = () => {
               id="profile-page-edit-modal"
             />
           </div>
-          <p></p>
         </div>
-        <div>
-          <div id="optional-keeb-info" className="profile-page-text">
-            
-          <p id="keyboard-main-text">{`[ What Keyboard do you main? ]`}</p>
-          {`[ board ] ${sessionUser.daily_driver}      [ keycaps ] ${sessionUser.keycaps}      [switches] ${sessionUser.switches}`}
-          </div>
-          <FontAwesomeIcon
-            icon={faUserPen}
-            onClick={handleDailyDriverEdit}
-            id="profile-page-edit-keeb-modal"
-          />
-        </div>
-        {/* </div> */}
-        <p></p>
-
-        <button className="delete-yeet-profile" onClick={handleDeleteUser}>
-          {`[ delete my profile ]`}
-        </button>
       </div>
-    </>
+
+      <div className="profile-page-daily-container">
+        <div className="daily-heading-container">
+          <div className="retro-text" id="profile-page-keeb-text">
+            {`What Keyboard do you main?`}
+          </div>
+        <FontAwesomeIcon
+          icon={faUserPen}
+          onClick={handleDailyDriverEdit}
+          id="profile-page-edit-modal"
+        />
+        </div>
+        <div className="daily-driver-container">
+          <div className="retro-text" id="profile-page-text">
+            {`[ board ] ${sessionUser.daily_driver}      [ keycaps ] ${sessionUser.keycaps}      [switches] ${sessionUser.switches}`}
+          </div>
+        </div>
+
+      </div>
+
+      <button className="delete-yeet-profile" onClick={handleDeleteUser}>
+        {`[ delete my profile ]`}
+      </button>
+    </div>
   );
 };
 

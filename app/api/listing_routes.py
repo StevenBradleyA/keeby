@@ -6,6 +6,7 @@ from flask_wtf.csrf import CSRFProtect, generate_csrf
 from ..forms.listing_form import ListingForm
 from ..forms.comment_form import CommentForm
 from ..utils import pog
+from sqlalchemy import func
 import json
 from .aws_helpers import (
     upload_file_to_s3, get_unique_filename, remove_file_from_s3)
@@ -44,7 +45,9 @@ def get_listing_by_id(id):
 
 @listing_routes.route("/<string:name>")
 def search_all_listings(name):
-    listings = Listing.query.filter(Listing.name.like(f"{name}%")).all()
+    lower_name = name.lower()
+    listings = Listing.query.filter(func.lower(Listing.name).like(f"{lower_name}%")).all()
+    # listings = Listing.query.filter(Listing.name.like(f"{name}%")).all()
     return [listing.to_dict() for listing in listings]
 
 

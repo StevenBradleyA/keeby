@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import { useHistory } from "react-router-dom";
 import { deleteListingThunk } from "../../../store/listing";
+import "./DeleteListing.css";
 
 function DeleteListingModal({ listing }) {
   const history = useHistory();
@@ -22,20 +23,23 @@ function DeleteListingModal({ listing }) {
   };
 
   return (
-    <div>
-      <h1 className="title-text">Confirm Delete 😟</h1>
-      <h3 className="title-text">
-        Are you sure you want to delete this listing?{" "}
-      </h3>
-      <button
-        // className="yes-delete-yeet"
-        onClick={handleDeleteListing}
-      >{`Yes 👌`}</button>
+    <div className="modal-container-template-delete">
+      <div className="modal-sub-container-template-delete">
+        <div className="modal-template-title">Engage deletion sequence?</div>
+        <div className="modal-template-sub-title">
+          Are you sure you want to delete this listing?
+        </div>
 
-      <button
-        // className="no-delete"
-        onClick={handleKeepListing}
-      >{`No ❌`}</button>
+        <div className="modal-template-button-container">
+          <div className="modal-template-yes" onClick={handleDeleteListing}>
+            {`[ Yes ]`}
+          </div>
+
+          <div className="modal-template-no" onClick={handleKeepListing}>
+            {`[ No ]`}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

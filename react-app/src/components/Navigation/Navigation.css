@@ -1,202 +1,54 @@
-/* ------------        Nav Bar     ----------- */
+/*  ------------        containers         ------------ */
 
-.button-styling {
-  color: rgb(255, 255, 255);
-  text-shadow: 0.5px -0.5px 0 rgba(255, 255, 255, 0.5),
-    2.5px 1px 2.5px rgba(255, 0, 255, 0.85),
-    -2.5px -2px 2.5px rgba(0, 0, 255, 0.85),
-    0.5px -1.5px 0 rgba(255, 255, 255, 0.8);
-}
-
-.button-styling:hover {
-  color: red;
-  text-shadow: none;
-}
-
-.nav-bar-container {
+.nav-container {
   position: fixed;
   top: 0px;
   left: 0px;
-  width: 100%;
-  height: 40px;
+  height: 60px;
   background-color: #222;
+
   z-index: 2;
+
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
-.home-button {
-  color: rgb(95, 92, 92);
-  position: absolute;
-  left: 5%;
-  top: 0.7rem;
+.keeby-title-container {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-search-container {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.log-in-button {
-  position: absolute;
-  left: 81%;
-  top: 0.78rem;
-  padding: 0;
-  border: none;
-  background: none;
-  font-size: 12px;
-  color: rgb(255, 255, 255);
-  text-shadow: 0.5px -0.5px 0 rgba(255, 255, 255, 0.5),
-    2.5px 1px 2.5px rgba(255, 0, 255, 0.85),
-    -2.5px -2px 2.5px rgba(0, 0, 255, 0.85),
-    0.5px -1.5px 0 rgba(255, 255, 255, 0.8);
-}
-.log-in-button:hover {
-  color: red;
-  text-shadow: none;
+.nav-buttons-container {
+  width: 25%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.sign-up-button {
-  position: absolute;
-  left: 89%;
-  top: 0.78rem;
-  padding: 0;
-  border: none;
-  background: none;
-  font-size: 12px;
-  color: rgb(255, 255, 255);
-  text-shadow: 0.5px -0.5px 0 rgba(255, 255, 255, 0.5),
-    2.5px 1px 2.5px rgba(255, 0, 255, 0.85),
-    -2.5px -2px 2.5px rgba(0, 0, 255, 0.85),
-    0.5px -1.5px 0 rgba(255, 255, 255, 0.8);
-}
-.sign-up-button:hover {
-  color: red;
-  text-shadow: none;
-}
+/*  ---------     CONTENTS        --------- */
 
-.demo-log-in-button {
-  position: absolute;
-  left: 73%;
-  top: 0.78rem;
-  padding: 0;
-  border: none;
-  background: none;
-  font-size: 12px;
-  color: rgb(255, 255, 255);
-  text-shadow: 0.5px -0.5px 0 rgba(255, 255, 255, 0.5),
-    2.5px 1px 2.5px rgba(255, 0, 255, 0.85),
-    -2.5px -2px 2.5px rgba(0, 0, 255, 0.85),
-    0.5px -1.5px 0 rgba(255, 255, 255, 0.8);
-}
-.demo-log-in-button:hover {
-  color: red;
-  text-shadow: none;
-}
-
-.list-a-keeb-button {
-  position: absolute;
-  left: 75%;
-  font-size: 12px;
-  top: 0.78rem;
-  text-shadow: 0.5px -0.5px 0 rgba(255, 255, 255, 0.5),
-    2.5px 1px 2.5px rgba(255, 0, 255, 0.85),
-    -2.5px -2px 2.5px rgba(0, 0, 255, 0.85),
-    0.5px -1.5px 0 rgba(255, 255, 255, 0.8);
-}
-
-.list-a-keeb-button:hover {
-  color: red;
-  text-shadow: none;
-}
-
-.profile-icon {
-  position: absolute;
-  top: 10px;
-  left: 95%;
-  height: 20px;
-  width: 20px;
-  object-fit: cover;
-  /* margin: 10px; */
-}
-
+/*  ---------     title       --------- */
 .keeby-title {
   height: 30px;
   width: 169px;
-  /* height: 2rem;
-width: 10rem; */
-  margin-top: 5px;
-  margin-left: 5px;
+  cursor: pointer;
 }
 
-/* ------------        User Icon Modal     ----------- */
-
-#user-icon-modal-container {
-  position: fixed;
-  top: 7%;
-  right: 0;
-  left: 74%;
-  bottom: 0;
-  height: 250px;
-  width: 175px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-image: url("../../media/blueGrid.gif");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #325aab;
-  /* background-color: rgba(255, 255, 255, 0.1); */
-}
-
-/* #user-icon-modal-container::after{
-  background-color: rgba(0, 0, 0, 0.1);
-
-} */
-/* .modal-background {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-} */
-
-.profile-icon-modal {
-  width: 96px;
-  height: 96px;
-  object-fit: cover;
-}
-.profile-icon-letter-modal {
-  width: 96px;
-  height: 96px;
-}
-
-#manage-profile-button {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 5px;
-  margin-bottom: 10px;
-}
-
-#manage-listings-button {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 5px;
-  margin-bottom: 10px;
-}
-
-#log-out-button {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 5px;
-}
-
-.user-image-container-modal {
-  margin: 10px;
-}
-
-/* ------------        Search Results     ----------- */
+/*  ---------     search        --------- */
 
 .search-input-login {
-  position: absolute;
+  width: 90%;
+  height: 28px;
+
   background-color: #222;
   color: rgb(255, 255, 255);
   border: none;
@@ -206,11 +58,8 @@ width: 10rem; */
     2.5px -2px 3px rgba(255, 255, 255, 0.65),
     -2.5px -2px 3px rgba(255, 255, 255, 0.85);
   padding: none;
-  left: 220px;
-  top: 0.7rem;
-  width: 40%;
   font-size: 12px;
-  padding: 0.10rem;
+  padding: 0.1rem;
 
   transition: box-shadow 0.3s ease-in-out;
 }
@@ -220,11 +69,13 @@ width: 10rem; */
   box-shadow: 0px 0 10px #0fa005;
 }
 
+/*  ---------     search results       --------- */
+
 .search-result-container {
   position: absolute;
-  left: 220px;
-  width: 40%;
-  height: 200px;
+  top: 55px;
+  width: 45%;
+  height: 300px;
   border-radius: 10px;
   box-shadow: 0 0 10px #0fa005;
   object-fit: cover;
@@ -238,13 +89,119 @@ width: 10rem; */
   content: "";
   background: url("../../media/matrix.gif");
   background-size: cover;
-  opacity: 0.5;
+  opacity: 0.7;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   position: absolute;
   z-index: -1;
+}
+
+/*  ---------     buttons      --------- */
+/*  ---------     logged-in      --------- */
+
+#list-your-keeb-nav {
+  font-size: 16px;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+#list-your-keeb-nav:hover {
+  transform: scale(1.15);
+}
+
+.profile-icon {
+  height: 30px;
+  width: 30px;
+  object-fit: cover;
+  cursor: pointer;
+
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-icon:hover {
+  transform: scale(1.15);
+}
+
+/*  ---------     logged-out      --------- */
+
+#logged-out-nav-buttons {
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+
+  transition: transform 0.3s ease-in-out;
+}
+
+#logged-out-nav-buttons:hover {
+  transform: scale(1.15);
+}
+
+/* ------------        User Icon Modal     ----------- */
+
+#user-icon-modal-container {
+  position: fixed;
+  top: 70px;
+  /* left: 75%; */
+  right: 6%;
+  height: 270px;
+  width: 260px;
+  background-image: url("../../media/blueGrid.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #325aab;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-image-container-modal {
+  margin-top: 20px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-icon-modal-buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-icon-modal {
+  width: 120px;
+  height: 110px;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+.profile-icon-modal:hover {
+  box-shadow: 0 0 10px #325aab;
+}
+
+.profile-icon-letter-modal {
+  width: 120px;
+  height: 110px;
+}
+
+#icon-modal-buttons {
+  font-size: 16px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  transition: transform 0.3s ease-in-out;
+}
+
+#icon-modal-buttons:hover {
+  transform: scale(1.15);
 }
 
 /* ------------        Log In Modal     ----------- */

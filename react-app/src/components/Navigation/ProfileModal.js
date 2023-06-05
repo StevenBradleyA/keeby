@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../store/session";
-import "./Navigation.css"
+import "./Navigation.css";
 
 function UserIconModal() {
   const history = useHistory();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { closeModal } = useModal();
   const sessionUser = useSelector((state) => state.session.user);
-  const transitionId = 1
+  const transitionId = 1;
   const handleProfileClick = (e) => {
     e.preventDefault();
     history.push(`/hackTime/${transitionId}`);
@@ -19,7 +19,7 @@ function UserIconModal() {
 
   const handleLogOut = (e) => {
     e.preventDefault();
-    dispatch(logout())
+    dispatch(logout());
     history.push(``);
     closeModal();
   };
@@ -49,21 +49,31 @@ function UserIconModal() {
           />
         </div>
         <div className="user-modal-name-status-container">
-            {`${sessionUser.first_name} `}
-            {sessionUser.last_name}
+          {`${sessionUser.first_name} `}
+          {sessionUser.last_name}
         </div>
       </div>
-      <button id="manage-profile-button" className="button-styling" onClick={handleProfileClick}>
-        {`[ Manage My Profile ]`}
-      </button>
-      <button id="manage-listings-button" className="button-styling" onClick={handleManageListingsClick}>
-        {`[ Manage My Listings ]`}
-      </button>
-      <button
-      id="log-out-button"
-        className="button-styling"
-        onClick={handleLogOut}
-      >{`[ Log out ]`}</button>
+      <div className="user-icon-modal-buttons-container">
+        <button
+          id="icon-modal-buttons"
+          className="button-styling"
+          onClick={handleProfileClick}
+        >
+          {`[ Manage My Profile ]`}
+        </button>
+        <button
+          id="icon-modal-buttons"
+          className="button-styling"
+          onClick={handleManageListingsClick}
+        >
+          {`[ Manage My Listings ]`}
+        </button>
+        <button
+          id="icon-modal-buttons"
+          className="button-styling"
+          onClick={handleLogOut}
+        >{`[ Log out ]`}</button>
+      </div>
     </div>
   );
 }

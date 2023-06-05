@@ -3,6 +3,7 @@
   flex-direction: column;
   width: 80%;
   padding: 2rem 15rem 2rem 15rem;
+  border-radius: 10px;
 }
 
 .edit-comment-form-container {

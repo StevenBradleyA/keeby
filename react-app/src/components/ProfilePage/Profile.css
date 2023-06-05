@@ -1,106 +1,39 @@
-/* ------------      Hacking Time       --------------- */
+/* ------------      containers       ------------- */
 
-.profile-page-container {
-  margin-top: 50px;
+.profile-page-main-container {
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
-  align-items: start;
-  position: absolute;
-  width: 60%;
-  /* bottom: 160px; */
-  top: 65px;
-  left: 240px;
 }
 
-/* ------------- Universal text for this page ------------- */
+/* ------------      sub containers       ------------- */
 
-.profile-page-text {
-  color: #00dd00;
-  font-family: "VT323", Courier;
-  font-size: 20px;
+.profile-page-icon-info-container {
+  display: flex;
+  margin-top: 20px;
+  width: 100%;
 }
 
-/*  --------------      Individual          --------------              */
-
-.profile-page-icon {
-  position: relative;
-  bottom: 20px;
-  left: 10px;
-  height: 200px;
-  width: 200px;
-  object-fit: cover;
-  z-index: -1;
-}
-
-.profile-page-icon-letter {
-  position: relative;
-  bottom: 20px;
-  left: 10px;
-  height: 200px;
-  width: 200px;
-  z-index: -1;
-}
-
-.edit-profile-picture {
-  position: relative;
-  bottom: 22px;
-  height: 20px;
-  left: 0px;
-  color: #da0000;
-}
-
-.profile-page-username {
-  position: relative;
-  bottom: 52px;
-  height: 20px;
-}
-
-#profile-page-edit-modal {
-  position: relative;
-  left: 500px;
-  bottom: 18px;
-  color: #da0000;
-}
-
-#profile-page-edit-keeb-modal {
-  position: relative;
-  left: 732px;
-  bottom: 82px;
-  color: #da0000;
-}
-
-
-
-#optional-keeb-info {
+.profile-page-daily-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  /* align-content: center; */
-}
-#keyboard-main-text{
-  position: relative;
-  bottom: 25px;
-  right: 52px;
+  width: 100%;
 }
 
-.delete-yeet-profile{
-  position: relative;
-  left:38%;
-  color: red;
-  border: none;
-  padding: none;
-  background: none;
-  font-family: "VT323", Courier;
-  font-size: 20px;
+.profile-info-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
-/* -------------         Moving Title           ----------------- */
+/* ------------      title       ------------- */
+
 .profile-title-text {
-  position: relative;
-  /* color: #1fff66; */
+  /* position: relative; */
   color: #00dd00;
   font-family: "VT323", Courier;
-  font-size: 50px;
+  font-size: 60px;
   text-align: center;
   z-index: 1;
 }
@@ -123,6 +56,214 @@
   75% {
     content: "...";
   }
+}
+
+/* ------------      profile picture       ------------- */
+
+.profile-picture-container {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.profile-page-icon {
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
+  z-index: -1;
+  transition: box-shadow 0.3s ease;
+}
+
+.profile-page-icon-letter {
+  height: 200px;
+  width: 200px;
+  z-index: -1;
+}
+
+.edit-profile-picture-button {
+  color: #da0000;
+  font-size: 30px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+/* ------------      profile info       ------------- */
+
+.profile-info-modal-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#profile-page-text {
+  font-size: 30px;
+}
+
+#profile-page-edit-modal {
+  color: #da0000;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* ------------      keeb info       ------------- */
+
+.daily-heading-container {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.daily-driver-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#profile-page-keeb-text {
+  font-size: 40px;
+}
+
+.delete-yeet-profile {
+  margin-top: 40px;
+  color: red;
+  border: none;
+  padding: none;
+  background: none;
+  font-family: "VT323", Courier;
+  font-size: 30px;
+  cursor: pointer;
+}
+/* -------------         Update Modals           ----------------- */
+
+.modal-container-template {
+  background-color: #222;
+  position: absolute;
+  width: 600px;
+  height: 420px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #0fa005;
+}
+
+.modal-container-template-large {
+  background-color: #222;
+  position: absolute;
+  width: 600px;
+  height: 490px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #0fa005;
+}
+.modal-container-template-xl {
+  background-color: #222;
+  position: absolute;
+  width: 600px;
+  height: 590px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #0fa005;
+}
+
+.modal-sub-container-template {
+  padding: 10px;
+  background-color: #2f2f2f;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  margin: 40px;
+  height: 75%;
+}
+
+.modal-sub-container-template-large {
+  padding: 10px;
+  background-color: #2f2f2f;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  margin: 40px;
+  /* height: 380px; */
+  height: 80%;
+}
+
+.modal-sub-container-template-xl {
+  padding: 10px;
+  background-color: #2f2f2f;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  margin: 40px;
+  /* height: 380px; */
+  height: 82%;
+  /* margin-bottom: 10px; */
+}
+
+.modal-template-form-container {
+  display: flex;
+  flex-direction: column;
+}
+.modal-template-form-sub-title {
+  opacity: 0.4;
+  margin-bottom: 20px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-template-input {
+  background-color: #838383;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 14px;
+  width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.modal-template-input {
+  outline: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.modal-template-input::placeholder {
+opacity: 1;
+color: #ffffff;
+}
+
+
+
+.modal-template-update-button {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 200px;
+  font-size: 20px;
+  background-color: #2f2f2f;
+  color: rgba(255, 255, 255, 0.518);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-template-update-button:hover {
+  color: #00dd00;
+
+  box-shadow: 0 0 10px rgba(55, 176, 21, 0.2);
+  transform: translateY(2px);
 }
 
 /* -------------         Scanlines && Flicker           ----------------- */

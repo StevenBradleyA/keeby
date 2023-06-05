@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import LoginFormModal from "./LoginModal";
 import SignupFormModal from "./SignUpModal";
@@ -18,6 +18,9 @@ function Navigation() {
   const { setModalContent } = useModal();
   const [name, setName] = useState("");
   const [searchResult, setSearchResult] = useState([]);
+  const [isSearchInputFocused, setIsSearchInputFocused] = useState(false);
+  const [isResultsClicked, setIsResultsClicked] = useState(false);
+  const searchContainerRef = useRef(null);
 
   const sessionUser = useSelector((state) => state.session.user);
   // const [listingName, setListingName] = useState('')
@@ -40,6 +43,30 @@ function Navigation() {
   const handleListYourKeeb = () => {
     history.push(`/listings/create`);
   };
+  const handleSearchInputFocus = () => {
+    setIsSearchInputFocused(true);
+  };
+
+  const handleSearchInputBlur = () => {
+    setIsSearchInputFocused(false);
+  };
+
+  const handleSearchClick = (e) => {
+    if (
+      !searchContainerRef.current?.contains(e.target) &&
+      e.target.id !== "search-input"
+    ) {
+      setSearchResult([]);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleSearchClick);
+
+    return () => {
+      document.removeEventListener("click", handleSearchClick);
+    };
+  }, []);
 
   useEffect(async () => {
     if (name.length) {
@@ -51,10 +78,10 @@ function Navigation() {
     }
   }, [name]);
 
-
   // I want to make list your keeb redirect to log in if not session User
+
   return (
-    <div className="nav-bar-container">
+    <div className="nav-container">
       <div className="keeby-title-container">
         <img
           className="keeby-title"
@@ -62,63 +89,71 @@ function Navigation() {
           onClick={handleHomeClick}
         />
       </div>
-      {/* <FontAwesomeIcon icon={faKeyboard} onClick={handleHomeClick} className="home-button"/> */}
-      <input
-        className="search-input-login"
-        type="search"
-        placeholder="Search for a Keyboard name ..."
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      {searchResult.length > 0 && (
-        <div className="search-result-container">
-          {searchResult.map((listing) => (
-            <ListingSearchResults
-              key={listing.id}
-              listing={listing}
-              setSearchResult={setSearchResult}
-              setName={setName}
+      <div className="nav-search-container">
+        <input
+          className="search-input-login"
+          type="search"
+          placeholder="Search for a Keyboard name ..."
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          onFocus={handleSearchInputFocus}
+          onBlur={handleSearchInputBlur}
+        />
+        {searchResult.length > 0 && (
+          <div className="search-result-container" ref={searchContainerRef}>
+            {searchResult.map((listing) => (
+              <ListingSearchResults
+                key={listing.id}
+                listing={listing}
+                setSearchResult={setSearchResult}
+                setName={setName}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div className="nav-buttons-container">
+        {sessionUser && (
+          <>
+            <div
+              className="button-styling"
+              id="list-your-keeb-nav"
+              onClick={handleListYourKeeb}
+            >{`[ List your Keeb ]`}</div>
+            <img
+              alt="profile"
+              className={
+                sessionUser.profile_picture === null
+                  ? "profile-icon-letter"
+                  : "profile-icon"
+              }
+              src={
+                sessionUser.profile_picture === null
+                  ? sessionUser.name[0]
+                  : sessionUser.profile_picture
+              }
+              onClick={handleUserIconClick}
             />
-          ))}
-        </div>
-      )}
+          </>
+        )}
 
-      {sessionUser && (
-        <>
-          <div
-            className="list-a-keeb-button"
-            onClick={handleListYourKeeb}
-          >{`[ List your Keeb ]`}</div>
-          <img
-            alt="profile"
-            className={
-              sessionUser.profile_picture === null
-                ? "profile-icon-letter"
-                : "profile-icon"
-            }
-            src={
-              sessionUser.profile_picture === null
-                ? sessionUser.name[0]
-                : sessionUser.profile_picture
-            }
-            onClick={handleUserIconClick}
-          />
-        </>
-      )}
-
-      {!sessionUser && (
-        <>
-          <DemoLogin />
-          <button
-            onClick={handleLogInClick}
-            className="log-in-button"
-          >{`[ Log In ]`}</button>
-          <button
-            onClick={handleSignUpClick}
-            className="sign-up-button"
-          >{`[ Sign Up ]`}</button>
-        </>
-      )}
+        {!sessionUser && (
+          <>
+            <DemoLogin />
+            <button
+              onClick={handleLogInClick}
+              id="logged-out-nav-buttons"
+              className="button-styling"
+            >{`[ Log In ]`}</button>
+            <button
+              onClick={handleSignUpClick}
+              id="logged-out-nav-buttons"
+              className="button-styling"
+            >{`[ Sign Up ]`}</button>
+          </>
+        )}
+      </div>
     </div>
   );
 }
