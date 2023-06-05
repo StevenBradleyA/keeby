@@ -140,8 +140,9 @@
 
 .modal-container-template {
   background-color: #222;
+  position: absolute;
   width: 600px;
-  height: 600px;
+  height: 420px;
   border-radius: 10px;
   box-shadow: 0 0 10px #0fa005;
 }
@@ -150,7 +151,7 @@
   background-color: #222;
   position: absolute;
   width: 600px;
-  height: 475px;
+  height: 490px;
   border-radius: 10px;
   box-shadow: 0 0 10px #0fa005;
 }
@@ -165,7 +166,7 @@
   /* justify-content: center; */
   align-items: center;
   margin: 40px;
-  height: 310px;
+  height: 75%;
 }
 
 .modal-sub-container-template-large {
@@ -178,7 +179,8 @@
   /* justify-content: center; */
   align-items: center;
   margin: 40px;
-  height: 380px;
+  /* height: 380px; */
+  height: 80%;
 }
 
 
@@ -211,6 +213,14 @@
   outline: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
+
+.modal-template-input::placeholder {
+opacity: 1;
+color: #ffffff;
+
+}
+
+
 
 .modal-template-update-button {
   margin-top: 30px;

@@ -23,8 +23,8 @@ function DeleteUserModal({ sessionUser }) {
   };
 
   return (
-    <div className="modal-container-template">
-      <div className="modal-sub-container-template">
+    <div className="modal-container-template-delete">
+      <div className="modal-sub-container-template-delete">
       <div className="modal-template-title">Engage deletion sequence?</div>
       <div className="modal-template-sub-title">Are you sure you want to delete your account? </div>
       <div className="modal-template-warning">

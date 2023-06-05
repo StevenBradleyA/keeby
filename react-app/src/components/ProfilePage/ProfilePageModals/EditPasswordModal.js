@@ -59,43 +59,45 @@ function EditPasswordModal({ sessionUser }) {
   };
 
   return (
-    <div className="profile-edit-container">
-      <h1 className="title-text">Update Your Password</h1>
-      <form className="profile-edit-container" onSubmit={handleFormSubmit}>
-        <label id="password" className="title-text">
-          Password:{" "}
+    <div className="modal-container-template-large">
+      <div className="modal-sub-container-template-large">
+        <div className="modal-template-title">Update Your Password</div>
+        <form
+          className="modal-template-form-container"
+          onSubmit={handleFormSubmit}
+        >
+          <div id="password" className="modal-template-form-sub-title">
+            Password:
+          </div>
           <input
-            className="text-input-login"
+            className="modal-template-input"
             type="text"
             value={password}
             placeholder="enter a new password"
             onChange={(e) => setPassword(e.target.value)}
           />
-        </label>
-        {hasSubmitted && errors.password && (
-          <p className="errors">{errors.password}</p>
-        )}
-        <label className="title-text">
-          Confirm Password:{" "}
+          {hasSubmitted && errors.password && (
+            <p className="errors">{errors.password}</p>
+          )}
+          <div className="modal-template-form-sub-title">Confirm Password:</div>
           <input
-            className="text-input-login"
+            className="modal-template-input"
             type="text"
             value={confirmPassword}
             placeholder="must match password"
             onChange={(e) => setCofirmPassword(e.target.value)}
           />
-        </label>
-        {hasSubmitted && errors.confirmPassword && (
-          <p className="errors">{errors.confirmPassword}</p>
-        )}
-        <p></p>
-        <input
-          className="profile-edit-submit-button"
-          type="submit"
-          value={"Save Changes"}
-          disabled={hasSubmitted && Object.values(errors).length > 0}
-        />
-      </form>
+          {hasSubmitted && errors.confirmPassword && (
+            <p className="errors">{errors.confirmPassword}</p>
+          )}
+          <input
+            className="modal-template-update-button"
+            type="submit"
+            value={"Save Changes"}
+            disabled={hasSubmitted && Object.values(errors).length > 0}
+          />
+        </form>
+      </div>
     </div>
   );
 }
