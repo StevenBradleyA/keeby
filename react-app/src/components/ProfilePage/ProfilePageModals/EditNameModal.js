@@ -59,43 +59,45 @@ function EditNameModal({ sessionUser }) {
   };
 
   return (
-    <div className="profile-edit-container">
-      <h1 className="title-text">Update Your First and Last Name </h1>
-      <form className="profile-edit-container" onSubmit={handleFormSubmit}>
-        <label className="title-text">
-          First Name:{" "}
+    <div className="modal-container-template-large">
+      <div className="modal-sub-container-template-large">
+        <div className="modal-template-title">
+          Update Your Name
+        </div>
+        <form
+          className="modal-template-form-container"
+          onSubmit={handleFormSubmit}
+        >
+          <div className="modal-template-form-sub-title">First Name:</div>
           <input
-            className="text-input-login"
+            className="modal-template-input"
             type="text"
             value={firstName}
             placeholder={sessionUser.first_name}
             onChange={(e) => setFirstName(e.target.value)}
           />
-        </label>
-        {hasSubmitted && errors.firstName && (
-          <p className="errors">{errors.firstName}</p>
-        )}
-        <label id="last-name" className="title-text">
-          Last Name:{" "}
+          {hasSubmitted && errors.firstName && (
+            <p className="errors">{errors.firstName}</p>
+          )}
+          <div className="modal-template-form-sub-title">Last Name:</div>
           <input
-            className="text-input-login"
+            className="modal-template-input"
             type="text"
             value={lastName}
             placeholder={sessionUser.last_name}
             onChange={(e) => setLastName(e.target.value)}
           />
-        </label>
-        {hasSubmitted && errors.lastName && (
-          <p className="errors">{errors.lastName}</p>
-        )}
-        <p></p>
-        <input
-          className="profile-edit-submit-button"
-          type="submit"
-          value={"Save Changes"}
-          disabled={hasSubmitted && Object.values(errors).length > 0}
-        />
-      </form>
+          {hasSubmitted && errors.lastName && (
+            <p className="errors">{errors.lastName}</p>
+          )}
+          <input
+            className="modal-template-update-button"
+            type="submit"
+            value={"Save Changes"}
+            disabled={hasSubmitted && Object.values(errors).length > 0}
+          />
+        </form>
+      </div>
     </div>
   );
 }

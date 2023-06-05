@@ -138,6 +138,51 @@
 }
 /* -------------         Update Modals           ----------------- */
 
+.modal-container-template {
+  background-color: #222;
+  width: 600px;
+  height: 600px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #0fa005;
+}
+
+.modal-container-template-large {
+  background-color: #222;
+  position: absolute;
+  width: 600px;
+  height: 475px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #0fa005;
+}
+
+.modal-sub-container-template {
+  padding: 10px;
+  background-color: #2f2f2f;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  margin: 40px;
+  height: 310px;
+}
+
+.modal-sub-container-template-large {
+  padding: 10px;
+  background-color: #2f2f2f;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  margin: 40px;
+  height: 380px;
+}
+
+
+
 .modal-template-form-container {
   display: flex;
   flex-direction: column;
