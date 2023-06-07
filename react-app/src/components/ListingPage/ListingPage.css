@@ -109,6 +109,10 @@
 /*  ------------          preview modal        ------------- */
 
 .preview-image-modal-container {
+  position: absolute;
+  /* border-radius: 10px; */
+  box-shadow: 0 0 10px #97979700;
+  background-color: black;
 }
 
 .gallery-preview-modal {
@@ -116,6 +120,7 @@
   width: 1000px;
   object-fit: cover;
   position: relative;
+
 }
 
 .left-arrow {

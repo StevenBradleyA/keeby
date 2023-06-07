@@ -28,7 +28,8 @@
 
 .edit-comment-input-box:focus {
   outline: none;
-  box-shadow: 0 0 10px rgba(119, 21, 176, 0.2);
+  box-shadow: 0 0 10px #0fa0054b;
+
 }
 
 .edit-comment-submit-button {
@@ -47,8 +48,10 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 .edit-comment-submit-button:hover {
-  color: rgba(255, 0, 255, 0.75);
+  color: #00dd00;
 
-  box-shadow: 0 0 10px rgba(119, 21, 176, 0.2);
+
+  box-shadow: 0 0 10px #0fa005;
+
   transform: translateY(2px);
 }

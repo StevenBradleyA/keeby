@@ -20,16 +20,16 @@ function PhotoGalleryModal({ images }) {
     );
   };
 
-  const handleClose = () => {
-    closeModal();
-  };
+  // const handleClose = () => {
+  //   closeModal();
+  // };
 
   return (
     <div className="preview-image-modal-container">
       {/* <img className="gallery-preview-modal" alt="gallery-preview" src={image.image}/> */}
-      <span className="close" onClick={handleClose}>
+      {/* <span className="close" onClick={handleClose}>
         &times;
-      </span>
+      </span> */}
       <img
         className="gallery-preview-modal"
         alt="gallery-preview"
